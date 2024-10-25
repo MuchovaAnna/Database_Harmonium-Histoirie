@@ -69,9 +69,7 @@ export function Header() {
                     size="xs"
                     offset={8}
                     radius="md"
-                    overlayProps={{ backgroundOpacity: 0.5, blur: 2 }}
-                //padding="md"
-                >
+                    overlayProps={{ backgroundOpacity: 0.5, blur: 2 }}>
                     <div>
                         <NavLink to="/harmoniums" onClick={() => setOpened(false)} className={classes.drawerLink}>Databáze  harmonií</NavLink>
                         <NavLink to="/builders" onClick={() => setOpened(false)} className={classes.drawerLink}>Databáze stavitelů</NavLink>
@@ -94,7 +92,6 @@ export function Header() {
                                 <path d="M14 11v6" />
                             </svg>
                             Přidat  nový</NavLink>
-
                         <div
                             className={classes.drawerLink}
                             onClick={() => setOpened(false)} >
