@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />}>
-          <Route index element={<App />} />
+          {/* <Route index element={<App />} /> */}
           <Route path='/harmoniums' element={<TableHarmoniums />} />
           <Route path='/builders' element={<Builders />} />
           <Route path='/newHarmonium' element={<NewHarmonium />} />

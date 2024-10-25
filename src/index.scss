@@ -4,9 +4,46 @@
 $primary-font: "David Libre";
 
 /*Colors*/
-$shadow-color: 0px 3px 5px 0 rgba(0, 0, 0, 0.2);
-$secondary-color:  #aab396;
-$primary-100: rgba(237,234,225,1);
+$shadow-color: 0px 3px 5px 0 black;
+
+// Paleta 1: Hnědé tóny
+// $primary-color-1: #f9f6ed; // lightest
+// $primary-color-2: #edeae1;
+// $primary-color-3: #d9d3c4;
+// $primary-color-4: #c4bba2;
+// $primary-color-5: #b2a786;
+// $primary-color-6: #a79a74;
+// $primary-color-7: #a29369;
+// $primary-color-8: #8d8058;
+// $primary-color-9: #7e714c;
+// $primary-color-10: #6d613c; // darkest
+
+$primary-color-1: #f7f3f2; //lightest
+$primary-color-2: #e8e6e5;
+$primary-color-3: #d2c9c6;
+$primary-color-4: #bdaaa4;
+$primary-color-5: #ab9087;
+$primary-color-6: #a17f74;
+$primary-color-7: #9d766a;
+$primary-color-8: #896459;
+$primary-color-9: #7b594e;
+$primary-color-10: #6d4b40; //darkest
+
+// Paleta 2: Zelené tóny
+$secondary-color-1: #f4f8ec; // lightest
+$secondary-color-2: #e8ece0;
+$secondary-color-3: #d0d7c4;
+$secondary-color-4: #b7c0a4;
+$secondary-color-5: #a2ad8a;
+$secondary-color-6: #94a178;
+$secondary-color-7: #8d9b6e;
+$secondary-color-8: #79875c;
+$secondary-color-9: #6b7850;
+$secondary-color-10: #5b6840; // darkest
+
+// Klasické barvy
+$white: #ffffff;
+$black: #000000;
 
 // Main style settings
 * {
@@ -16,5 +53,5 @@ $primary-100: rgba(237,234,225,1);
 }
 
 html {
-    background: $primary-100;
+    background: $primary-color-2;
 }
