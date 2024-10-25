@@ -1,0 +1,21 @@
+@import '../../index.scss';
+
+.header{
+    display: flex;
+    align-items: center;
+    box-shadow: $shadow-color;
+    //background: $secondary-color;
+    background: linear-gradient(321deg, #d0d6c3 0%, #8b986f 53%, #78845d 100%);
+
+   & .logo{
+        margin: 1vw;
+        height: 10vh;
+    }
+    
+   & .title{
+        display: block;
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        color: white;
+    }
+}
+

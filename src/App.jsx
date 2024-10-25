@@ -1,14 +1,20 @@
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core'
-import './App.css'
+import { Outlet } from 'react-router-dom'
+import './App.scss'
+
+import { Header } from './components/Headers/Headers';
 
 function App() {
 
   return (
     <>
       <MantineProvider>
-        
-    </MantineProvider>
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+      </MantineProvider>
     </>
   )
 }
