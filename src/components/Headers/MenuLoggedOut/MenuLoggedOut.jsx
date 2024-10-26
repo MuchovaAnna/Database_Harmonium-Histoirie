@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Drawer, Group } from '@mantine/core'
+import { Modal, Group } from '@mantine/core'
 
 import classes from '../MenuLoggedOut/LoggedOut.module.scss'
+import LoginForm from '../../LoginForm/LoginForm'
 
 function LoggedOut() {
 
@@ -33,7 +34,7 @@ function LoggedOut() {
                 </button>
             </Group>
 
-            <Drawer
+            <Modal
                 opened={opened}
                 onClose={() => setOpened(false)}
                 position='right'
@@ -43,8 +44,9 @@ function LoggedOut() {
                 overlayProps={{ backgroundOpacity: 0.5, blur: 2 }}>
                 
                 {/* zde se umístí přihlašovací formulář*/}
+                <LoginForm/>
 
-            </Drawer>
+            </Modal>
         </>
     )
 }

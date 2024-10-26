@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { Burger, Drawer, Group } from '@mantine/core'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { Burger, Drawer, Group, Modal } from '@mantine/core'
 
 import classes from '../MenuLoggedIn/LoggedIn.module.scss'
 
 function LoggedIn() {
 
     const [opened, setOpened] = useState(false)
+    const navigate = useNavigate()
 
     return (
         <>
@@ -32,7 +33,11 @@ function LoggedIn() {
                         <path d="M14 11v6" />
                     </svg>
                     Přidat<br /> nový</NavLink>
-                <button className={classes.link}>
+                <button
+                    className={classes.link}
+                    onClick={()=>navigate('/')}
+                    style={{ cursor: 'pointer' }}
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -61,7 +66,8 @@ function LoggedIn() {
                 size="xs"
                 offset={8}
                 radius="md"
-                overlayProps={{ backgroundOpacity: 0.5, blur: 2 }}>
+                overlayProps={{ backgroundOpacity: 0.5, blur: 2 }}
+            >
 
                 <div>
                     <NavLink to="/harmoniums" onClick={() => setOpened(false)} className={classes.drawerLink}>Databáze  harmonií</NavLink>

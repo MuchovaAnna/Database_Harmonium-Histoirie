@@ -1,0 +1,29 @@
+@import '../../index.scss';
+
+.input {
+    width: 35vw;
+    border: 1px solid $primary-color-3;
+    border-radius: 3px;
+    padding-left: 10px;
+
+    &:focus-visible {
+        border: 2px solid $primary-color-6;
+        outline: none;
+    }
+}
+
+.label{
+    position: relative;
+    left: 0;
+    color: $primary-color-10;
+    text-transform: uppercase;
+}
+
+.button{
+    background: $primary-color-6;
+    text-transform: uppercase;
+
+    &:hover{
+        background: $primary-color-10;
+    }
+}

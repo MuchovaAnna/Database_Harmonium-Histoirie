@@ -4,11 +4,11 @@ import LoggedIn from './MenuLoggedIn/MenuLoggedIn'
 import LoggedOut from './MenuLoggedOut/MenuLoggedOut'
 import { useNavigate } from 'react-router-dom'
 
-// import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../context/AuthContext'
 
 export function Header() {
 
-    // const { user, isAuth } = useAuth()
+    const {isAuth } = useAuth()
     const navigate = useNavigate()
 
     return (
@@ -20,16 +20,17 @@ export function Header() {
                     onClick={() => navigate('/')}
                     style={{ cursor: 'pointer' }}
                 >
-                    <img src='public\Logo.png' alt='Logo' className={classes.logo} />
+                    <img src='public/Logo.png' alt='Logo' className={classes.logo} />
                     <div className={classes.title}>
                         <h1>HARMONIUM - HISTORIE</h1>
                         <h3>první soukromá expozice harmonií v ČR</h3>
                     </div>
                 </Group>
 
-                <LoggedIn />
-
-                {/* <LoggedOut/> */}
+                {isAuth
+                    ? < LoggedIn />
+                    : <LoggedOut />
+                }
 
             </div >
         </>

@@ -1,19 +1,28 @@
 import '@mantine/core/styles.css';
-import { MantineProvider } from '@mantine/core'
+import { createTheme, MantineProvider, TextInput } from '@mantine/core'
 import { Outlet } from 'react-router-dom'
 import './App.scss'
 
 import { Header } from './components/Headers/Headers';
+import AuthProvider from './context/AuthContext';
+
+const theme = createTheme({
+  fontFamily: 'David Libre',
+})
 
 function App() {
 
   return (
     <>
-      <MantineProvider>
-        <Header />
-        <main>
-          <Outlet />
-        </main>
+      <MantineProvider
+        theme={theme}
+      >
+        <AuthProvider>
+          <Header />
+          <main>
+            <Outlet />
+          </main>
+        </AuthProvider>
       </MantineProvider>
     </>
   )

@@ -5,8 +5,8 @@ const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
 
-const login = async (email, password) => {
-    return await supabase.auth.signInWithPassword({ email, password })
+const login = async (userName, password) => {
+    return await supabase.auth.signInWithPassword({ userName, password })
 }
 
 const logout = async () => {
