@@ -4,7 +4,7 @@ function Builders() {
 
     return (
         <>
-            <h1 className={classes.body}>Zde se připravuje seznam stavitelů harmonií</h1>
+            <h1 className={classes.title}>Zde se připravuje seznam stavitelů harmonií</h1>
         </>
     )
     

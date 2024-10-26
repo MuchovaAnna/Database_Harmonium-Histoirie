@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import App from './App.jsx'
 import NewHarmonium from './components/NewHarmonium/New.jsx'
-import TableHarmoniums from './components/Table_harmoniums/TableHarmoniums.jsx'
+import TableHarmoniums from './components/HarmoniumsDatabase/Table_harmoniums/TableHarmoniums.jsx'
 import Builders from './components/BuilderDatabase/Builders.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

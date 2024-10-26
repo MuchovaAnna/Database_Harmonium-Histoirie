@@ -15,7 +15,7 @@ const logout = async () => {
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [isAuth, setIsAuth] = useState(false)
+    const [isAuth, setIsAuth] = useState(true)
 
     useEffect(
         () => {
