@@ -14,14 +14,12 @@ function LoginForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('Přihlašuji...', userName, password);
-        
-        const { error } = login(userName, password)
+        const { error } = await login(userName, password)
         
         if (error) {
+            console.error("Přihlášení selhalo:", error.message)
             return
         }
-
         navigate('/harmoniums')
     }
 
@@ -29,9 +27,10 @@ function LoginForm() {
         <>
             <form onSubmit={handleSubmit}>
             <Group
-                justify="center"
+                    justify="center"
+                    className={classes.container}
             >
-                <div>
+                <div className={classes.inputsection}>
                     <Text
                         size="md"
                         className={classes.label}>Přihlašovací jméno</Text>
@@ -45,7 +44,7 @@ function LoginForm() {
                     />
                 </div>
 
-                <div>
+                <div className={classes.inputsection}>
                     <Text
                         size="md"
                         className={classes.label}>Heslo</Text>

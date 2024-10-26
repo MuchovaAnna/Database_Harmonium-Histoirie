@@ -5,17 +5,16 @@ const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
 
-const login = async (userName, password) => {
-    return await supabase.auth.signInWithPassword({ userName, password })
+const login = async (email, password) => {
+    return await supabase.auth.signInWithPassword({ email, password })
 }
-
 const logout = async () => {
     return await supabase.auth.signOut()
 }
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [isAuth, setIsAuth] = useState(true)
+    const [isAuth, setIsAuth] = useState(false)
 
     useEffect(
         () => {

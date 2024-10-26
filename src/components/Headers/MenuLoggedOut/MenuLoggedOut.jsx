@@ -38,8 +38,7 @@ function LoggedOut() {
                 opened={opened}
                 onClose={() => setOpened(false)}
                 position='right'
-                size="sm"
-                offset={8}
+                size='sm'
                 radius="md"
                 overlayProps={{ backgroundOpacity: 0.5, blur: 2 }}>
                 
