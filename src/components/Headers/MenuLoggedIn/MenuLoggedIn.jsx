@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { Burger, Drawer, Group, Modal } from '@mantine/core'
+import { Burger, Drawer, Group } from '@mantine/core'
 import { useAuth } from '../../../context/AuthContext'
 
 import classes from '../MenuLoggedIn/LoggedIn.module.scss'
@@ -10,6 +10,13 @@ function LoggedIn() {
     const [opened, setOpened] = useState(false)
     const { logout } = useAuth()
     const navigate = useNavigate()
+
+    const handleLogOut = async () => {
+        const isLoggedOut = await logout()
+        if (isLoggedOut) {
+            navigate('/')
+        }
+    }
 
     return (
         <>
@@ -48,7 +55,7 @@ function LoggedIn() {
                 </NavLink>
                 <button
                     className={classes.link}
-                    onClick={() => logout()}
+                    onClick={handleLogOut}
                     style={{ cursor: 'pointer' }}
                 >  <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +127,7 @@ function LoggedIn() {
                     </NavLink>
                     <div
                         className={classes.drawerLink}
-                        onClick={() => logout()} >
+                        onClick={handleLogOut} >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"

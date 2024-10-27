@@ -6,12 +6,14 @@
     box-shadow: $shadow-color;
     background: linear-gradient(321deg, #d0d6c3 0%, #8b986f 53%, #78845d 100%);
     //background: $secondary-color-6;
+    position: relative;
+    z-index: 10;
 }
 
 .login {
     margin: 2vw;
 
-    @media (max-width: 820px){
+    @media (max-width: 820px) {
         display: none;
     }
 }
@@ -19,15 +21,25 @@
 .header {
     display: flex;
     align-items: center;
+    gap: 0;
 
     & .logo {
         margin: 1vw;
-        height: 10vh;
+        max-height: 8vh;
+
+        @media(max-width:820px){
+            max-height: 6vh;
+        }
     }
 
     & .title {
         display: block;
         font-size: clamp(0.8rem, 1.5vw, 0.9rem);
         color: $primary-color-1;
+     
+        @media(max-width:820px){
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+        }
     }
+
 }
