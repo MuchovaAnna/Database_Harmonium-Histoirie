@@ -14,8 +14,8 @@ function Home() {
                 <div className={classes.textContainer}>
                     {isAuth
                         ? <>
-                            <Button className={classes.btn}>Databaze harmonií</Button>
-                            <Button className={classes.btn}>Databaze stavitelů</Button>
+                            <Button className={classes.btn} onClick={()=>navigate('/harmoniums')}>Databaze harmonií</Button>
+                            <Button className={classes.btn} onClick={()=>navigate('/builders')}>Databaze stavitelů</Button>
                         </>
                         : <>
                             <div className={classes.titleInfo}>

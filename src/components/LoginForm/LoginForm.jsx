@@ -20,7 +20,7 @@ function LoginForm() {
             console.error("Přihlášení selhalo:", error.message)
             return
         }
-        navigate('/harmoniums')
+        navigate('/')
     }
 
     return (
