@@ -1,0 +1,244 @@
+{
+    "harmoniums":[
+        {
+          "ID": 1,
+          "name": "Alexandre et Fils",
+          "type": "Nožní harmonium",
+          "country": "Francie",
+          "period": "1860 - 1870",
+          "numberOfRegisters": 500
+        },
+        {
+          "ID": 2,
+          "name": "Mason & Hamlin",
+          "type": "Rukama pumpované harmonium",
+          "country": "USA",
+          "period": "1880 - 1890",
+          "numberOfRegisters": 620
+        },
+        {
+          "ID": 3,
+          "name": "Mustel",
+          "type": "Nožní harmonium",
+          "country": "Francie",
+          "period": "1875 - 1885",
+          "numberOfRegisters": 780
+        },
+        {
+          "ID": 4,
+          "name": "Hohner",
+          "type": "Sací harmonium",
+          "country": "Německo",
+          "period": "1900 - 1910",
+          "numberOfRegisters": 450
+        },
+        {
+          "ID": 5,
+          "name": "Debain",
+          "type": "Nožní harmonium",
+          "country": "Francie",
+          "period": "1840 - 1850",
+          "numberOfRegisters": 800
+        },
+        {
+          "ID": 6,
+          "name": "Estey",
+          "type": "Nožní harmonium",
+          "country": "USA",
+          "period": "1890 - 1900",
+          "numberOfRegisters": 590
+        },
+        {
+          "ID": 7,
+          "name": "Lindholm",
+          "type": "Rukama pumpované harmonium",
+          "country": "Švédsko",
+          "period": "1900 - 1910",
+          "numberOfRegisters": 320
+        },
+        {
+          "ID": 8,
+          "name": "Kasriel",
+          "type": "Sací harmonium",
+          "country": "Francie",
+          "period": "1920 - 1930",
+          "numberOfRegisters": 430
+        },
+        {
+          "ID": 9,
+          "name": "Bay Company",
+          "type": "Nožní harmonium",
+          "country": "USA",
+          "period": "1870 - 1880",
+          "numberOfRegisters": 500
+        },
+        {
+          "ID": 10,
+          "name": "Chappell & Co.",
+          "type": "Nožní harmonium",
+          "country": "Anglie",
+          "period": "1850 - 1860",
+          "numberOfRegisters": 560
+        },
+        {
+          "ID": 11,
+          "name": "Hewitt",
+          "type": "Rukama pumpované harmonium",
+          "country": "Anglie",
+          "period": "1930 - 1940",
+          "numberOfRegisters": 610
+        },
+        {
+          "ID": 12,
+          "name": "Mannborg",
+          "type": "Nožní harmonium",
+          "country": "Německo",
+          "period": "1880 - 1890",
+          "numberOfRegisters": 670
+        },
+        {
+          "ID": 13,
+          "name": "Royal American Organ",
+          "type": "Sací harmonium",
+          "country": "USA",
+          "period": "1910 - 1920",
+          "numberOfRegisters": 340
+        },
+        {
+          "ID": 14,
+          "name": "Smith American Organ Co.",
+          "type": "Nožní harmonium",
+          "country": "USA",
+          "period": "1865 - 1875",
+          "numberOfRegisters": 520
+        },
+        {
+          "ID": 15,
+          "name": "Victor Mustel",
+          "type": "Nožní harmonium",
+          "country": "Francie",
+          "period": "1885 - 1895",
+          "numberOfRegisters": 780
+        },
+        {
+          "ID": 16,
+          "name": "Bell Organ Co.",
+          "type": "Rukama pumpované harmonium",
+          "country": "Kanada",
+          "period": "1890 - 1900",
+          "numberOfRegisters": 290
+        },
+        {
+          "ID": 17,
+          "name": "Christoph Trübger",
+          "type": "Sací harmonium",
+          "country": "Rakousko",
+          "period": "1930 - 1940",
+          "numberOfRegisters": 360
+        },
+        {
+          "ID": 18,
+          "name": "George Prince",
+          "type": "Nožní harmonium",
+          "country": "USA",
+          "period": "1840 - 1850",
+          "numberOfRegisters": 490
+        },
+        {
+          "ID": 19,
+          "name": "John Holt",
+          "type": "Rukama pumpované harmonium",
+          "country": "Anglie",
+          "period": "1905 - 1915",
+          "numberOfRegisters": 230
+        },
+        {
+          "ID": 20,
+          "name": "The American Organ Co.",
+          "type": "Nožní harmonium",
+          "country": "USA",
+          "period": "1875 - 1885",
+          "numberOfRegisters": 650
+        },
+        {
+          "ID": 21,
+          "name": "Kimball",
+          "type": "Sací harmonium",
+          "country": "USA",
+          "period": "1920 - 1930",
+          "numberOfRegisters": 380
+        },
+        {
+          "ID": 22,
+          "name": "Celestial Harmonium Co.",
+          "type": "Nožní harmonium",
+          "country": "Francie",
+          "period": "1860 - 1870",
+          "numberOfRegisters": 510
+        },
+        {
+          "ID": 23,
+          "name": "Krauss",
+          "type": "Rukama pumpované harmonium",
+          "country": "Švýcarsko",
+          "period": "1910 - 1920",
+          "numberOfRegisters": 410
+        },
+        {
+          "ID": 24,
+          "name": "Hasse & Co.",
+          "type": "Sací harmonium",
+          "country": "Německo",
+          "period": "1930 - 1940",
+          "numberOfRegisters": 370
+        },
+        {
+          "ID": 25,
+          "name": "Aeolian Company",
+          "type": "Nožní harmonium",
+          "country": "USA",
+          "period": "1895 - 1905",
+          "numberOfRegisters": 530
+        },
+        {
+          "ID": 26,
+          "name": "Zehner & Co.",
+          "type": "Rukama pumpované harmonium",
+          "country": "Německo",
+          "period": "1925 - 1935",
+          "numberOfRegisters": 400
+        },
+        {
+          "ID": 27,
+          "name": "Alexandre",
+          "type": "Nožní harmonium",
+          "country": "Francie",
+          "period": "1850 - 1860",
+          "numberOfRegisters": 620
+        },
+        {
+          "ID": 28,
+          "name": "Bilhorn Bros.",
+          "type": "Sací harmonium",
+          "country": "USA",
+          "period": "1900 - 1910",
+          "numberOfRegisters": 350
+        },
+        {
+          "ID": 29,
+          "name": "Pacific Organ & Piano Co.",
+          "type": "Nožní harmonium",
+          "country": "USA",
+          "period": "1890 - 1900",
+          "numberOfRegisters": 510
+        },
+        {
+          "ID": 30,
+          "name": "Broadwood & Sons",
+          "type": "Rukama pumpované harmonium",
+          "country": "Anglie",
+          "period": "1935 - 1945",
+          "numberOfRegisters": 270
+        }
+      ]
+}

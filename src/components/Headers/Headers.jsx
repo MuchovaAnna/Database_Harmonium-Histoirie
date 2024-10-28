@@ -20,7 +20,7 @@ export function Header() {
                     onClick={() => navigate('/')}
                     style={{ cursor: 'pointer' }}
                 >
-                    <img src='public/Logo.png' alt='Logo' className={classes.logo} />
+                    <img src='/Logo.png' alt='Logo' className={classes.logo} />
                     <div className={classes.title}>
                         <h1>HARMONIUM - HISTORIE</h1>
                         <h3>první soukromá expozice harmonií v ČR</h3>

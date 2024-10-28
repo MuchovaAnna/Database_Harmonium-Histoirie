@@ -1,5 +1,5 @@
 import '@mantine/core/styles.css';
-import { createTheme, MantineProvider, TextInput } from '@mantine/core'
+import { createTheme, MantineProvider} from '@mantine/core'
 import { Outlet } from 'react-router-dom'
 import './App.scss'
 
