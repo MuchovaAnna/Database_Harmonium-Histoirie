@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Flex, Pagination, Select, Tabs, rem } from '@mantine/core'
 import { IconColumns, IconLayoutGrid } from '@tabler/icons-react';
-import classes from '../HarmoniumsDatabase/DatabaseHarmonium.module.scss'
+// import classes from '../HarmoniumsDatabase/DatabaseHarmonium.module.scss'
 import TableDatabase from './Table/TableHarmoniums';
 
 function DatabaseHarmoniums() {

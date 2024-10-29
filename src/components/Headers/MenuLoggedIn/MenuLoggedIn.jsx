@@ -20,20 +20,20 @@ function LoggedIn() {
 
     return (
         <>
-            <Group className={classes.nav}>
+            <Group className={classes['nav']}>
                 <NavLink
                     to="/harmoniums"
-                    className={classes.link}>
+                    className={classes['link']}>
                     Databáze<br /> harmonií
                 </NavLink>
                 <NavLink
                     to="/builders"
-                    className={classes.link}>
+                    className={classes['link']}>
                     Databáze<br /> stavitelů
                 </NavLink>
                 <NavLink
                     to="/newHarmonium"
-                    className={classes.link}>
+                    className={classes['link']}>
                     <svg xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
@@ -54,7 +54,7 @@ function LoggedIn() {
                     Přidat<br /> nový
                 </NavLink>
                 <button
-                    className={classes.link}
+                    className={classes['link']}
                     onClick={handleLogOut}
                     style={{ cursor: 'pointer' }}
                 >  <svg
@@ -74,7 +74,7 @@ function LoggedIn() {
             </Group>
 
             <Burger
-                className={classes.burger}
+                className={classes['burger']}
                 opened={opened}
                 onClick={() => setOpened(!opened)}
                 size='md'
@@ -93,13 +93,13 @@ function LoggedIn() {
                     <NavLink
                         to="/harmoniums"
                         onClick={() => setOpened(false)}
-                        className={classes.drawerLink}>
+                        className={classes['drawerLink']}>
                         Databáze harmonií
                     </NavLink>
                     <NavLink
                         to="/builders"
                         onClick={() => setOpened(false)}
-                        className={classes.drawerLink}>
+                        className={classes['drawerLink']}>
                         Databáze stavitelů
                     </NavLink>
                     <NavLink
@@ -126,7 +126,7 @@ function LoggedIn() {
                         Přidat  nový
                     </NavLink>
                     <div
-                        className={classes.drawerLink}
+                        className={classes['drawerLink']}
                         onClick={handleLogOut} >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

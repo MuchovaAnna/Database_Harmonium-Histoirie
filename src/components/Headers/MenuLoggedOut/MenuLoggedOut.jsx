@@ -10,10 +10,10 @@ function LoggedOut() {
 
     return (
         <>
-            <Group className={classes.nav}>
+            <Group className={classes['nav']}>
                 <button
                     opened={opened}
-                    className={classes.login}
+                    className={classes['login']}
                     onClick={() => setOpened(!opened)} >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ function LoggedOut() {
                         <path d="M3 12h13l-3 -3" />
                         <path d="M13 15l3 -3" />
                     </svg>
-                    <span className={classes.btnText}>Přihlásit se</span>
+                    <span className={classes['btnText']}>Přihlásit se</span>
                 </button>
             </Group>
 

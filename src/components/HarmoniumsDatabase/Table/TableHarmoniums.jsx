@@ -1,4 +1,4 @@
-import { Table, ScrollArea, rem, vw } from '@mantine/core'
+import { Table, ScrollArea, rem} from '@mantine/core'
 import { IconPhoto } from '@tabler/icons-react';
 import classes from '../Table/TableHarmoniums.module.scss'
 

@@ -1,4 +1,4 @@
-@use '../../../_variables' as variables;
+@use '@/index.scss' as *;
 
 .nav {
     display: flex;
@@ -8,7 +8,7 @@
 }
 
 .login {
-    color: variables.$primary-color-9;
+    color: $primary-color-9;
     text-decoration: none;
     font-weight: 600;
     text-transform: uppercase;
@@ -16,9 +16,9 @@
     text-align: center;
     line-height: 1.2em;
     padding: 5px 10px 5px 10px;
-    border: 1px solid variables.$primary-color-9;
+    border: 1px solid $primary-color-9;
     border-radius: 6px;
-    background-color: variables.$secondary-color-3;
+    background-color: $secondary-color-3;
     width: 10vw;
     height: 5vh;
     display: flex;
@@ -26,8 +26,8 @@
     align-items: center;
 
     &:hover{
-        color: variables.$primary-color-1;
-        background: variables.$primary-color-10;
+        color: $primary-color-1;
+        background: $primary-color-10;
     }
 }
 

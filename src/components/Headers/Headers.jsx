@@ -13,15 +13,15 @@ export function Header() {
 
     return (
         <>
-            <div className={classes.menu}>
+            <div className={classes['menu']}>
 
                 <Group
-                    className={classes.header}
+                    className={classes['header']}
                     onClick={() => navigate('/')}
                     style={{ cursor: 'pointer' }}
                 >
-                    <img src='/Logo.png' alt='Logo' className={classes.logo} />
-                    <div className={classes.title}>
+                    <img src='/Logo.png' alt='Logo' className={classes['logo']} />
+                    <div className={classes['title']}>
                         <h1>HARMONIUM - HISTORIE</h1>
                         <h3>první soukromá expozice harmonií v ČR</h3>
                     </div>

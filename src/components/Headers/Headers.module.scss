@@ -1,11 +1,11 @@
-@use '../../_variables' as variables;
+@use '@/index.scss' as *;
 
 .menu {
     display: flex;
     justify-content: space-between;
-    box-shadow: variables.$shadow-color;
+    box-shadow:$shadow-color;
     background: linear-gradient(321deg, #d0d6c3 0%, #8b986f 53%, #78845d 100%);
-    //background: variables.$secondary-color-6;
+    //background:$secondary-color-6;
     position: relative;
     z-index: 10;
 }
@@ -35,7 +35,7 @@
     & .title {
         display: block;
         font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-        color: variables.$primary-color-1;
+        color:$primary-color-1;
      
         @media(max-width:820px){
             font-size: clamp(0.7rem, 1.5vw, 0.9rem);

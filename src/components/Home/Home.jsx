@@ -9,18 +9,18 @@ function Home() {
 
     return (
         <>
-            <div className={classes.homeContainer}>
+            <div className={classes['homeContainer']}>
 
-                <div className={classes.textContainer}>
+                <div className={classes['textContainer']}>
                     {isAuth
                         ? <>
-                            <Button className={classes.btn} onClick={()=>navigate('/harmoniums')}>Databaze harmonií</Button>
-                            <Button className={classes.btn} onClick={()=>navigate('/builders')}>Databaze stavitelů</Button>
+                            <Button className={classes['btn']} onClick={()=>navigate('/harmoniums')}>Databaze harmonií</Button>
+                            <Button className={classes['btn']} onClick={()=>navigate('/builders')}>Databaze stavitelů</Button>
                         </>
                         : <>
-                            <div className={classes.titleInfo}>
-                                <h1 className={classes.title}>Harmonium <br />-<br /> historie</h1>
-                                <p className={classes.subtitle}>databáze je přístupna <br />pouze pro přihlášení</p>
+                            <div className={classes['titleInfo']}>
+                                <h1 className={classes['title']}>Harmonium <br />-<br /> historie</h1>
+                                <p className={classes['subtitle']}>databáze je přístupna <br />pouze pro přihlášení</p>
                             </div>
                         </>
                     }

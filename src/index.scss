@@ -1,17 +1,18 @@
-@use './variables' as variables;
+@use './_variables.scss' as *;
+@forward './_variables.scss';
 
 // Main style settings
 * {
     box-sizing: border-box;
     margin: 0;
-    font-family: variables.$primary-font;
+    font-family: $primary-font;
 }
 
 body{
-    background: variables.$primary-color-2;
+    background: $primary-color-2;
     overflow: hidden;
 }
 
 html {
-    background: variables.$primary-color-2;
+    background: $primary-color-2;
 }

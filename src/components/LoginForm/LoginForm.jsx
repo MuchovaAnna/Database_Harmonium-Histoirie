@@ -28,23 +28,23 @@ function LoginForm() {
             <form onSubmit={handleSubmit}>
             <Group
                     justify="center"
-                    className={classes.container}
+                    className={classes['container']}
             >
-                <div className={classes.inputsection}>
+                <div className={classes['inputsection']}>
                     <Text
                         size="md"
-                        className={classes.label}>Přihlašovací jméno</Text>
+                        className={classes['label']}>Přihlašovací jméno</Text>
                     <Input
                         placeholder="Přihlašovací jméno"
                         variant="unstyled"
                         value={userName}
                         onChange={ e => setUserName(e.currentTarget.value)}
                         size="md"
-                        className={classes.input}
+                        className={classes['input']}
                     />
                 </div>
 
-                <div className={classes.inputsection}>
+                <div className={classes['inputsection']}>
                     <Text
                         size="md"
                         className={classes.label}>Heslo</Text>
@@ -54,13 +54,13 @@ function LoginForm() {
                         size="md"
                         value={password}
                         onChange={e => setPassword(e.target.value)}
-                        className={classes.input}
+                        className={classes['input']}
                     />
                 </div>
 
                 <Button
                     type="submit"
-                    className={classes.button}
+                    className={classes['button']}
                 >
                     Odeslat
                 </Button>
