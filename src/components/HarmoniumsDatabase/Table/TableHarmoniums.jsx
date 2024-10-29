@@ -1,17 +1,33 @@
-import { Table, ScrollArea, rem} from '@mantine/core'
+import { useState } from 'react';
+import { Table, ScrollArea, Modal } from '@mantine/core'
 import { IconPhoto } from '@tabler/icons-react';
 import classes from '../Table/TableHarmoniums.module.scss'
 
-function TableDatabase({data}) {
+function TableDatabase({ data }) {
+
+    const [opened, setOpened] = useState(false)
+    const [currentImage, setCurrentImage] = useState('')
+
+    const imageDisplay = (element) => {
+        setCurrentImage(element.pictures[0])
+        setOpened(true)
+    }
 
     const rows = data.map((element) => (
         <Table.Tr key={element.id}>
-            <Table.Td>{<IconPhoto style={{ width: rem(14), height: rem(14) }} />}</Table.Td>
-            <Table.Td>{element.name}</Table.Td>
+            <Table.Td
+                onClick={()=> imageDisplay(element)}
+            >
+                {<IconPhoto 
+                    className={classes['icon']}
+                />}
+            </Table.Td>
+            <Table.Td>{element.builder}</Table.Td>
             <Table.Td>{element.type}</Table.Td>
-            <Table.Td>{element.country}</Table.Td>
-            <Table.Td>{element.period}</Table.Td>
-            <Table.Td>{element.numberOfRegisters}</Table.Td>
+            <Table.Td>{element.placeOfManufacture}</Table.Td>
+            <Table.Td>{element.dating}</Table.Td>
+            <Table.Td>{element.manuals} / {element.pedal}</Table.Td>
+            <Table.Td>{element.location}</Table.Td>
             <Table.Td>{element.id}</Table.Td>
         </Table.Tr>
     ));
@@ -19,14 +35,14 @@ function TableDatabase({data}) {
     return (
         <>
             <ScrollArea
-                h='100%'
                 type="auto"
                 scrollbarSize={6}
                 scrollHideDelay={500}
+                className={classes['scrollArea']}
             >
                 <Table
                     stickyHeader
-                    horizontalSpacing="sm"
+                    horizontalSpacing="xl"
                     verticalSpacing="sm"
                     striped
                     highlightOnHover
@@ -34,11 +50,12 @@ function TableDatabase({data}) {
                     <Table.Thead>
                         <Table.Tr>
                             <Table.Th></Table.Th>
-                            <Table.Th>Název</Table.Th>
+                            <Table.Th>Stavitel</Table.Th>
                             <Table.Th>Typ</Table.Th>
-                            <Table.Th>Země</Table.Th>
-                            <Table.Th>Období</Table.Th>
-                            <Table.Th>Počet her</Table.Th>
+                            <Table.Th>Země původu</Table.Th>
+                            <Table.Th>Datace</Table.Th>
+                            <Table.Th>Počet manuálu / pedal</Table.Th>
+                            <Table.Th>Umístění</Table.Th>
                             <Table.Th>ID</Table.Th>
                         </Table.Tr>
                     </Table.Thead>
@@ -46,9 +63,24 @@ function TableDatabase({data}) {
                 </Table>
             </ScrollArea>
 
+            <Modal
+                opened={opened}
+                onClose={() => setOpened(false)}
+                position='center'
+                size='xl'
+                radius="sm"
+                overlayProps={{ backgroundOpacity: 0.5, blur: 2 }}
+                className={classes['windowModal']}
+            >
+                {currentImage && (
+                    <div >
+                        <img src={currentImage} alt="Harmonium" className={classes['imgModal']}/>
+                    </div>
+                )}
+
+            </Modal>
         </>
     )
-
 }
 
 export default TableDatabase

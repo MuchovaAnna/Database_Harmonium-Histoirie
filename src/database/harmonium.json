@@ -1,244 +1,352 @@
 {
-    "harmoniums":[
-        {
-          "ID": 1,
-          "name": "Alexandre et Fils",
-          "type": "Nožní harmonium",
-          "country": "Francie",
-          "period": "1860 - 1870",
-          "numberOfRegisters": 500
+    "harmoniums": [
+      {
+        "name": "Harmonium",
+        "builder": "Jan Tuček",
+        "type":"tlakový",
+        "model": "Classic 10",
+        "dating": "1895 - 1901",
+        "placeOfManufacture": "Kutná Hora",
+        "owner": "Historická sbírka",
+        "id": "in. Č. 008",
+        "location":"expozice půda",
+        "description": "Jednomanuálové harmonium s 4 rejstříky, známé svou jemnou intonací.",
+        "locationFind": "Česká republika",
+        "signMakers": "Jan Tuček - Kutná Hora",
+        "size": {
+          "height": "112",
+          "weight": "90",
+          "depth": "60"
         },
-        {
-          "ID": 2,
-          "name": "Mason & Hamlin",
-          "type": "Rukama pumpované harmonium",
-          "country": "USA",
-          "period": "1880 - 1890",
-          "numberOfRegisters": 620
+        "materials": ["dřevo", "mosaz", "kůže"],
+        "manuals":"1",
+        "pedal": "ne",
+        "dispozice": {
+          "bas": ["Violon Bass"],
+          "treble": ["Flétna", "Salicionál"],
+          "pedal": [],
+          "couplings": []
         },
-        {
-          "ID": 3,
-          "name": "Mustel",
-          "type": "Nožní harmonium",
-          "country": "Francie",
-          "period": "1875 - 1885",
-          "numberOfRegisters": 780
+        "pictures": ["public/harmoniums/harmonium_1.jpg"]
+      },
+      {
+        "name": "Fisharmonium",
+        "builder": "Alois Hugo Lhota",
+        "type":"tlakový",
+        "model": "Concert Master",
+        "dating": "1888 - 1894",
+        "placeOfManufacture": "Hradec Králové",
+        "owner": "Soukromá sbírka",
+        "id": "in. Č. 009",
+        "location":"depozitář",
+        "description": "Dvoumánuálové harmonium s pedálem a 8 rejstříky, vhodné pro koncertní účely.",
+        "locationFind": "Hradec Králové",
+        "signMakers": "Alois Hugo Lhota - Hradec Králové",
+        "size": {
+          "height": "105",
+          "weight": "89",
+          "depth": "55"
         },
-        {
-          "ID": 4,
-          "name": "Hohner",
-          "type": "Sací harmonium",
-          "country": "Německo",
-          "period": "1900 - 1910",
-          "numberOfRegisters": 450
+        "materials": ["dřevo", "mosaz", "kůže"],
+        "manuals":"1",
+        "pedal": "ano",
+        "dispozice": {
+          "bas": ["Bourdon", "Violon"],
+          "treble": ["Principal", "Gamba", "Clarinet"],
+          "pedal": ["Subbass"],
+          "couplings": ["Manuál I/II"]
         },
-        {
-          "ID": 5,
-          "name": "Debain",
-          "type": "Nožní harmonium",
-          "country": "Francie",
-          "period": "1840 - 1850",
-          "numberOfRegisters": 800
+        "pictures": ["public/harmoniums/harmonium_5.jpg"]
+      },
+      {
+        "name": "Reed Organ",
+        "builder": "John Estey",
+        "type":"sací",
+        "model": "Chapel 20",
+        "dating": "1887 - 1892",
+        "placeOfManufacture": "USA",
+        "owner": "Kaple sv. Petra",
+        "id": "in. Č. 010",
+        "location":"expozice půda",
+        "description": "Velké dvoumánuálové harmonium s pedálem a 12 rejstříky, oblíbené pro chrámové použití.",
+        "locationFind": "USA",
+        "signMakers": "John Estey - Philadelphia",
+        "size": {
+          "height": "102",
+          "weight": "120",
+          "depth": "65"
         },
-        {
-          "ID": 6,
-          "name": "Estey",
-          "type": "Nožní harmonium",
-          "country": "USA",
-          "period": "1890 - 1900",
-          "numberOfRegisters": 590
+        "materials": ["dřevo", "mosaz", "ocel"],
+        "manuals":"2",
+        "pedal": "ano",
+        "dispozice": {
+          "bas": ["Principal Bass", "Octave"],
+          "treble": ["Flétna", "Oboe", "Trumpet"],
+          "pedal": ["Pedal Bass"],
+          "couplings": ["Bas/Diskant", "Manuál I/II"]
         },
-        {
-          "ID": 7,
-          "name": "Lindholm",
-          "type": "Rukama pumpované harmonium",
-          "country": "Švédsko",
-          "period": "1900 - 1910",
-          "numberOfRegisters": 320
+        "pictures": ["public/harmoniums/harmonium_3.jpg"]
+      },
+      {
+        "name": "Jazyčkové Varhany",
+        "builder": "Packart",
+        "type":"sací",
+        "model": "Orchestra Grande",
+        "dating": "1885- 1890",
+        "placeOfManufacture": "USA",
+        "owner": "Muzeum Hudby",
+        "id": "in. Č. 011",
+        "location":"expozice půda",
+        "description": "Jednomanuálové harmonium s 5 rejstříky a silným basem.",
+        "locationFind": "Německo",
+        "signMakers": "Packart - USA",
+        "size": {
+          "height": "110",
+          "weight": "103",
+          "depth": "55"
         },
-        {
-          "ID": 8,
-          "name": "Kasriel",
-          "type": "Sací harmonium",
-          "country": "Francie",
-          "period": "1920 - 1930",
-          "numberOfRegisters": 430
+        "materials": ["dřevo", "mosaz", "kůže"],
+        "manuals":"1",
+        "pedal": "ne",
+        "dispozice": {
+          "bas": ["Subbass", "Principal Bass"],
+          "treble": ["Flétna"],
+          "pedal": [],
+          "couplings": []
         },
-        {
-          "ID": 9,
-          "name": "Bay Company",
-          "type": "Nožní harmonium",
-          "country": "USA",
-          "period": "1870 - 1880",
-          "numberOfRegisters": 500
+        "pictures": ["public/harmoniums/harmonium_4.jpg"]
+      },
+      {
+        "name": "Harmonium",
+        "builder": "Debain",
+        "type":"tlakový",
+        "model": "Concert Organ",
+        "dating": "1866",
+        "placeOfManufacture": "Francie",
+        "owner": "Muzeum Harmonium",
+        "id": "in. Č. 012",
+        "location":"expozice půda",
+        "description": "Velké harmonium s dvěma manuály, 15 rejstříky a pedálem, vhodné pro koncertní sály.",
+        "locationFind": "Paříž",
+        "signMakers": "Debain - Paříž",
+        "size": {
+          "height": "100",
+          "weight": "88",
+          "depth": "65"
         },
-        {
-          "ID": 10,
-          "name": "Chappell & Co.",
-          "type": "Nožní harmonium",
-          "country": "Anglie",
-          "period": "1850 - 1860",
-          "numberOfRegisters": 560
+        "materials": ["dřevo", "ocel", "kůže"],
+        "manuals":"1",
+        "pedal": "ne",
+        "dispozice": {
+          "bas": ["Bourdon", "Violon", "Principal Bass"],
+          "treble": ["Gamba", "Flétna", "Oboe", "Clarinet"],
+          "pedal": [],
+          "couplings": []
         },
-        {
-          "ID": 11,
-          "name": "Hewitt",
-          "type": "Rukama pumpované harmonium",
-          "country": "Anglie",
-          "period": "1930 - 1940",
-          "numberOfRegisters": 610
+        "pictures": ["public/harmoniums/harmonium_2.jpg"]
+      },
+      {
+        "name": "Fisharmonium",
+        "builder": "Petrof",
+        "type":"tlakový",
+        "model": "Classic 5",
+        "dating": "1920 - 1930",
+        "placeOfManufacture": "Hradec Králové",
+        "owner": "Soukromý sběratel",
+        "id": "in. Č. 013",
+        "location":"depozitář",
+        "description": "Jednomanuálové harmonium s 3 rejstříky, oblíbené pro domácí použití.",
+        "locationFind": "Hradec Králové",
+        "signMakers": "Petrof - Hradec Králové",
+        "size": {
+          "height": "102",
+          "weight": "85",
+          "depth": "55"
         },
-        {
-          "ID": 12,
-          "name": "Mannborg",
-          "type": "Nožní harmonium",
-          "country": "Německo",
-          "period": "1880 - 1890",
-          "numberOfRegisters": 670
+        "materials": ["dřevo", "slonová kost", "kůže"],
+        "manuals":"1",
+        "pedal": "ne",
+        "dispozice": {
+          "bas": ["Violon Bass"],
+          "treble": ["Flétna", "Salicionál"],
+          "pedal": [],
+          "couplings": []
         },
-        {
-          "ID": 13,
-          "name": "Royal American Organ",
-          "type": "Sací harmonium",
-          "country": "USA",
-          "period": "1910 - 1920",
-          "numberOfRegisters": 340
+        "pictures": ["public/harmoniums/harmonium_1.jpg"]
+      },
+      {
+        "name": "Harmonium",
+        "builder": "Jan Tuček",
+        "type":"tlakový",
+        "model": "Classic 10",
+        "dating": "1906 - 1910",
+        "placeOfManufacture": "Kutná Hora",
+        "owner": "Historická sbírka",
+        "id": "in. Č. 008",
+        "location":"expozice půda",
+        "description": "Jednomanuálové harmonium s 4 rejstříky, známé svou jemnou intonací.",
+        "locationFind": "Česká republika",
+        "signMakers": "Jan Tuček - Kutná Hora",
+        "size": {
+          "height": "102",
+          "weight": "86",
+          "depth": "58"
         },
-        {
-          "ID": 14,
-          "name": "Smith American Organ Co.",
-          "type": "Nožní harmonium",
-          "country": "USA",
-          "period": "1865 - 1875",
-          "numberOfRegisters": 520
+        "materials": ["dřevo", "mosaz", "kůže"],
+        "manuals":"1",
+        "pedal": "ne",
+        "dispozice": {
+          "bas": ["Violon Bass"],
+          "treble": ["Flétna", "Salicionál"],
+          "pedal": [],
+          "couplings": []
         },
-        {
-          "ID": 15,
-          "name": "Victor Mustel",
-          "type": "Nožní harmonium",
-          "country": "Francie",
-          "period": "1885 - 1895",
-          "numberOfRegisters": 780
+        "pictures": ["public/harmoniums/harmonium_4.jpg"]
+      },
+      {
+        "name": "Fisharmonium",
+        "builder": "Alois Hugo Lhota",
+        "type":"tlakový",
+        "model": "Concert Master",
+        "dating": "1890 - 1900",
+        "placeOfManufacture": "Hradec Králové",
+        "owner": "Soukromá sbírka",
+        "id": "in. Č. 009",
+        "location":"expozice půda",
+        "description": "Dvoumánuálové harmonium s pedálem a 8 rejstříky, vhodné pro koncertní účely.",
+        "locationFind": "Hradec Králové",
+        "signMakers": "Alois Hugo Lhota - Hradec Králové",
+        "size": {
+          "height": "120",
+          "weight": "115",
+          "depth": "70"
         },
-        {
-          "ID": 16,
-          "name": "Bell Organ Co.",
-          "type": "Rukama pumpované harmonium",
-          "country": "Kanada",
-          "period": "1890 - 1900",
-          "numberOfRegisters": 290
+        "materials": ["dřevo", "mosaz", "kůže"],
+        "manuals":"1",
+        "pedal": "ano",
+        "dispozice": {
+          "bas": ["Bourdon", "Violon"],
+          "treble": ["Principal", "Gamba", "Clarinet"],
+          "pedal": ["Subbass"],
+          "couplings": ["Manuál I/II"]
         },
-        {
-          "ID": 17,
-          "name": "Christoph Trübger",
-          "type": "Sací harmonium",
-          "country": "Rakousko",
-          "period": "1930 - 1940",
-          "numberOfRegisters": 360
+        "pictures": ["public/harmoniums/harmonium_5.jpg"]
+      },
+      {
+        "name": "Reed Organ",
+        "builder": "John Estey",
+        "type":"sací",
+        "model": "Chapel 20",
+        "dating": "1895 - 1897",
+        "placeOfManufacture": "USA",
+        "owner": "Kaple sv. Petra",
+        "id": "in. Č. 010",
+        "location":"depozitář",
+        "description": "Velké dvoumánuálové harmonium s pedálem a 12 rejstříky, oblíbené pro chrámové použití.",
+        "locationFind": "USA",
+        "signMakers": "John Estey - Philadelphia",
+        "size": {
+          "height": "112",
+          "weight": "90",
+          "depth": "60"
         },
-        {
-          "ID": 18,
-          "name": "George Prince",
-          "type": "Nožní harmonium",
-          "country": "USA",
-          "period": "1840 - 1850",
-          "numberOfRegisters": 490
+        "materials": ["dřevo", "mosaz", "ocel"],
+        "manuals":"1",
+        "pedal": "ano",
+        "dispozice": {
+          "bas": ["Principal Bass", "Octave"],
+          "treble": ["Flétna", "Oboe", "Trumpet"],
+          "pedal": ["Pedal Bass"],
+          "couplings": ["Bas/Diskant", "Manuál I/II"]
         },
-        {
-          "ID": 19,
-          "name": "John Holt",
-          "type": "Rukama pumpované harmonium",
-          "country": "Anglie",
-          "period": "1905 - 1915",
-          "numberOfRegisters": 230
+        "pictures": ["public/harmoniums/harmonium_4.jpg"]
+      },
+      {
+        "name": "Jazyčkové Varhany",
+        "builder": "Packart",
+        "type":"sací",
+        "model": "Orchestra Grande",
+        "dating": "1888 - 1895",
+        "placeOfManufacture": "USA",
+        "owner": "Muzeum Hudby",
+        "id": "in. Č. 011",
+        "location":"expozice půda",
+        "description": "Jednomanuálové harmonium s 5 rejstříky a silným basem.",
+        "locationFind": "Německo",
+        "signMakers": "Packart - USA",
+        "size": {
+          "height": "112",
+          "weight": "90",
+          "depth": "60"
         },
-        {
-          "ID": 20,
-          "name": "The American Organ Co.",
-          "type": "Nožní harmonium",
-          "country": "USA",
-          "period": "1875 - 1885",
-          "numberOfRegisters": 650
+        "materials": ["dřevo", "mosaz", "kůže"],
+        "manuals":"1",
+        "pedal": "ne",
+        "dispozice": {
+          "bas": ["Subbass", "Principal Bass"],
+          "treble": ["Flétna"],
+          "pedal": [],
+          "couplings": []
         },
-        {
-          "ID": 21,
-          "name": "Kimball",
-          "type": "Sací harmonium",
-          "country": "USA",
-          "period": "1920 - 1930",
-          "numberOfRegisters": 380
+        "pictures": ["public/harmoniums/harmonium_1.jpg"]
+      },
+      {
+        "name": "Harmonium",
+        "builder": "Tuček",
+        "type":"tlakový",
+        "model": "Concert Organ",
+        "dating": "1865 - 1870",
+        "placeOfManufacture": "Kutná Hora",
+        "owner": "Muzeum Harmonium",
+        "id": "in. Č. 012",
+        "location":"expozice půda",
+        "description": "Velké harmonium s dvěma manuály, 15 rejstříky a pedálem, vhodné pro koncertní sály.",
+        "locationFind": "Paříž",
+        "signMakers": "Jan Tuček - Kutná Hora",
+        "size": {
+          "height": "112",
+          "weight": "90",
+          "depth": "60"
         },
-        {
-          "ID": 22,
-          "name": "Celestial Harmonium Co.",
-          "type": "Nožní harmonium",
-          "country": "Francie",
-          "period": "1860 - 1870",
-          "numberOfRegisters": 510
+        "materials": ["dřevo", "ocel", "kůže"],
+        "manuals":"2",
+        "pedal": "ano",
+        "dispozice": {
+          "bas": ["Bourdon", "Violon", "Principal Bass"],
+          "treble": ["Gamba", "Flétna", "Oboe", "Clarinet"],
+          "pedal": ["Pedal Bass", "Pedal Octave"],
+          "couplings": ["Manuál I/II"]
         },
-        {
-          "ID": 23,
-          "name": "Krauss",
-          "type": "Rukama pumpované harmonium",
-          "country": "Švýcarsko",
-          "period": "1910 - 1920",
-          "numberOfRegisters": 410
+        "pictures": ["public/harmoniums/harmonium_3.jpg"]
+      },
+      {
+        "name": "Fisharmonium",
+        "builder": "Petrof",
+        "type":"sací",
+        "model": "Classic 5",
+        "dating": "1930 - 1940",
+        "placeOfManufacture": "Hradec Králové",
+        "owner": "Soukromý sběratel",
+        "id": "in. Č. 013",
+        "location":"depozitář",
+        "description": "Jednomanuálové harmonium s 3 rejstříky, oblíbené pro domácí použití.",
+        "locationFind": "Hradec Králové",
+        "signMakers": "Petrof - Hradec Králové",
+        "size": {
+          "height": "112",
+          "weight": "90",
+          "depth": "60"
         },
-        {
-          "ID": 24,
-          "name": "Hasse & Co.",
-          "type": "Sací harmonium",
-          "country": "Německo",
-          "period": "1930 - 1940",
-          "numberOfRegisters": 370
+        "materials": ["dřevo", "slonová kost", "kůže"],
+        "manuals":"1",
+        "pedal": "ne",
+        "dispozice": {
+          "bas": ["Violon Bass"],
+          "treble": ["Flétna", "Salicionál"],
+          "pedal": [],
+          "couplings": []
         },
-        {
-          "ID": 25,
-          "name": "Aeolian Company",
-          "type": "Nožní harmonium",
-          "country": "USA",
-          "period": "1895 - 1905",
-          "numberOfRegisters": 530
-        },
-        {
-          "ID": 26,
-          "name": "Zehner & Co.",
-          "type": "Rukama pumpované harmonium",
-          "country": "Německo",
-          "period": "1925 - 1935",
-          "numberOfRegisters": 400
-        },
-        {
-          "ID": 27,
-          "name": "Alexandre",
-          "type": "Nožní harmonium",
-          "country": "Francie",
-          "period": "1850 - 1860",
-          "numberOfRegisters": 620
-        },
-        {
-          "ID": 28,
-          "name": "Bilhorn Bros.",
-          "type": "Sací harmonium",
-          "country": "USA",
-          "period": "1900 - 1910",
-          "numberOfRegisters": 350
-        },
-        {
-          "ID": 29,
-          "name": "Pacific Organ & Piano Co.",
-          "type": "Nožní harmonium",
-          "country": "USA",
-          "period": "1890 - 1900",
-          "numberOfRegisters": 510
-        },
-        {
-          "ID": 30,
-          "name": "Broadwood & Sons",
-          "type": "Rukama pumpované harmonium",
-          "country": "Anglie",
-          "period": "1935 - 1945",
-          "numberOfRegisters": 270
-        }
-      ]
-}
+        "pictures": ["public/harmoniums/harmonium_2.jpg"]
+      }
+    ]
+  }

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Flex, Pagination, Select, Tabs, rem } from '@mantine/core'
 import { IconColumns, IconLayoutGrid } from '@tabler/icons-react';
-// import classes from '../HarmoniumsDatabase/DatabaseHarmonium.module.scss'
+import classes from '../HarmoniumsDatabase/DatabaseHarmonium.module.scss'
 import TableDatabase from './Table/TableHarmoniums';
+import MiniaturCard from './Miniatur/Miniature';
 
 function DatabaseHarmoniums() {
 
@@ -33,7 +34,7 @@ function DatabaseHarmoniums() {
 
     return (
         <>
-            <Tabs color=' #79875c' defaultValue="gallery" style={{ margin: 30 }}>
+            <Tabs color=' #79875c' defaultValue="columns" style={{ margin: 30 }}>
                 <Tabs.List >
                     <Tabs.Tab value="columns" leftSection={<IconColumns style={iconStyle} />}>
                         Tabulka
@@ -44,45 +45,45 @@ function DatabaseHarmoniums() {
 
                 </Tabs.List>
 
-                <Tabs.Panel value="columns">
-                    {/* pole se stránkováním a selektem pro výběr počtu záznamu na stránku */}
-                    <Flex
-                        align={'center'}
-                        justify={'space-between'}
-                    >
-                        <Select
-                            //nastavit výchozí počet zobrazení !!!
-                            placeholder={recordsPerPage.toString()}
-                            data={['10', '20', '30', '40']}
-                            value={recordsPerPage.toString()}
-                            onChange={
-                                (value) => {
-                                    setRecordsPerPage(Number(value))
-                                    // po změně stavu se opět nastaví první strana
-                                    setCurrentPage(1)
-                                }}
-                            size='xs'
-                            //styly přenést do scss!!!!
-                            style={{ margin: 20, displa: 'flex', alignItems: 'center', width: 60 }}
-                        />
-                        <Pagination
-                            size='xs'
-                            withEdges
-                            color='#79875c'
-                            style={{ margin: 20 }}
-                            page={currentPage}
-                            onChange={setCurrentPage}
-                            total={totalPages}
-                        />
-                    </Flex>
+                {/* pole se stránkováním a selektem pro výběr počtu záznamu na stránku */}
+                <Flex
+                    align={'center'}
+                    justify={'space-between'}
+                >
+                    <Select
+                        //nastavit výchozí počet zobrazení !!!
+                        placeholder={recordsPerPage.toString()}
+                        data={['5', '10', '15', '20', '25', '30', '35', '40', '45']}
+                        value={recordsPerPage.toString()}
+                        onChange={
+                            (value) => {
+                                setRecordsPerPage(Number(value))
+                                // po změně stavu se opět nastaví první strana
+                                setCurrentPage(1)
+                            }}
+                        size='xs'
+                        //styly přenést do scss!!!!
+                        style={{ margin: 20, displa: 'flex', alignItems: 'center', width: 60 }}
+                    />
+                    <Pagination
+                        size='xs'
+                        withEdges
+                        color='#79875c'
+                        style={{ margin: 20 }}
+                        page={currentPage}
+                        onChange={setCurrentPage}
+                        total={totalPages}
+                    />
+                </Flex>
 
+                <Tabs.Panel value="columns">
                     {/*importovaná tabulka*/}
                     <TableDatabase data={currentData} />
-
                 </Tabs.Panel>
 
                 <Tabs.Panel value="miniatur" >
-                    Messages tab content
+                    {/* importované miniatury */}
+                    <MiniaturCard data={currentData} />
                 </Tabs.Panel>
             </Tabs>
         </>
