@@ -12,13 +12,24 @@ const logout = async () => {
     return await supabase.auth.signOut()
 }
 
-const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [isAuth, setIsAuth] = useState(false)
+    const [data, setData] = useState([])
+    const [selectedHarmonium, setSelectedHarmonium] =useState(data)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch('http://localhost:3001/harmoniums')
+            const jsonData = await response.json()
+            setData(jsonData)
+        }
+        fetchData()
+    }, [])
 
     useEffect(
         () => {
-            const { data } = supabase.auth.onAuthStateChange((event, session) => {
+            const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
                 if (event === 'SIGNED_IN') {
                     setIsAuth(true)
                     setUser(session.user)
@@ -30,7 +41,7 @@ const AuthProvider = ({ children }) => {
             })
 
             return () => {
-                data.subscription.unsubscribe()
+                authListener.subscription.unsubscribe()
             }
         },
         []
@@ -41,7 +52,11 @@ const AuthProvider = ({ children }) => {
             user,
             isAuth,
             login,
-            logout
+            logout,
+            data,
+            setData,
+            selectedHarmonium,
+            setSelectedHarmonium
         }}>
             {children}
         </AuthContext.Provider>

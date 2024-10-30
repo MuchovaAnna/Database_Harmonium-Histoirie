@@ -10,6 +10,7 @@ import NewHarmonium from './components/NewHarmonium/New.jsx'
 import DatabaseHarmoniums from './components/HarmoniumsDatabase/DatabaseHarmonium.jsx'
 import Builders from './components/BuilderDatabase/Builders.jsx'
 import Home from './components/Home/Home.jsx'
+import DetailHarmonium from './components/DetailHarmonium/DetailHarmonium.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -21,7 +22,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/harmoniums' element={<DatabaseHarmoniums />} />
           <Route path='/builders' element={<Builders />} />
           <Route path='/newHarmonium' element={<NewHarmonium />} />
-        </Route>
+          <Route path='detailharmonium' element={<DetailHarmonium/>}/>
+          </Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

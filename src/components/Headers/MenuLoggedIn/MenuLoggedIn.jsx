@@ -75,13 +75,13 @@ function LoggedIn() {
 
             <Burger
                 className={classes['burger']}
-                opened={opened}
+                opened={opened ? true : undefined}
                 onClick={() => setOpened(!opened)}
                 size='md'
             />
 
             <Drawer
-                opened={opened}
+                opened={opened ? true : undefined}
                 onClose={() => setOpened(false)}
                 position='right'
                 size="xs"
