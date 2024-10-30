@@ -29,7 +29,9 @@ function MiniaturCard() {
                             span={{ base: 12, xs: 6, sm: 4, md: 3, lg: 2 }}
                         >
                             <Card
-                                shadow="xs" padding="lg" radius="md" withBorder
+                                shadow="xs" padding="lg" radius="md"
+                                key={element.id}
+                                withBorder
                                 onClick={() => handleDetailClick(element)}
                             >
                                 <Card.Section>

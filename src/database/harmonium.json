@@ -21,13 +21,13 @@
         "materials": ["dřevo", "mosaz", "kůže"],
         "manuals":"1",
         "pedal": "ne",
-        "dispozice": {
+        "disposition": {
           "bas": ["Violon Bass"],
           "treble": ["Flétna", "Salicionál"],
           "pedal": [],
           "couplings": []
         },
-        "pictures": ["public/harmoniums/harmonium_1.jpg"]
+        "pictures": ["public/harmoniums/harmonium_1.jpg", "public/harmoniums/harmonium_2.jpg", "public/harmoniums/harmonium_3.jpg", "public/harmoniums/harmonium_4.jpg"]
       },
       {
         "name": "Fisharmonium",
@@ -50,7 +50,7 @@
         "materials": ["dřevo", "mosaz", "kůže"],
         "manuals":"1",
         "pedal": "ano",
-        "dispozice": {
+        "disposition": {
           "bas": ["Bourdon", "Violon"],
           "treble": ["Principal", "Gamba", "Clarinet"],
           "pedal": ["Subbass"],
@@ -79,7 +79,7 @@
         "materials": ["dřevo", "mosaz", "ocel"],
         "manuals":"2",
         "pedal": "ano",
-        "dispozice": {
+        "disposition": {
           "bas": ["Principal Bass", "Octave"],
           "treble": ["Flétna", "Oboe", "Trumpet"],
           "pedal": ["Pedal Bass"],
@@ -108,7 +108,7 @@
         "materials": ["dřevo", "mosaz", "kůže"],
         "manuals":"1",
         "pedal": "ne",
-        "dispozice": {
+        "disposition": {
           "bas": ["Subbass", "Principal Bass"],
           "treble": ["Flétna"],
           "pedal": [],
@@ -137,7 +137,7 @@
         "materials": ["dřevo", "ocel", "kůže"],
         "manuals":"1",
         "pedal": "ne",
-        "dispozice": {
+        "disposition": {
           "bas": ["Bourdon", "Violon", "Principal Bass"],
           "treble": ["Gamba", "Flétna", "Oboe", "Clarinet"],
           "pedal": [],
@@ -166,7 +166,7 @@
         "materials": ["dřevo", "slonová kost", "kůže"],
         "manuals":"1",
         "pedal": "ne",
-        "dispozice": {
+        "disposition": {
           "bas": ["Violon Bass"],
           "treble": ["Flétna", "Salicionál"],
           "pedal": [],
@@ -195,7 +195,7 @@
         "materials": ["dřevo", "mosaz", "kůže"],
         "manuals":"1",
         "pedal": "ne",
-        "dispozice": {
+        "disposition": {
           "bas": ["Violon Bass"],
           "treble": ["Flétna", "Salicionál"],
           "pedal": [],
@@ -224,7 +224,7 @@
         "materials": ["dřevo", "mosaz", "kůže"],
         "manuals":"1",
         "pedal": "ano",
-        "dispozice": {
+        "disposition": {
           "bas": ["Bourdon", "Violon"],
           "treble": ["Principal", "Gamba", "Clarinet"],
           "pedal": ["Subbass"],
@@ -253,7 +253,7 @@
         "materials": ["dřevo", "mosaz", "ocel"],
         "manuals":"1",
         "pedal": "ano",
-        "dispozice": {
+        "disposition": {
           "bas": ["Principal Bass", "Octave"],
           "treble": ["Flétna", "Oboe", "Trumpet"],
           "pedal": ["Pedal Bass"],
@@ -282,7 +282,7 @@
         "materials": ["dřevo", "mosaz", "kůže"],
         "manuals":"1",
         "pedal": "ne",
-        "dispozice": {
+        "disposition": {
           "bas": ["Subbass", "Principal Bass"],
           "treble": ["Flétna"],
           "pedal": [],
@@ -311,7 +311,7 @@
         "materials": ["dřevo", "ocel", "kůže"],
         "manuals":"2",
         "pedal": "ano",
-        "dispozice": {
+        "disposition": {
           "bas": ["Bourdon", "Violon", "Principal Bass"],
           "treble": ["Gamba", "Flétna", "Oboe", "Clarinet"],
           "pedal": ["Pedal Bass", "Pedal Octave"],
@@ -340,7 +340,7 @@
         "materials": ["dřevo", "slonová kost", "kůže"],
         "manuals":"1",
         "pedal": "ne",
-        "dispozice": {
+        "disposition": {
           "bas": ["Violon Bass"],
           "treble": ["Flétna", "Salicionál"],
           "pedal": [],

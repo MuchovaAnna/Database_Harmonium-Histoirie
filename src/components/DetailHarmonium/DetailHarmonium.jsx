@@ -1,48 +1,53 @@
 import { useAuth } from "../../context/AuthContext"
-import { Flex, Grid, Group, ButtonGroup, Button } from "@mantine/core"
+import { Grid, GridCol, ButtonGroup, Button, ScrollArea } from "@mantine/core"
+import Gallery from "./Gallery/Gallery"
+import Info from "./Info/Info"
+// import classes from "../DetailHarmonium/DetailHarmonium.module.scss"
 
 function DetailHarmonium() {
-    const {selectedHarmonium, isAuth } = useAuth()
+    const { selectedHarmonium, isAuth } = useAuth()
 
-    if (!selectedHarmonium) {
-        return <h1 style={{ margin: 30 }}>Záznam nebyl nalezen.</h1>;
-    }
-
-    const dataHarmonium = selectedHarmonium
+    const dataHarmonium = selectedHarmonium || {}
 
     console.log(dataHarmonium)
 
     return (
 
-        <>
-                {isAuth
-                    ? <>
-                        <Flex style={{ margin: 30 }}>
-                            <Grid>
-                                <h1>Galerie</h1>
-                            </Grid>
+        <div style={{ margin: "30px auto", maxWidth: "80vw" }}>
+            {isAuth
+                ? <>
+                    <ScrollArea
+                        h={"85vh"}
+                        scrollbars="y"
+                    >
+                        <Grid grow gutter="xl">
 
-                            <Group>
-                                <div>
-                                    <h1>{dataHarmonium.name}</h1>
-                                    <h2>{dataHarmonium.builder}</h2>
-                                </div>
-                            </Group>
-                        </Flex>
+                            <GridCol
+                                span={{ base: 12, md: 8 }}
+                            >
+                                <Info data={dataHarmonium} />
+                            </GridCol>
+
+                            <GridCol
+                                span={{ base: 12, md: 4 }}
+                            >
+                                <Gallery data={dataHarmonium} />
+                            </GridCol>
 
 
+                        </Grid>
 
-                        <ButtonGroup style={{ margin: 30 }}>
+                        <ButtonGroup style={{ margin: "30px auto", display: "flex", justifyContent: "center", width: "100%" }}>
                             <Button color="#7b594e" style={{ border: "1px solid black" }}>Předchozí záznam</Button>
                             <Button color="#ab9087" style={{ border: "1px solid black" }}>Vrátit se na přehled</Button>
                             <Button color="#7b594e" style={{ border: "1px solid black" }}>Následující záznam</Button>
                         </ButtonGroup>
+                    </ScrollArea>
+                </>
+                : <h1 style={{ margin: 30 }}>Stránka se zobrazí po přihlášení</h1>
 
-                    </>
-                    : <h1 style={{ margin: 30 }}>Stránka se zobrazí po přihlášení</h1>
-
-                }
-        </>
+            }
+        </div>
     )
 }
 
