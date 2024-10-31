@@ -1,4 +1,4 @@
-@use '@/index.scss' as *;
+@use './../../variables' as *;
 
 .homeContainer {
     display: flex;
@@ -28,7 +28,7 @@
 .textContainer{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;  
+    justify-content: space-between;
     position: relative;
     margin-top: 70px;
     // background: linear-gradient(321deg, $primary-color-3 0%, $primary-color-5 53%, $primary-color-10 100%);;

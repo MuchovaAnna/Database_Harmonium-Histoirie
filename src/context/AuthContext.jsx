@@ -16,11 +16,12 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [isAuth, setIsAuth] = useState(false)
     const [data, setData] = useState([])
-    const [selectedHarmonium, setSelectedHarmonium] =useState(data)
+    const [selectedHarmonium, setSelectedHarmonium] = useState(data)
+    const [lastTab, setLastTab]= useState('columns')
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:3001/harmoniums')
+            const response = await fetch('http://localhost:3000/harmoniums')
             const jsonData = await response.json()
             setData(jsonData)
         }
@@ -56,7 +57,9 @@ export const AuthProvider = ({ children }) => {
             data,
             setData,
             selectedHarmonium,
-            setSelectedHarmonium
+            setSelectedHarmonium,
+            lastTab,
+            setLastTab
         }}>
             {children}
         </AuthContext.Provider>

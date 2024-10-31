@@ -1,5 +1,4 @@
-@use './_variables.scss' as *;
-@forward './_variables.scss';
+@use './variables' as *;
 
 // Main style settings
 * {
