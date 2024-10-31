@@ -20,11 +20,11 @@ function DetailHarmonium() {
         const view = from === "columns" ? "columns" : from === "miniature" ? "miniature" : undefined
         navigate('/harmoniums', { state: { view } })
     }
-        
+       
     const handleNavigation = (direction) => {
         const newIndex = currrentIndex + direction;
         if (newIndex >= 0 && newIndex < data.length) {
-            setSelectedHarmonium(data[newIndex]);        
+            setSelectedHarmonium(data[newIndex]);
         }
     };
 
