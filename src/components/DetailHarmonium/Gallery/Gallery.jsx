@@ -2,6 +2,10 @@ import { Flex } from "@mantine/core"
 
 function Gallery({ data }) {
 
+    if (!data) {
+        return <p>Nujsou k dispozici žádná data.</p>;
+    }
+
     return (
         <>
             <div

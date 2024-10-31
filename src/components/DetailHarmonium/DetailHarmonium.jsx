@@ -6,46 +6,42 @@ import Info from "./Info/Info"
 // import classes from "../DetailHarmonium/DetailHarmonium.module.scss"
 
 function DetailHarmonium() {
-    const { selectedHarmonium, isAuth } = useAuth()
+    const { selectedHarmonium, isAuth, data, setSelectedHarmonium } = useAuth()
 
     const dataHarmonium = selectedHarmonium || {}
 
-    const navigate = useNavigate('')
-    const location = useLocation('')
+    const navigate = useNavigate()
+    const location = useLocation()
 
+    const currrentIndex = data.findIndex(item => item.id === dataHarmonium.id)
+    
     const handleSeachBack = () => {
-        if (location.state?.from === 'columns') {
-            navigate('/harmoniums', {state: {view: 'columns'}})
-        } else if (location.state?.from === 'miniature') {
-            navigate('/harmoniums', { state: { view: 'miniature' } })
-        } else {
-            navigate('/harmoniums')
-        }
+        const from = location.state?.from || ""
+        const view = from === "columns" ? "columns" : from === "miniature" ? "miniature" : undefined
+        navigate('/harmoniums', { state: { view } })
     }
-
-    const handlePrevious = () => {
         
-    }
+    const handleNavigation = (direction) => {
+        const newIndex = currrentIndex + direction;
+        if (newIndex >= 0 && newIndex < data.length) {
+            setSelectedHarmonium(data[newIndex]);        
+        }
+    };
 
-    const handleNewx = () => {
-
-     }
-
-
-
-
+    const handlePrevious = () => handleNavigation(-1);
+    const handleNext = () => handleNavigation(1);
 
     return (
-
-        <div style={{ margin: "0 auto", maxWidth: "80vw", paddingTop:"30px" }}>
+        <div style={{ margin: "0 auto", maxWidth: "80vw", paddingTop: "30px" }}>
             {isAuth
                 ? <>
                     <ScrollArea
                         h={"85vh"}
                         scrollbars="y"
                     >
-                        <Grid grow gutter="xl">
 
+                        <Grid grow gutter="xl"
+                        p={20}>
                             <GridCol
                                 span={{ base: 12, md: 8 }}
                             >
@@ -57,24 +53,29 @@ function DetailHarmonium() {
                             >
                                 <Gallery data={dataHarmonium} />
                             </GridCol>
-
-
                         </Grid>
-
-                        <ButtonGroup style={{ margin: "30px auto", display: "flex", justifyContent: "center", width: "100%" }}>
+                        <div
+                        style={{display:"flex", gap:10, justifyContent:"center", padding:10}}
+                        >
+                    
                             <Button
-                                
+                                onClick={handlePrevious}
                                 color="#7b594e"
-                                style={{ border: "1px solid black" }}>Předchozí záznam</Button>
+                                style={{ border: "1px solid black" }}
+                                disabled={currrentIndex === 0}
+                            >Předchozí záznam</Button>
                             <Button
                                 onClick={handleSeachBack}
                                 color="#ab9087"
                                 style={{ border: "1px solid black" }}>Vrátit se na přehled</Button>
                             <Button
-                                
+                                onClick={handleNext}
                                 color="#7b594e"
-                                style={{ border: "1px solid black" }}>Následující záznam</Button>
-                        </ButtonGroup>
+                                style={{ border: "1px solid black" }}
+                                disabled={currrentIndex === data.length - 1}
+                            >Následující záznam</Button>
+                        </div>
+
                     </ScrollArea>
                 </>
                 : <h1 style={{ margin: 30 }}>Stránka se zobrazí po přihlášení</h1>

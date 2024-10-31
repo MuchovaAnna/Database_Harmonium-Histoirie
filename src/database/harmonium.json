@@ -15,7 +15,7 @@
         "signMakers": "Jan Tuček - Kutná Hora",
         "size": {
           "height": "112",
-          "weight": "90",
+          "width": "90",
           "depth": "60"
         },
         "materials": ["dřevo", "mosaz", "kůže"],
@@ -44,7 +44,7 @@
         "signMakers": "Alois Hugo Lhota - Hradec Králové",
         "size": {
           "height": "105",
-          "weight": "89",
+          "width": "89",
           "depth": "55"
         },
         "materials": ["dřevo", "mosaz", "kůže"],
@@ -73,7 +73,7 @@
         "signMakers": "John Estey - Philadelphia",
         "size": {
           "height": "102",
-          "weight": "120",
+          "width": "120",
           "depth": "65"
         },
         "materials": ["dřevo", "mosaz", "ocel"],
@@ -102,7 +102,7 @@
         "signMakers": "Packart - USA",
         "size": {
           "height": "110",
-          "weight": "103",
+          "width": "103",
           "depth": "55"
         },
         "materials": ["dřevo", "mosaz", "kůže"],
@@ -131,7 +131,7 @@
         "signMakers": "Debain - Paříž",
         "size": {
           "height": "100",
-          "weight": "88",
+          "width": "88",
           "depth": "65"
         },
         "materials": ["dřevo", "ocel", "kůže"],
@@ -160,7 +160,7 @@
         "signMakers": "Petrof - Hradec Králové",
         "size": {
           "height": "102",
-          "weight": "85",
+          "width": "85",
           "depth": "55"
         },
         "materials": ["dřevo", "slonová kost", "kůže"],
@@ -189,7 +189,7 @@
         "signMakers": "Jan Tuček - Kutná Hora",
         "size": {
           "height": "102",
-          "weight": "86",
+          "width": "86",
           "depth": "58"
         },
         "materials": ["dřevo", "mosaz", "kůže"],
@@ -218,7 +218,7 @@
         "signMakers": "Alois Hugo Lhota - Hradec Králové",
         "size": {
           "height": "120",
-          "weight": "115",
+          "width": "115",
           "depth": "70"
         },
         "materials": ["dřevo", "mosaz", "kůže"],
@@ -247,7 +247,7 @@
         "signMakers": "John Estey - Philadelphia",
         "size": {
           "height": "112",
-          "weight": "90",
+          "width": "90",
           "depth": "60"
         },
         "materials": ["dřevo", "mosaz", "ocel"],
@@ -276,7 +276,7 @@
         "signMakers": "Packart - USA",
         "size": {
           "height": "112",
-          "weight": "90",
+          "width": "90",
           "depth": "60"
         },
         "materials": ["dřevo", "mosaz", "kůže"],
@@ -305,7 +305,7 @@
         "signMakers": "Jan Tuček - Kutná Hora",
         "size": {
           "height": "112",
-          "weight": "90",
+          "width": "90",
           "depth": "60"
         },
         "materials": ["dřevo", "ocel", "kůže"],
@@ -334,7 +334,7 @@
         "signMakers": "Petrof - Hradec Králové",
         "size": {
           "height": "112",
-          "weight": "90",
+          "width": "90",
           "depth": "60"
         },
         "materials": ["dřevo", "slonová kost", "kůže"],

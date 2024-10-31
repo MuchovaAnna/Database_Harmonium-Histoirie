@@ -3,8 +3,9 @@
 
 function Info({ data }) {
 
-    console.log(data.disposition);
-
+    if (!data) {
+        return <p>Nujsou k dispozici žádná data.</p>;
+    }
 
     return (
         <>
