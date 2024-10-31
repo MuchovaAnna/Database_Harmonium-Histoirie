@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Flex, Pagination, Select, Tabs, rem } from '@mantine/core'
 import { IconColumns, IconLayoutGrid } from '@tabler/icons-react';
 // import classes from '../HarmoniumsDatabase/DatabaseHarmonium.module.scss'
@@ -9,7 +9,7 @@ import { useAuth } from '../../context/AuthContext';
 
 function DatabaseHarmoniums() {
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const { data, isAuth, lastTab, setLastTab } = useAuth()
 
     const [currentPage, setCurrentPage] = useState(1)
@@ -26,7 +26,7 @@ function DatabaseHarmoniums() {
     //výpočet celkového počtu stránek
     const totalPages = Math.ceil(data.length / recordsPerPage)
 
-    //výber dat na základě aktuální stránky a počtu záznamu
+    // //výber dat na základě aktuální stránky a počtu záznamu
     const currentData = data.slice(
         (currentPage - 1) * recordsPerPage,
         currentPage * recordsPerPage

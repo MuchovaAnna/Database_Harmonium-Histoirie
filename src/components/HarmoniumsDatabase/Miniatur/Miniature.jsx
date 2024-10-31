@@ -3,9 +3,9 @@ import { Card, Image, Text, Button, Group, Grid, ScrollArea } from '@mantine/cor
 import classes from '../Miniatur/Miniatur.module.scss'
 import { useAuth } from '../../../context/AuthContext';
 
-function MiniaturCard() {
+function MiniaturCard({data}) {
 
-    const { data, setSelectedHarmonium } = useAuth()
+    const { setSelectedHarmonium } = useAuth()
     const navigate = useNavigate()
 
     const handleDetailClick = (element) => {

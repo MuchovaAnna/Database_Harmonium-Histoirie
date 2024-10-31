@@ -1,6 +1,7 @@
+import { useRef, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
-import { Grid, GridCol, ButtonGroup, Button, ScrollArea } from "@mantine/core"
+import { Grid, GridCol, Button, ScrollArea } from "@mantine/core"
 import Gallery from "./Gallery/Gallery"
 import Info from "./Info/Info"
 // import classes from "../DetailHarmonium/DetailHarmonium.module.scss"
@@ -13,23 +14,37 @@ function DetailHarmonium() {
     const navigate = useNavigate()
     const location = useLocation()
 
-    const currrentIndex = data.findIndex(item => item.id === dataHarmonium.id)
-    
     const handleSeachBack = () => {
         const from = location.state?.from || ""
         const view = from === "columns" ? "columns" : from === "miniature" ? "miniature" : undefined
         navigate('/harmoniums', { state: { view } })
     }
-       
+
+    const currrentIndex = data.findIndex(item => item.id === dataHarmonium.id)
+    
+    const viewport = useRef(null);
+
+    const scrollToTop = () => {
+        if (viewport.current && viewport.current.scrollTo) {
+            viewport.current.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
     const handleNavigation = (direction) => {
         const newIndex = currrentIndex + direction;
         if (newIndex >= 0 && newIndex < data.length) {
             setSelectedHarmonium(data[newIndex]);
+            setTimeout(scrollToTop, 100);
         }
     };
 
     const handlePrevious = () => handleNavigation(-1);
     const handleNext = () => handleNavigation(1);
+
+    useEffect(() => {
+        scrollToTop();
+    }, [currrentIndex]);
+
 
     return (
         <div style={{ margin: "0 auto", maxWidth: "80vw", paddingTop: "30px" }}>
@@ -38,10 +53,11 @@ function DetailHarmonium() {
                     <ScrollArea
                         h={"85vh"}
                         scrollbars="y"
+                        viewportRef={viewport}
                     >
 
                         <Grid grow gutter="xl"
-                        p={20}>
+                            p={20}>
                             <GridCol
                                 span={{ base: 12, md: 8 }}
                             >
@@ -55,9 +71,9 @@ function DetailHarmonium() {
                             </GridCol>
                         </Grid>
                         <div
-                        style={{display:"flex", gap:10, justifyContent:"center", padding:10}}
+                            style={{ display: "flex", gap: 10, justifyContent: "center", padding: 10 }}
                         >
-                    
+
                             <Button
                                 onClick={handlePrevious}
                                 color="#7b594e"

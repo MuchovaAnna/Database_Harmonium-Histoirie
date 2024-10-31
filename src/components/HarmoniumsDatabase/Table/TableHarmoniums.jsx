@@ -5,9 +5,9 @@ import { IconPhoto } from '@tabler/icons-react';
 import classes from '../Table/TableHarmoniums.module.scss'
 import { useAuth } from '../../../context/AuthContext';
 
-function TableDatabase() {
+function TableDatabase({data}) {
 
-    const {data, setSelectedHarmonium} = useAuth()
+    const {setSelectedHarmonium} = useAuth()
     const navigate = useNavigate()
 
     const [opened, setOpened] = useState(false)
