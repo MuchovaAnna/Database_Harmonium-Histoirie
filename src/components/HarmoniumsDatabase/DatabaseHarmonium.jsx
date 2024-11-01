@@ -40,7 +40,7 @@ function DatabaseHarmoniums() {
             {isAuth
                 ? <>
                     <Tabs
-                        color=' #79875c'
+                        color="lightGreen"
                         value={selectedTab}
                         onChange={(value) => {
                             setSelectedTab(value);  // Aktualizace místního stavu
@@ -70,6 +70,7 @@ function DatabaseHarmoniums() {
                         >
                             <Select
                                 //zobrazuje vychozí počet na stránce
+                                color="lightGreen"
                                 placeholder={recordsPerPage.toString()}
                                 data={['5', '10', '15', '20', '25', '30', '35', '40', '45']}
                                 value={recordsPerPage.toString()}
@@ -86,7 +87,8 @@ function DatabaseHarmoniums() {
                             <Pagination
                                 size='xs'
                                 withEdges
-                                color='#79875c'
+                                // color='#79875c'
+                                color="lightGreen"
                                 style={{ margin: 20 }}
                                 page={currentPage}
                                 onChange={setCurrentPage}

@@ -12,8 +12,6 @@ import DatabaseHarmoniums from './components/HarmoniumsDatabase/DatabaseHarmoniu
 import Builders from './components/BuilderDatabase/Builders.jsx'
 import Home from './components/Home/Home.jsx'
 import DetailHarmonium from './components/DetailHarmonium/DetailHarmonium.jsx'
-import MiniaturCard from './components/HarmoniumsDatabase/Miniatur/Miniature.jsx';
-
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
