@@ -6,11 +6,13 @@ import { IconColumns, IconLayoutGrid } from '@tabler/icons-react';
 import TableDatabase from './Table/TableHarmoniums';
 import MiniaturCard from './Miniatur/Miniature';
 import { useAuth } from '../../context/AuthContext';
+import { useHarmonium } from '../../context/DataContext';
 
 function DatabaseHarmoniums() {
 
     // const navigate = useNavigate()
-    const { data, isAuth, lastTab, setLastTab } = useAuth()
+    const { isAuth } = useAuth()
+    const {data, lastTab, setLastTab} = useHarmonium()
 
     const [currentPage, setCurrentPage] = useState(1)
     const [recordsPerPage, setRecordsPerPage] = useState(5)  // výchozí počet záznamu na stránce

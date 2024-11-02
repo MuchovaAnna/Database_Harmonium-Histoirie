@@ -24,11 +24,11 @@
     }
 }
 
-.nextFieldset{
+.nextFieldset {
     background-color: $primary-color-3;
     border: 1px solid $primary-color-6;
 
-    legend{
+    legend {
         font-size: 1.2rem;
     }
 }
@@ -59,8 +59,20 @@
     gap: 20px;
 }
 
-.pill{
+.pill {
     background-color: $secondary-color-7;
     color: $white;
     text-transform: uppercase;
+}
+
+.btn {
+    background: $primary-color-6;
+    box-shadow: $shadow-color;
+    position: relative;
+    margin: 10px auto;
+    width: 100%;
+
+    &:hover{
+        background: $primary-color-10;
+    }
 }

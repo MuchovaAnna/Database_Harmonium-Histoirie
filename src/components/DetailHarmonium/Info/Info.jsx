@@ -1,6 +1,3 @@
-
-
-
 function Info({ data }) {
 
     if (!data) {

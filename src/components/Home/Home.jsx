@@ -24,7 +24,6 @@ function Home() {
                             </div>
                         </>
                     }
-
                 </div>
 
                 {/* <img src="public/harmoniums/harmonium_6.jpg" alt='backgroud image' className={classes.img}></img> */}

@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { Card, Image, Text, Button, Group, Grid, ScrollArea } from '@mantine/core';
 import classes from '../Miniatur/Miniatur.module.scss'
-import { useAuth } from '../../../context/AuthContext';
+import { useHarmonium } from '../../../context/DataContext';
 
 function MiniaturCard({data}) {
 
-    const { setSelectedHarmonium } = useAuth()
+    const { setSelectedHarmonium } = useHarmonium()
     const navigate = useNavigate()
 
     const handleDetailClick = (element) => {

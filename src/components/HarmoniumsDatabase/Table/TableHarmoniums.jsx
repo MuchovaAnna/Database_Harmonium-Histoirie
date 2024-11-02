@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { Table, ScrollArea, Modal } from '@mantine/core'
 import { IconPhoto } from '@tabler/icons-react';
 import classes from '../Table/TableHarmoniums.module.scss'
-import { useAuth } from '../../../context/AuthContext';
+import { useHarmonium } from '../../../context/DataContext';
 
 function TableDatabase({data}) {
 
-    const {setSelectedHarmonium} = useAuth()
+    const {setSelectedHarmonium} = useHarmonium()
     const navigate = useNavigate()
 
     const [opened, setOpened] = useState(false)

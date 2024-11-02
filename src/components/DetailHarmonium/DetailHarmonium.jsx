@@ -1,13 +1,15 @@
 import { useRef, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
+import { useHarmonium } from "../../context/DataContext"
 import { Grid, GridCol, Button, ScrollArea } from "@mantine/core"
 import Gallery from "./Gallery/Gallery"
 import Info from "./Info/Info"
 // import classes from "../DetailHarmonium/DetailHarmonium.module.scss"
 
 function DetailHarmonium() {
-    const { selectedHarmonium, isAuth, data, setSelectedHarmonium } = useAuth()
+    const { isAuth} = useAuth()
+    const {selectedHarmonium, data, setSelectedHarmonium} = useHarmonium()
 
     const dataHarmonium = selectedHarmonium || {}
 
