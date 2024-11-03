@@ -11,8 +11,6 @@ function GalleryUpload({ form }) {
 
     const [avatars, setAvatars] = useState([])
 
-    const [rowId, setRowId] = useState(null)
-
     //Funkce pro nahrání souboru do Storage a získání unikátní url adresy zpět
     const handleFileUpload = async (selectFiles) => {
 
@@ -24,36 +22,47 @@ function GalleryUpload({ form }) {
         if (selectFiles.length === 0) {
             return
         }
+
         const uploadResults = await Promise.all(
             Array.from(selectFiles).map(async (file) => {
-                const fileName = `harmonia/${Date.now()}_${file.name}`;
+                console.log("Nahrávám soubor:", file.name);
+                const fileName = `${Date.now()}_${file.name}`;
 
                 const { data: uploadData, error: uploadError } = await supabase.storage
                     .from('harmonia')
                     .upload(fileName, file);
 
                 if (uploadError) {
-                    console.log("Chyba při nahrávání", error.message)
+                    console.log("Chyba při nahrávání", uploadError.message)
                     return null
                 }
 
                 console.log("Data o nahraném souboru", uploadData);
-                console.log("Cesta k nahranému souboru:", uploadData.path);
+                console.log("Cesta k nahranému souboru:", uploadData.fullPath);
 
                 //3. získání URL z storage
-
-                if (uploadData && uploadData.path) {
+                if (uploadData && uploadData.fullPath) {
                     const { publicURL, error: urlError } = supabase
                         .storage
                         .from("harmonia")
-                        .getPublicUrl(uploadData.path)
+                        .getPublicUrl(uploadData.fullPath)
 
                     if (urlError) {
                         console.log("Chyba při získávání URL", urlError.message);
                         return null
                     }
 
+                    const fileName = uploadData.fullPath; // mělo by být ve formátu "harmonia/1730661299413_harmonium_2.jpg"
+                    const manualPublicUrl = `https://xxsgkdemmzpgwqautakm.supabase.co/storage/v1/object/public/${fileName}`;
+
+                    if (!publicURL) {
+                        console.log("Používám manuální URL");
+                        // pokud publicURL není dostupná, vrátí se manuálně vytvořená URL
+                        return manualPublicUrl;
+                    }
+
                     console.log('Veřejná URL:', publicURL);
+
                     return publicURL
                 }
                 return null
@@ -61,6 +70,8 @@ function GalleryUpload({ form }) {
         )
         //kontrola výsledku nahrávání
         console.log("Výsledek nahrávání:", uploadResults);
+
+
 
         // Zpracování URL adres
         const validUrls = uploadResults.filter(url => url !== null);
@@ -72,7 +83,7 @@ function GalleryUpload({ form }) {
     }
 
     const handleRemove = (src) => {
-        setAvatars((prevAvatars) => prevAvatars.filter((avatar) => avatar.url !== url));
+        setAvatars((prevAvatars) => prevAvatars.filter((avatar) => avatar !== src));
     };
 
     return (
