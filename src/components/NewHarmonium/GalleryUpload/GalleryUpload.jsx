@@ -11,56 +11,69 @@ function GalleryUpload({ form }) {
 
     const [avatars, setAvatars] = useState([])
 
+    const [rowId, setRowId] = useState(null)
 
-    const handleFileUpload = async (files) => {
-        console.log(files);
-        if (!files) return;
+    //Funkce pro nahrání souboru do Storage a získání unikátní url adresy zpět
+    const handleFileUpload = async (selectFiles) => {
 
-        const uploaderUrl = [];
-
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i]
-            const fileName = `${Date.now()}_${file.name}`;
-            //nahrání souboru do Storage Supabase
-            const { data, error } = await supabase.storage
-                .from('harmonia')
-                .upload(fileName, file)
-
-            if (error) {
-                console.error('Chyba při nahrávání souboru', error)
-                return
-            }
-
-            //získání veřejné URL nahraného souboru
-            const { publicURL } = supabase.storage
-                .from('harmonia')
-                .getPublicUrl(fileName)
-
-            if (publicURL) {
-                uploaderUrl.push(publicURL)
-            }
+        if (!selectFiles || selectFiles.length === 0) {
+            console.log("Soubor není vybrán");
+            return;
         }
-
-        if (uploaderUrl.length > 0) {
-            //uložení URL do databáze
-            await savePictureUrlToDatabase(uploaderUrl)
+        //2. Nahrávání souboru do Supabase
+        if (selectFiles.length === 0) {
+            return
         }
-    }
-    const savePictureUrlToDatabase = async (urls) => {
+        const uploadResults = await Promise.all(
+            Array.from(selectFiles).map(async (file) => {
+                const fileName = `harmonia/${Date.now()}_${file.name}`;
 
-        const { error } = await supabase
-            .from('harmoniums')
-            .update({ "pictures": urls })
-            .eq('id', form.value.id)
+                const { data: uploadData, error: uploadError } = await supabase.storage
+                    .from('harmonia')
+                    .upload(fileName, file);
 
-        if (error) {
-            console.error("Chybapři nahrávání URL do databáze:", error)
-        }
+                if (uploadError) {
+                    console.log("Chyba při nahrávání", error.message)
+                    return null
+                }
+
+                console.log("Data o nahraném souboru", uploadData);
+                console.log("Cesta k nahranému souboru:", uploadData.path);
+
+                //3. získání URL z storage
+
+                if (uploadData && uploadData.path) {
+                    const { publicURL, error: urlError } = supabase
+                        .storage
+                        .from("harmonia")
+                        .getPublicUrl(uploadData.path)
+
+                    if (urlError) {
+                        console.log("Chyba při získávání URL", urlError.message);
+                        return null
+                    }
+
+                    console.log('Veřejná URL:', publicURL);
+                    return publicURL
+                }
+                return null
+            })
+        )
+        //kontrola výsledku nahrávání
+        console.log("Výsledek nahrávání:", uploadResults);
+
+        // Zpracování URL adres
+        const validUrls = uploadResults.filter(url => url !== null);
+        console.log("Nahrané URL adresy:", validUrls);
+
+        // Uložení souborů do state s prozatimní URL adresou
+        setAvatars((prev) => [...prev, ...validUrls]);
+
     }
 
     const handleRemove = (src) => {
-        setAvatars((prevAvatars) => prevAvatars.filter((avatar) => avatar !== src));
-    }
+        setAvatars((prevAvatars) => prevAvatars.filter((avatar) => avatar.url !== url));
+    };
 
     return (
         <Fieldset
@@ -72,9 +85,10 @@ function GalleryUpload({ form }) {
                 leftSection={icon}
                 label="Nahrej fotografie"
                 placeholder="Po kliknutí nahrajete fotografie"
-                accept='image/jpg, image/jpeg,image/png'
+                accept='image/jpg, image/jpeg, image/png'
                 multiple
                 onChange={handleFileUpload}
+                // onChange={(e) => handleFileUpload(e.target.files)}
                 // {...form.getInputProps('pictures')}
                 classNames={{
                     input: classes.input,
@@ -83,8 +97,8 @@ function GalleryUpload({ form }) {
             />
 
             <Group spacing="sm">
-                {avatars.map((src) => (
-                    <RemovableAvatar key={src} src={src} onRemove={() => handleRemove(src)} />
+                {avatars.map((src, index) => (
+                    <RemovableAvatar key={index} src={src} onRemove={() => handleRemove(src)} />
                 ))}
             </Group>
 

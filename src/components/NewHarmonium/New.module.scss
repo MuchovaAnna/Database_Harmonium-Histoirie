@@ -65,12 +65,18 @@
     text-transform: uppercase;
 }
 
+.btnContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .btn {
     background: $primary-color-6;
     box-shadow: $shadow-color;
-    position: relative;
-    margin: 10px auto;
-    width: 100%;
+    margin-top: 20px;
+    width: 20%;
+    text-transform: uppercase;
 
     &:hover{
         background: $primary-color-10;

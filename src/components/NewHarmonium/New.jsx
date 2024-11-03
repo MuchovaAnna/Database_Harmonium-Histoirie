@@ -1,4 +1,4 @@
-import { Grid, GridCol, ScrollArea, Title, Button} from '@mantine/core'
+import { Grid, GridCol, ScrollArea, Title, Button } from '@mantine/core'
 import { useForm } from '@mantine/form';
 import classes from '../NewHarmonium/New.module.scss'
 import BasicInfo from './BasicInfo/BasicInfo';
@@ -49,7 +49,7 @@ function NewHarmonium() {
     const handleSubmit = async (value, data) => {
         console.log(value);
         console.log(data);
-        
+
         try {
             const { error } = await supabase
                 .from('harmoniums')
@@ -61,10 +61,10 @@ function NewHarmonium() {
                 console.log("Data byla úspěšně vložena")
                 form.reset()
             }
-            
+
         } catch (error) {
             console.error('neočekávaná chyba', error)
-            
+
         }
     }
 
@@ -118,16 +118,19 @@ function NewHarmonium() {
                         <GridCol
                             span={{ base: 12, sm: 6, lg: 3 }}
                         >
-                            <GalleryUpload form={form}/>
+                            <GalleryUpload form={form} />
 
                         </GridCol>
                     </Grid>
-
-                    <Button
-                        type='submit'
-                       className={classes["btn"]}
-                    > Odeslat
-                    </Button>
+                    <div
+                    className={classes["btnContainer"]}
+                    >
+                        <Button
+                            type='submit'
+                            className={classes["btn"]}
+                        > uložit
+                        </Button>
+                    </div>
                 </form>
             </ScrollArea>
         </>

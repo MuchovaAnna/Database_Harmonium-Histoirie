@@ -12,7 +12,7 @@ function LoggedOut() {
         <>
             <Group className={classes['nav']}>
                 <button
-                    opened={opened ? true : undefined}
+                    opened={opened ? "true" : " undefined"}
                     className={classes['login']}
                     onClick={() => setOpened(!opened)} >
                     <svg
