@@ -3,19 +3,21 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import { useHarmonium } from "../../context/DataContext"
 import { Grid, GridCol, Button, ScrollArea } from "@mantine/core"
+import { supabase } from "../../supabase/supabase-client"
 import Gallery from "./Gallery/Gallery"
 import Info from "./Info/Info"
 // import classes from "../DetailHarmonium/DetailHarmonium.module.scss"
 
 function DetailHarmonium() {
-    const { isAuth} = useAuth()
-    const {selectedHarmonium, data, setSelectedHarmonium} = useHarmonium()
+    const { isAuth } = useAuth()
+    const { selectedHarmonium, data, setSelectedHarmonium } = useHarmonium()
 
     const dataHarmonium = selectedHarmonium || {}
 
     const navigate = useNavigate()
     const location = useLocation()
 
+    //návrat na vyhledávání - tabulka / miniatury
     const handleSeachBack = () => {
         const from = location.state?.from || ""
         const view = from === "columns" ? "columns" : from === "miniature" ? "miniature" : undefined
@@ -23,7 +25,7 @@ function DetailHarmonium() {
     }
 
     const currrentIndex = data.findIndex(item => item.id === dataHarmonium.id)
-    
+
     const viewport = useRef(null);
 
     const scrollToTop = () => {
@@ -32,6 +34,7 @@ function DetailHarmonium() {
         }
     };
 
+    //předchozí / následující záznam
     const handleNavigation = (direction) => {
         const newIndex = currrentIndex + direction;
         if (newIndex >= 0 && newIndex < data.length) {
@@ -47,6 +50,35 @@ function DetailHarmonium() {
         scrollToTop();
     }, [currrentIndex]);
 
+    //funkce pro přepnutí na úpravy
+    const handleUpdate = async (event, id) => {
+        event.preventDefault()
+        console.log("current id:", dataHarmonium.id);
+        navigate("/newHarmonium", {state: {harmoniumData: dataHarmonium}})
+        
+        if (!id) {
+            console.error("ID is undefined or null");
+            return;
+        }
+
+        //načtení údajů o harmoniu podle ID
+        const { data, error } = await supabase
+            .from("harmoniums")
+            .select('*')
+            .eq('id', dataHarmonium.id)
+            .single()
+        
+        console.log("current id:", dataHarmonium.id);
+        
+
+        if (error) {
+            console.error('Chyba při načítání:', error.message)
+            return
+        }
+
+        console.log(data);
+        
+    }
 
     return (
         <div style={{ margin: "0 auto", maxWidth: "80vw", paddingTop: "30px" }}>
@@ -72,24 +104,34 @@ function DetailHarmonium() {
                                 <Gallery data={dataHarmonium} />
                             </GridCol>
                         </Grid>
-                        <div
-                            style={{ display: "flex", gap: 10, justifyContent: "center", padding: 10 }}
-                        >
 
+                        <div
+                            style={{ display: "flex", justifyContent: "center", marginBottom: 10 }}
+                        >
+                            <Button
+                                onClick={(event)=>handleUpdate(event, dataHarmonium.id)}
+                                color="lightGreen"
+                                style={{ textTransform: "uppercase" }}
+                            >Upravit</Button>
+                        </div>
+                        <hr />
+                        <div
+                            style={{ display: "flex", gap: 5, justifyContent: "center", padding: 8 }}
+                        >
                             <Button
                                 onClick={handlePrevious}
                                 color="#7b594e"
-                                style={{ border: "1px solid black" }}
+                                style={{ border: "1px solid black", textTransform: "uppercase", width: "20vw", height: "50px" }}
                                 disabled={currrentIndex === 0}
                             >Předchozí záznam</Button>
                             <Button
                                 onClick={handleSeachBack}
                                 color="#ab9087"
-                                style={{ border: "1px solid black" }}>Vrátit se na přehled</Button>
+                                style={{ border: "1px solid black", textTransform: "uppercase", width: "20vw", height: "50px" }}>Vrátit se na přehled</Button>
                             <Button
                                 onClick={handleNext}
                                 color="#7b594e"
-                                style={{ border: "1px solid black" }}
+                                style={{ border: "1px solid black", textTransform: "uppercase", width: "20vw", height: "50px" }}
                                 disabled={currrentIndex === data.length - 1}
                             >Následující záznam</Button>
                         </div>

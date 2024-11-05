@@ -1,7 +1,8 @@
 import { Fieldset, TextInput, Text, SegmentedControl } from '@mantine/core'
 import classes from '../../NewHarmonium/New.module.scss'
 
-function BasicInfo({form}) {
+function BasicInfo({ form }) {
+
     return (
         <Fieldset
             legend="Základní informace"
@@ -31,7 +32,7 @@ function BasicInfo({form}) {
             >Typ
             </Text>
             <SegmentedControl
-                data={["tlakové", "sací"]}
+                data={['tlakové', 'sací']}
                 color='lightGreen'
                 size='xs'
                 w={"50%"}

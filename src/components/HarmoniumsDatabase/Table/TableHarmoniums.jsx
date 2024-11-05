@@ -40,7 +40,7 @@ function TableDatabase({data}) {
             <Table.Td>{element.dating}</Table.Td>
             <Table.Td>{element.manuals} / {element.pedal}</Table.Td>
             <Table.Td>{element.location}</Table.Td>
-            <Table.Td>{element.id}</Table.Td>
+            <Table.Td>{element.inventoryId}</Table.Td>
         </Table.Tr>
     ));
 

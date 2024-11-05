@@ -1,7 +1,7 @@
 import { Fieldset, Textarea, TextInput, Grid, GridCol, Text, SegmentedControl, TagsInput } from '@mantine/core'
 import classes from '../../NewHarmonium/New.module.scss'
 
-function DetailInfo({form}) {
+function DetailInfo({ form }) {
     return (
         <Fieldset
             legend="Detail nástroje"

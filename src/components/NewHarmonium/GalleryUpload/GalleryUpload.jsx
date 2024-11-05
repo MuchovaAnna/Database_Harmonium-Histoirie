@@ -1,15 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Fieldset, FileInput, Group } from '@mantine/core'
 import RemovableAvatar from '../RemovableAvatar/RemovableAvatar'
 import { IconPhotoUp } from '@tabler/icons-react'
 import classes from '../../NewHarmonium/New.module.scss'
 import { supabase } from '../../../supabase/supabase-client'
 
-function GalleryUpload({ form }) {
+function GalleryUpload({ form, pictureUrls }) {
 
     const icon = <IconPhotoUp />
 
     const [avatars, setAvatars] = useState([])
+    //Funkce pro zobrazení avarats při načtení dat stávájícího záznamu
+    useEffect(() => {
+        if (pictureUrls.length > 0) {
+            setAvatars(pictureUrls)
+        }
+    },[pictureUrls])
 
     //Funkce pro nahrání souboru do Storage a získání unikátní url adresy zpět
     const handleFileUpload = async (selectFiles) => {
@@ -71,14 +77,17 @@ function GalleryUpload({ form }) {
         //kontrola výsledku nahrávání
         console.log("Výsledek nahrávání:", uploadResults);
 
-
-
         // Zpracování URL adres
         const validUrls = uploadResults.filter(url => url !== null);
         console.log("Nahrané URL adresy:", validUrls);
 
-        // Uložení souborů do state s prozatimní URL adresou
-        setAvatars((prev) => [...prev, ...validUrls]);
+        // Uložení souborů do state
+        setAvatars((prev) => {
+            const newAvatars = [...prev, ...validUrls]
+            //přidání URL do formuláře
+            form.setFieldValue('pictures', newAvatars)
+            return newAvatars;
+        });
 
     }
 
@@ -100,7 +109,6 @@ function GalleryUpload({ form }) {
                 multiple
                 onChange={handleFileUpload}
                 // onChange={(e) => handleFileUpload(e.target.files)}
-                // {...form.getInputProps('pictures')}
                 classNames={{
                     input: classes.input,
                     label: classes.label,
