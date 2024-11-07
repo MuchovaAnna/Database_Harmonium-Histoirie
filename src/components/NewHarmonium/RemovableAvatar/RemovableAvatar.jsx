@@ -3,7 +3,7 @@ import { IconX } from '@tabler/icons-react';
 
 function RemovableAvatar({ src, onRemove }) {
   return (
-    <div style={{ position: 'relative', display: 'inline-block' }}>
+    <div  style={{ position: 'relative', display: 'inline-block' }}>
       {/* Avatar obrázek */}
       <Avatar src={src} radius="md" size={70} />
 

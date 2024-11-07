@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
-import { Flex, Pagination, Select, Tabs, rem } from '@mantine/core'
+import { Flex, Pagination, Select, Tabs, Text } from '@mantine/core'
 import { IconColumns, IconLayoutGrid } from '@tabler/icons-react';
-// import classes from '../HarmoniumsDatabase/DatabaseHarmonium.module.scss'
+import classes from '../HarmoniumsDatabase/DatabaseHarmonium.module.scss'
 import TableDatabase from './Table/TableHarmoniums';
 import MiniaturCard from './Miniatur/Miniature';
 import { useAuth } from '../../context/AuthContext';
@@ -12,7 +12,7 @@ function DatabaseHarmoniums() {
 
     // const navigate = useNavigate()
     const { isAuth } = useAuth()
-    const {data, lastTab, setLastTab} = useHarmonium()
+    const { data, lastTab, setLastTab } = useHarmonium()
 
     const [currentPage, setCurrentPage] = useState(1)
     const [recordsPerPage, setRecordsPerPage] = useState(5)  // výchozí počet záznamu na stránce
@@ -34,9 +34,6 @@ function DatabaseHarmoniums() {
         currentPage * recordsPerPage
     )
 
-    //nastavení velikosti icon
-    const iconStyle = { width: rem(14), height: rem(14) };
-
     return (
         <>
             {isAuth
@@ -48,17 +45,18 @@ function DatabaseHarmoniums() {
                             setSelectedTab(value);  // Aktualizace místního stavu
                             setLastTab(value);      // Uložení poslední vybrané záložky do kontextu
                         }}
-                        style={{ padding: 30 }}>
+                        className={classes["tabs"]}
+                    >
                         <Tabs.List >
                             <Tabs.Tab
                                 value="columns"
-                                leftSection={<IconColumns style={iconStyle} />}
+                                leftSection={<IconColumns className={classes["iconStyle"]} />}
                             >
                                 Tabulka
                             </Tabs.Tab>
                             <Tabs.Tab
                                 value="miniatur"
-                                leftSection={<IconLayoutGrid style={iconStyle} />}
+                                leftSection={<IconLayoutGrid className={classes["iconStyle"]} />}
                             >
                                 Miniatury
                             </Tabs.Tab>
@@ -69,29 +67,34 @@ function DatabaseHarmoniums() {
                         <Flex
                             align={'center'}
                             justify={'space-between'}
+                            mt={20}
+                            mb={20}
                         >
-                            <Select
-                                //zobrazuje vychozí počet na stránce
-                                color="lightGreen"
-                                placeholder={recordsPerPage.toString()}
-                                data={['5', '10', '15', '20', '25', '30', '35', '40', '45']}
-                                value={recordsPerPage.toString()}
-                                onChange={
-                                    (value) => {
-                                        setRecordsPerPage(Number(value))
-                                        // po změně stavu se opět nastaví první strana
-                                        setCurrentPage(1)
+                            <div className={classes["selectSection"]}>
+                                <Select
+                                    //zobrazuje vychozí počet na stránce
+                                    placeholder={recordsPerPage.toString()}
+                                    data={['5', '10', '15', '20', '25', '30', '35', '40', '45']}
+                                    value={recordsPerPage.toString()}
+                                    onChange={
+                                        (value) => {
+                                            setRecordsPerPage(Number(value))
+                                            // po změně stavu se opět nastaví první strana
+                                            setCurrentPage(1)
+                                        }}
+                                    size='xs'
+                                    classNames={{
+                                        input: classes.select,
                                     }}
-                                size='xs'
-                                //styly přenést do scss!!!!
-                                style={{ margin: 20, display: 'flex', alignItems: 'center', width: 60 }}
-                            />
+                                />
+                                <Text>Počet záznamů na stránce</Text>
+                            </div>
+
                             <Pagination
                                 size='xs'
                                 withEdges
-                                // color='#79875c'
                                 color="lightGreen"
-                                style={{ margin: 20 }}
+                                className={classes["pagination"]}
                                 page={currentPage}
                                 onChange={setCurrentPage}
                                 total={totalPages}
@@ -112,7 +115,7 @@ function DatabaseHarmoniums() {
                             />
                         </Tabs.Panel>
                     </Tabs></>
-                : <h1 style={{ padding: 30 }}>Sktánka se zobrazí po přihlášení</h1>}
+                : <h1 className={classes["title"]}>Sktánka se zobrazí po přihlášení</h1>}
         </>
     )
 }

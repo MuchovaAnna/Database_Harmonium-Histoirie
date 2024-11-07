@@ -1,8 +1,8 @@
-import classes from './Headers.module.scss'
 import { Group } from '@mantine/core'
 import LoggedIn from './MenuLoggedIn/MenuLoggedIn'
 import LoggedOut from './MenuLoggedOut/MenuLoggedOut'
 import { useNavigate } from 'react-router-dom'
+import classes from './Headers.module.scss'
 
 import { useAuth } from '../../context/AuthContext'
 

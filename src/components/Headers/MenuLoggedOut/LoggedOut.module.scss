@@ -3,7 +3,6 @@
 .nav {
     display: flex;
     gap: 1rem;
-    margin: auto;
     margin-right: 2vw;
 }
 
@@ -19,11 +18,12 @@
     border: 1px solid $primary-color-9;
     border-radius: 6px;
     background-color: $secondary-color-3;
-    width: 10vw;
+    width: auto;
     height: 5vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 
     &:hover{
         color: $primary-color-1;
@@ -41,6 +41,10 @@
 }
 
 .btnText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 
     @media (max-width: 820px) {
         display: none;

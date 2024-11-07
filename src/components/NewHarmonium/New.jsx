@@ -179,8 +179,6 @@ function NewHarmonium() {
             {isAuth
                 ? <>
                     <Title
-                        pt={30}
-                        pb={20}
                         size={25}
                         className={classes["title"]}
                     >
@@ -194,7 +192,7 @@ function NewHarmonium() {
                     >
                         <form
                             onSubmit={form.onSubmit(handleSubmit)}
-                            style={{ padding: "2rem 1rem" }}
+                            className={[classes["form"]]}
                         >
                             <Grid>
                                 {/* BASIC INFORMATION */}
@@ -225,7 +223,7 @@ function NewHarmonium() {
                                 <GridCol
                                     span={{ base: 12, sm: 6, lg: 3 }}
                                 >
-                                    <GalleryUpload form={form} pictureUrls={pictureUrls} id={harmoniumData.id} />
+                                    <GalleryUpload form={form} pictureUrls={pictureUrls} id={harmoniumData?.id} />
 
                                 </GridCol>
                             </Grid>
@@ -241,7 +239,7 @@ function NewHarmonium() {
                         </form>
                     </ScrollArea>
                 </>
-                : <h1 style={{ padding: 30 }}>Sktánka se zobrazí po přihlášení</h1>
+                : <h1 className={classes["title"]}>Sktánka se zobrazí po přihlášení</h1>
             }
         </>
     )

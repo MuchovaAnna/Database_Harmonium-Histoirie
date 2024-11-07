@@ -4,16 +4,17 @@ import { useAuth } from "../../context/AuthContext"
 import { useHarmonium } from "../../context/DataContext"
 import { Grid, GridCol, Button, ScrollArea } from "@mantine/core"
 import { supabase } from "../../supabase/supabase-client"
+import { IconArrowBack, IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react"
 import Gallery from "./Gallery/Gallery"
 import Info from "./Info/Info"
-// import classes from "../DetailHarmonium/DetailHarmonium.module.scss"
+import classes from "../DetailHarmonium/DetailHarmonium.module.scss"
 
 function DetailHarmonium() {
     const { isAuth } = useAuth()
     const { selectedHarmonium, data, setSelectedHarmonium, setIsEditing } = useHarmonium()
 
     console.log(selectedHarmonium);
-    
+
 
     const dataHarmonium = selectedHarmonium || {}
 
@@ -58,8 +59,8 @@ function DetailHarmonium() {
         event.preventDefault()
         console.log("current id:", dataHarmonium.id);
         setIsEditing(true)
-        navigate("/newHarmonium", {state: {harmoniumData: dataHarmonium}})
-        
+        navigate("/newHarmonium", { state: { harmoniumData: dataHarmonium } })
+
         if (!id) {
             console.error("ID is undefined or null");
             return;
@@ -71,9 +72,9 @@ function DetailHarmonium() {
             .select('*')
             .eq('id', dataHarmonium.id)
             .single()
-        
+
         console.log("current id:", dataHarmonium.id);
-        
+
 
         if (error) {
             console.error('Chyba při načítání:', error.message)
@@ -81,7 +82,7 @@ function DetailHarmonium() {
         }
 
         console.log(data);
-        
+
     }
 
     //funkce pro kontrolu editovaných dat
@@ -89,10 +90,10 @@ function DetailHarmonium() {
         if (location.state?.data) {
             setSelectedHarmonium(location.state.data)
         }
-    },[location.state, setSelectedHarmonium])
+    }, [location.state, setSelectedHarmonium])
 
     return (
-        <div style={{ margin: "0 auto", maxWidth: "80vw", paddingTop: "30px" }}>
+        <div className={classes["detailContainer"]}>
             {isAuth
                 ? <>
                     <ScrollArea
@@ -116,40 +117,42 @@ function DetailHarmonium() {
                             </GridCol>
                         </Grid>
 
-                        <div
-                            style={{ display: "flex", justifyContent: "center", marginBottom: 10 }}
-                        >
+                        <div className={classes["editingButtonSection"]}>
                             <Button
-                                onClick={(event)=>handleUpdate(event, dataHarmonium.id)}
-                                color="lightGreen"
-                                style={{ textTransform: "uppercase" }}
-                            >Upravit</Button>
+                                onClick={(event) => handleUpdate(event, dataHarmonium.id)}
+                                className={classes["editedButton"]}
+                            >
+                                Upravit
+                            </Button>
                         </div>
                         <hr />
-                        <div
-                            style={{ display: "flex", gap: 5, justifyContent: "center", padding: 8 }}
-                        >
+                        <div className={classes["buttonSection"]}>
                             <Button
                                 onClick={handlePrevious}
-                                color="#7b594e"
-                                style={{ border: "1px solid black", textTransform: "uppercase", width: "20vw", height: "50px" }}
+                                className={classes["switchButton"]}
                                 disabled={currrentIndex === 0}
-                            >Předchozí záznam</Button>
+                            >
+                                {<IconArrowNarrowLeft/>}
+                                Předchozí
+                            </Button>
                             <Button
                                 onClick={handleSeachBack}
-                                color="#ab9087"
-                                style={{ border: "1px solid black", textTransform: "uppercase", width: "20vw", height: "50px" }}>Vrátit se na přehled</Button>
+                                className={classes["switchButton"]}
+                            > Zpět <br/>na přehled
+                            </Button>
                             <Button
                                 onClick={handleNext}
-                                color="#7b594e"
-                                style={{ border: "1px solid black", textTransform: "uppercase", width: "20vw", height: "50px" }}
+                                className={classes["switchButton"]}
                                 disabled={currrentIndex === data.length - 1}
-                            >Následující záznam</Button>
+                            >
+                                Následující
+                                {<IconArrowNarrowRight />}
+                            </Button>
                         </div>
 
                     </ScrollArea>
                 </>
-                : <h1 style={{ margin: 30 }}>Stránka se zobrazí po přihlášení</h1>
+                : <h1 className={classes["title"]}>Stránka se zobrazí po přihlášení</h1>
 
             }
         </div>

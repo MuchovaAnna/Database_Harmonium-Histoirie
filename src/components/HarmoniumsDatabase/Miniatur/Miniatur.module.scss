@@ -1,6 +1,26 @@
+@use "../../../variables" as *;
 
 .textContainer{
     display: flex;
     flex-direction: column;
     align-items: start;
+}
+
+.scrollArea{
+    height: calc(90vh - 200px);
+}
+
+.titleCard{
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.btn{
+    text-transform: uppercase;
+    background: $primary-color-7;
+    border-radius: 6px;
+
+    &:hover{
+        background-color: $primary-color-10;
+    }
 }

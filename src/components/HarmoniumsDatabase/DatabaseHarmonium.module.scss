@@ -1,7 +1,38 @@
-// body{
-//     background: $primary-color-2;
-// }
+@use "../../variables" as *;
 
 .title{
-    padding: 10px;
+    padding: 20px;
+    text-align: center;
+    color: $primary-color-10;
+}
+
+.iconStyle {
+    width: 20px;
+    height: 20px;
+}
+
+.tabs {
+    padding: 30px;
+}
+
+.selectSection{
+    display: flex;
+    gap: 10px;
+}
+
+.select {
+    display: flex;
+    align-items: center;
+    width: 60px;
+    margin-left: 10px;
+
+        &:focus {
+            border: 1px solid $secondary-color-8;
+            transition: border-color 0.2s ease;
+            outline: none;
+        }
+}
+
+.pagination{
+    margin: 10px;
 }

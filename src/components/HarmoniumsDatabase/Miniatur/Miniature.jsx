@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { Card, Image, Text, Button, Group, Grid, ScrollArea } from '@mantine/core';
-import classes from '../Miniatur/Miniatur.module.scss'
 import { useHarmonium } from '../../../context/DataContext';
+import classes from '../Miniatur/Miniatur.module.scss'
 
-function MiniaturCard({data}) {
+function MiniaturCard({ data }) {
 
     const { setSelectedHarmonium } = useHarmonium()
     const navigate = useNavigate()
@@ -16,11 +16,10 @@ function MiniaturCard({data}) {
     return (
         <>
             <ScrollArea
-                style={{ height: 'calc(90vh - 200px)' }}
                 scrollbarSize={6}
                 scrollHideDelay={500}
                 scrollbars="y"
-            // className={classes['scrollArea']}
+                className={classes['scrollArea']}
             >
                 <Grid>
                     {data.map((element) => (
@@ -43,7 +42,9 @@ function MiniaturCard({data}) {
                                 </Card.Section>
 
                                 <Group mt="md" mb="xs">
-                                    <Text fw={500}>{element.builder}</Text>
+                                    <Text className={classes["titleCard"]} >
+                                        {element.builder}
+                                    </Text>
                                 </Group>
                                 <Group className={classes['textContainer']}>
                                     <Text size="sm" c="dimmed">Místo výroby: {element.placeOfManufacture}</Text>
@@ -52,8 +53,9 @@ function MiniaturCard({data}) {
                                     <Text size="sm" c="dimmed"></Text>
                                 </Group>
 
-                                <Button color="#7b594e" fullWidth mt="md" radius="md" style={{ textTransform: 'uppercase' }}
-                                // onClick={() => handleDetailClick(element)}
+                                <Button
+                                    fullWidth mt="md"
+                                    className={classes["btn"]}
                                 >
                                     Detail
                                 </Button>

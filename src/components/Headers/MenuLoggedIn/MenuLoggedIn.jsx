@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { Burger, Drawer, Group } from '@mantine/core'
 import { useAuth } from '../../../context/AuthContext'
 import { useHarmonium } from '../../../context/DataContext'
+import { IconCopyPlus, IconLogout } from '@tabler/icons-react'
 
 import classes from '../MenuLoggedIn/LoggedIn.module.scss'
 
@@ -36,42 +37,17 @@ function LoggedIn() {
                 <NavLink
                     to="/newHarmonium"
                     onClick={()=>(setIsEditing(false))}
-                    className={classes['link']}>
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className={classes.icon}>
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path stroke="none" d="M0 0h24v24H0z" />
-                        <path d="M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
-                        <path d="M4.012 16.737a2 2 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
-                        <path d="M11 14h6" />
-                        <path d="M14 11v6" />
-                    </svg>
+                    className={classes['link']}
+                >
+                    <IconCopyPlus className={classes["iconStyle"]}/>
                     Přidat<br /> nový
                 </NavLink>
                 <button
                     className={classes['link']}
                     onClick={handleLogOut}
                     style={{ cursor: 'pointer' }}
-                >  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className={classes.icon}><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M9 12h12l-3 -3" /><path d="M18 15l3 -3" />
-                    </svg>
+                >
+                    <IconLogout className={classes["iconStyle"]}/>
                     Odhlásit se
                 </button>
             </Group>
@@ -112,40 +88,13 @@ function LoggedIn() {
                             setIsEditing(false)
                         )}
                         className={classes.drawerLink}>
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className={classes.icon}>
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <path d="M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
-                            <path d="M4.012 16.737a2 2 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
-                            <path d="M11 14h6" />
-                            <path d="M14 11v6" />
-                        </svg>
+                        <IconCopyPlus className={classes["iconStyle"]}/>
                         Přidat  nový
                     </NavLink>
                     <div
                         className={classes['drawerLink']}
                         onClick={handleLogOut} >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className={classes.icon}><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M9 12h12l-3 -3" /><path d="M18 15l3 -3" />
-                        </svg>
+                        <IconLogout className={classes["iconStyle"]}/>
                         Odhlásit se
                     </div>
                 </div>
