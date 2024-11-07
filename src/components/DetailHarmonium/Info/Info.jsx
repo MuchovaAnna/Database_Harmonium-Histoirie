@@ -1,22 +1,62 @@
+import { Button } from "@mantine/core";
+import { IconColumns, IconArrowLeft, IconArrowRight, IconEdit } from "@tabler/icons-react";
+import { useHarmonium } from "../../../context/DataContext";
 import classes from "../Info/Info.module.scss"
 
-function Info({ data }) {
+function Info({ data, handleSeachBack, handleNavigation, handleUpdate }) {
 
     if (!data) {
         return <p>Nujsou k dispozici žádná data.</p>;
     }
 
+    const { data: harmoniumData, selectedHarmonium } = useHarmonium()
+    
+    const currentIndex = harmoniumData.findIndex(item => item.id === selectedHarmonium.id)
+
+    const handlePrevious = () => handleNavigation(-1)
+    const handleNext = ()=> handleNavigation (1)
+
     return (
         <>
-            <div
-            className={classes["titleSection"]}
-            >
-                <h2 className={classes["name"]}>{data.name}</h2>
-                <h1 className={classes["name"]}>{data.builder}</h1>
-                <p>Datace: {data.dating} </p>
-                <p>Typ: {data.type} </p>
-                <p>Model: {data.model} </p>
-                <p>Místo výroby: {data.placeOfManufacture} </p>
+            <div className={classes["titleSection"]}>
+                <div className={classes["sectionInformation"]}>
+                    <h2 className={classes["name"]}>{data.name}</h2>
+                    <h1 className={classes["name"]}>{data.builder}</h1>
+                    <p>Datace: {data.dating} </p>
+                    <p>Typ: {data.type} </p>
+                    <p>Model: {data.model} </p>
+                    <p>Místo výroby: {data.placeOfManufacture} </p>
+                </div>
+
+                <div className={classes["buttonSection"]}>
+                    <Button
+                        className={classes["btn"]}
+                        onClick={handlePrevious}
+                        disabled={currentIndex === 0}
+                    >
+                        {<IconArrowLeft className={classes["icon"]} />}
+                    </Button>
+                    <Button
+                        className={classes["btn"]}
+                        onClick={handleNext}
+                        disabled={currentIndex === harmoniumData.length - 1}
+                    >
+                        {<IconArrowRight className={classes["icon"]} />}
+                    </Button>
+                    <Button
+                        className={classes["btn"]}
+                        onClick={()=>handleSeachBack()}
+                    >
+                        {<IconColumns className={classes["icon"]} />}
+                    </Button>
+                    <Button
+                        className={classes["btn"]}
+                        onClick={(e)=>handleUpdate(e, data.id)}
+                    >
+                        {<IconEdit className={classes["icon"]} />}
+                    </Button>
+                </div>
+
             </div>
 
             <div className={classes["section"]} >

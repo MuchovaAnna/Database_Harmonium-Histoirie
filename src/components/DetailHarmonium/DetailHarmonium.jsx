@@ -26,7 +26,7 @@ function DetailHarmonium() {
         navigate('/harmoniums', { state: { view } })
     }
 
-    const currrentIndex = data.findIndex(item => item.id === dataHarmonium.id)
+    const currentIndex = data.findIndex(item => item.id === dataHarmonium.id)
 
     const viewport = useRef(null);
 
@@ -38,7 +38,7 @@ function DetailHarmonium() {
 
     //předchozí / následující záznam
     const handleNavigation = (direction) => {
-        const newIndex = currrentIndex + direction;
+        const newIndex = currentIndex + direction;
         if (newIndex >= 0 && newIndex < data.length) {
             setSelectedHarmonium(data[newIndex]);
             setTimeout(scrollToTop, 100);
@@ -50,7 +50,7 @@ function DetailHarmonium() {
 
     useEffect(() => {
         scrollToTop();
-    }, [currrentIndex]);
+    }, [currentIndex]);
 
     //funkce pro přepnutí na úpravy
     const handleUpdate = async (event, id) => {
@@ -102,7 +102,13 @@ function DetailHarmonium() {
                             <GridCol
                                 span={{ base: 12, md: 8 }}
                             >
-                                <Info data={dataHarmonium} />
+                                <Info
+                                    data={dataHarmonium}
+                                    handleSeachBack={handleSeachBack}
+                                    handleNavigation={handleNavigation}
+                                    handleUpdate={handleUpdate}
+                                    currentIndex={currentIndex}
+                                />
                             </GridCol>
 
                             <GridCol
@@ -125,7 +131,7 @@ function DetailHarmonium() {
                             <Button
                                 onClick={handlePrevious}
                                 className={classes["switchButton"]}
-                                disabled={currrentIndex === 0}
+                                disabled={currentIndex === 0}
                             >
                                 {<IconArrowNarrowLeft  className={classes["iconMargin"]}/>}
                                 Předchozí
@@ -138,7 +144,7 @@ function DetailHarmonium() {
                             <Button
                                 onClick={handleNext}
                                 className={classes["switchButton"]}
-                                disabled={currrentIndex === data.length - 1}
+                                disabled={currentIndex === data.length - 1}
                             >
                                <span className={classes["iconMargin"]}> Následující </span>
                                 {<IconArrowNarrowRight  />}
