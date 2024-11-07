@@ -28,16 +28,20 @@ function MiniaturCard({ data }) {
                             span={{ base: 12, xs: 6, sm: 4, md: 3, lg: 2 }}
                         >
                             <Card
-                                shadow="xs" padding="lg" radius="md"
+                                shadow="xs"
+                                padding="md"
+                                radius="md"
                                 key={element.id}
                                 withBorder
+                                className={classes["cardSection"]}
                                 onClick={() => handleDetailClick(element)}
                             >
                                 <Card.Section>
                                     <Image
                                         src={element.pictures[0]}
                                         height={160}
-                                        alt={element.nazev}
+                                        mt={-3}
+                                        alt={element.builder}
                                     />
                                 </Card.Section>
 

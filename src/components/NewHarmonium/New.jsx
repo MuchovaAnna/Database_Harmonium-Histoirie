@@ -64,7 +64,6 @@ function NewHarmonium() {
     //Volání useEffect při načítání dat detailu harmonia pro úpravu
     useEffect(() => {
         if (harmoniumData) {
-
             const urls = harmoniumData.pictures.map(picture => picture.split('?')[0]);
             console.log("Načtené URL adresy obrázků:", urls);
 
@@ -133,16 +132,24 @@ function NewHarmonium() {
                     .select()
                 if (error) {
                     console.error('Chyba při aktualizaci dat:', error.message);
+                    showNotification({
+                        title: "CHYBA",
+                        message: "Chyba při aktualizaci dat.",
+                        color: "lightGreen",
+                        position: "top-center"
+                    })
                 } else {
                     console.log("Data byla úspěšně aktualizována");
                     //informace pro uživatele
                     showNotification({
-                        title: "Aktualizace dat",
+                        title: "ÚSPĚCH",
                         message: "Data byla úspěšně aktualizována.",
                         color: "lightGreen",
                         position: "top-center"
                     })
-                    navigate("/detailHarmonium", { state: { data: updateData[0] } })
+                    setTimeout(() => {   
+                        navigate("/detailHarmonium", { state: { data: updateData[0] } })
+                    }, 1000)
                 }
 
             } else {
@@ -154,11 +161,17 @@ function NewHarmonium() {
 
                 if (error !== null) {
                     console.error('Chyba při vkládání dat:', error.message)
+                    showNotification({
+                        title: "CHYBA",
+                        message: "Chyba při ukládání dat..",
+                        color: "lightGreen",
+                        position: "top-center"
+                    })
                 } else {
                     console.log("Data byla úspěšně vložena")
 
                     showNotification({
-                        title: "Uložení dat",
+                        title: "ÚSPĚCH",
                         message: "Data byla úspěšně odeslána.",
                         color: "lightGreen",
                         position: "top-center"

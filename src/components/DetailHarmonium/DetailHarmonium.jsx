@@ -4,17 +4,14 @@ import { useAuth } from "../../context/AuthContext"
 import { useHarmonium } from "../../context/DataContext"
 import { Grid, GridCol, Button, ScrollArea } from "@mantine/core"
 import { supabase } from "../../supabase/supabase-client"
-import { IconArrowBack, IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react"
+import { IconEdit, IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react"
 import Gallery from "./Gallery/Gallery"
 import Info from "./Info/Info"
 import classes from "../DetailHarmonium/DetailHarmonium.module.scss"
 
 function DetailHarmonium() {
     const { isAuth } = useAuth()
-    const { selectedHarmonium, data, setSelectedHarmonium, setIsEditing } = useHarmonium()
-
-    console.log(selectedHarmonium);
-
+    const { selectedHarmonium, data, setSelectedHarmonium, setIsEditing, fetchData} = useHarmonium()
 
     const dataHarmonium = selectedHarmonium || {}
 
@@ -22,7 +19,8 @@ function DetailHarmonium() {
     const location = useLocation()
 
     //návrat na vyhledávání - tabulka / miniatury
-    const handleSeachBack = () => {
+    const handleSeachBack = async () => {
+        await fetchData()
         const from = location.state?.from || ""
         const view = from === "columns" ? "columns" : from === "miniature" ? "miniature" : undefined
         navigate('/harmoniums', { state: { view } })
@@ -75,14 +73,11 @@ function DetailHarmonium() {
 
         console.log("current id:", dataHarmonium.id);
 
-
         if (error) {
             console.error('Chyba při načítání:', error.message)
             return
         }
-
         console.log(data);
-
     }
 
     //funkce pro kontrolu editovaných dat
@@ -121,7 +116,7 @@ function DetailHarmonium() {
                             <Button
                                 onClick={(event) => handleUpdate(event, dataHarmonium.id)}
                                 className={classes["editedButton"]}
-                            >
+                            >{<IconEdit  className={classes["iconMargin"]}/>}
                                 Upravit
                             </Button>
                         </div>
@@ -132,7 +127,7 @@ function DetailHarmonium() {
                                 className={classes["switchButton"]}
                                 disabled={currrentIndex === 0}
                             >
-                                {<IconArrowNarrowLeft/>}
+                                {<IconArrowNarrowLeft  className={classes["iconMargin"]}/>}
                                 Předchozí
                             </Button>
                             <Button
@@ -145,8 +140,8 @@ function DetailHarmonium() {
                                 className={classes["switchButton"]}
                                 disabled={currrentIndex === data.length - 1}
                             >
-                                Následující
-                                {<IconArrowNarrowRight />}
+                               <span className={classes["iconMargin"]}> Následující </span>
+                                {<IconArrowNarrowRight  />}
                             </Button>
                         </div>
 

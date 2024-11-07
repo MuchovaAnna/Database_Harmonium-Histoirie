@@ -16,19 +16,19 @@ export const HarmoniumProvider = ({ children }) => {
     const [isEditing, setIsEditing] = useState(false)
     const [initialData, setInitialData] = useState(null)
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const { data: dataHarmonium, error } = await supabase
-                .from("harmoniums")
-                .select()
+    const fetchData = async () => {
+        const { data: dataHarmonium, error } = await supabase
+            .from("harmoniums")
+            .select()
 
-            if (error !== null) {
-                console.log(error.message);
-                return
-            }
-
-            setData(dataHarmonium)
+        if (error !== null) {
+            console.log(error.message);
+            return
         }
+
+        setData(dataHarmonium)
+    }
+    useEffect(() => {
         fetchData()
     }, [])
 
@@ -87,7 +87,7 @@ export const HarmoniumProvider = ({ children }) => {
                 showNotification({
                     title: "Úspěch",
                     message: 'Soubor byl úspěšně nahrán',
-                    color: "green",
+                    color: "lightGreen",
                     position: "top-center"
                 });
 
@@ -184,7 +184,8 @@ export const HarmoniumProvider = ({ children }) => {
             initialData,
             setInitialData,
             uploadFile,
-            removeFile
+            removeFile,
+            fetchData
         }}>
             {data ? children : <p>Loading...</p>}
         </HarmoniumContext.Provider>

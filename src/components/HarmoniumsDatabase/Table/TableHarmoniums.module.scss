@@ -1,3 +1,5 @@
+@use "../../../variables" as *;
+
 .icon {
     width: 1rem;
     height: 1rem;
@@ -21,10 +23,22 @@
 
 .tableRow{
     height: 80px;
+
+    &:hover{
+        background: $secondary-color-2;
+    }
 }
 
 .tableCell{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.tableHeader{
+    background: $secondary-color-4;
+
+    &:hover{
+        background-color: $secondary-color-4;
+    }
 }

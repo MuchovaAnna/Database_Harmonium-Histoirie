@@ -60,12 +60,14 @@ function TableDatabase({data}) {
                 <Table
                     stickyHeader
                     horizontalSpacing="xl"
-                    verticalSpacing="xs"
+                    verticalSpacing="md"
                     striped
                     highlightOnHover
                 >
                     <Table.Thead>
-                        <Table.Tr>
+                        <Table.Tr
+                        className={classes["tableHeader"]}
+                        >
                             <Table.Th></Table.Th>
                             <Table.Th>Stavitel</Table.Th>
                             <Table.Th>Typ</Table.Th>
@@ -76,7 +78,9 @@ function TableDatabase({data}) {
                             <Table.Th>ID</Table.Th>
                         </Table.Tr>
                     </Table.Thead>
-                    <Table.Tbody>{rows}</Table.Tbody>
+                    <Table.Tbody>
+                        {rows}
+                    </Table.Tbody>
                 </Table>
             </ScrollArea>
 

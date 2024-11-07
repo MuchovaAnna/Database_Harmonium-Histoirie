@@ -15,7 +15,7 @@ function DatabaseHarmoniums() {
     const { data, lastTab, setLastTab } = useHarmonium()
 
     const [currentPage, setCurrentPage] = useState(1)
-    const [recordsPerPage, setRecordsPerPage] = useState(5)  // výchozí počet záznamu na stránce
+    const [recordsPerPage, setRecordsPerPage] = useState(8)  // výchozí počet záznamu na stránce
 
     //výběr karty podle posledního výběru tabulka / miniatury
     const [selectedTab, setSelectedTab] = useState(lastTab || 'columns')
@@ -74,7 +74,7 @@ function DatabaseHarmoniums() {
                                 <Select
                                     //zobrazuje vychozí počet na stránce
                                     placeholder={recordsPerPage.toString()}
-                                    data={['5', '10', '15', '20', '25', '30', '35', '40', '45']}
+                                    data={['6', '12', '18', '24', '30', '36', '42', '48', '54']}
                                     value={recordsPerPage.toString()}
                                     onChange={
                                         (value) => {
