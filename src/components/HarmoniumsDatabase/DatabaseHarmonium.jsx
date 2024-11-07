@@ -99,7 +99,7 @@ function DatabaseHarmoniums() {
                                 onChange={setCurrentPage}
                                 total={totalPages}
                                 siblings = {0}
-                                defaultValue={5}
+                                defaultValue={1}
                             />
                         </Flex>
 
