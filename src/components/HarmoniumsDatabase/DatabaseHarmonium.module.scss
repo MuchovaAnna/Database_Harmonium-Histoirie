@@ -1,4 +1,5 @@
 @use "../../variables" as *;
+@use "../../mantine" as *;
 
 .title{
     padding: 20px;
@@ -12,7 +13,11 @@
 }
 
 .tabs {
-    padding: 30px;
+    padding: 10px 15px;
+    
+    @include larger-than(820px) {
+        padding: 30px;
+    }
 }
 
 .selectSection{
@@ -35,4 +40,12 @@
 
 .pagination{
     margin: 10px;
+}
+
+.labelSelect{
+    display: none;
+
+    @include larger-than(800px){
+        display: inline;
+    }
 }

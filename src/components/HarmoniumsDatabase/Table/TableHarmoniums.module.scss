@@ -6,7 +6,7 @@
 }
 
 .scrollArea {
-    height: calc(90vh - 200px);
+    height: calc(90vh - 180px);
 }
 
 // nastavení velikosti zobrazení obrázku jako Modal okno
@@ -37,6 +37,8 @@
 
 .tableHeader{
     background: $secondary-color-4;
+    line-height: 0.8;
+    
 
     &:hover{
         background-color: $secondary-color-4;

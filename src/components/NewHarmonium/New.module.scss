@@ -4,7 +4,11 @@
 .title {
     text-align: center;
     color: $primary-color-10;
-    padding: 30px 0 20px 0;
+    padding: 15px 0 15px 0;
+
+    @include larger-than(800px){
+        padding: 30px 0 20px 0;
+    }
 }
 
 .form{
@@ -80,23 +84,10 @@
     background: $primary-color-6;
     box-shadow: $shadow-color;
     margin-top: 20px;
-    width: 20%;
+    width: auto;
     text-transform: uppercase;
 
     &:hover{
         background: $primary-color-10;
     }
-}
-
-//Remove Avatar
-
-.removeAvatarSection{
-    position: relative;
-    display: inline-block;
-}
-
-.deleteButton{
-    position: absolute;
-    top: 0;
-    right: 0;
 }

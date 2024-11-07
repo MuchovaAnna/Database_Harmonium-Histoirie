@@ -53,7 +53,7 @@ function TableDatabase({data}) {
         <>
             <ScrollArea
                 type="auto"
-                scrollbarSize={6}
+                scrollbarSize={4}
                 scrollHideDelay={500}
                 className={classes['scrollArea']}
             >
@@ -66,7 +66,7 @@ function TableDatabase({data}) {
                 >
                     <Table.Thead>
                         <Table.Tr
-                        className={classes["tableHeader"]}
+                            className={classes["tableHeader"]}
                         >
                             <Table.Th></Table.Th>
                             <Table.Th>Stavitel</Table.Th>

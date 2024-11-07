@@ -87,7 +87,7 @@ function DatabaseHarmoniums() {
                                         input: classes.select,
                                     }}
                                 />
-                                <Text>Počet záznamů na stránce</Text>
+                                <Text className={classes["labelSelect"]}>Počet záznamů na stránce</Text>
                             </div>
 
                             <Pagination
