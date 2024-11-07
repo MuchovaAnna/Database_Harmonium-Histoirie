@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom'
 import './App.scss'
 
 import { Header } from './components/Headers/Headers';
+import { Notifications } from '@mantine/notifications';
 
 const theme = createTheme({
   fontFamily: 'David Libre',
@@ -50,6 +51,7 @@ function App() {
     <MantineProvider
       theme={theme}
     >
+      <Notifications/>
       <Header />
       <main className={"container"}>
         <Outlet />

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Burger, Drawer, Group } from '@mantine/core'
 import { useAuth } from '../../../context/AuthContext'
+import { useHarmonium } from '../../../context/DataContext'
 
 import classes from '../MenuLoggedIn/LoggedIn.module.scss'
 
@@ -10,6 +11,7 @@ function LoggedIn() {
     const [opened, setOpened] = useState(false)
     const { logout } = useAuth()
     const navigate = useNavigate()
+    const {setIsEditing} = useHarmonium()
 
     const handleLogOut = async () => {
         const isLoggedOut = await logout()
@@ -33,6 +35,7 @@ function LoggedIn() {
                 </NavLink>
                 <NavLink
                     to="/newHarmonium"
+                    onClick={()=>(setIsEditing(false))}
                     className={classes['link']}>
                     <svg xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -104,7 +107,10 @@ function LoggedIn() {
                     </NavLink>
                     <NavLink
                         to="/newHarmonium"
-                        onClick={() => setOpened(false)}
+                        onClick={() => (
+                            setOpened(false),
+                            setIsEditing(false)
+                        )}
                         className={classes.drawerLink}>
                         <svg xmlns="http://www.w3.org/2000/svg"
                             width="24"

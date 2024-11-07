@@ -10,7 +10,10 @@ import Info from "./Info/Info"
 
 function DetailHarmonium() {
     const { isAuth } = useAuth()
-    const { selectedHarmonium, data, setSelectedHarmonium } = useHarmonium()
+    const { selectedHarmonium, data, setSelectedHarmonium, setIsEditing } = useHarmonium()
+
+    console.log(selectedHarmonium);
+    
 
     const dataHarmonium = selectedHarmonium || {}
 
@@ -54,6 +57,7 @@ function DetailHarmonium() {
     const handleUpdate = async (event, id) => {
         event.preventDefault()
         console.log("current id:", dataHarmonium.id);
+        setIsEditing(true)
         navigate("/newHarmonium", {state: {harmoniumData: dataHarmonium}})
         
         if (!id) {
@@ -79,6 +83,13 @@ function DetailHarmonium() {
         console.log(data);
         
     }
+
+    //funkce pro kontrolu editovaných dat
+    useEffect(() => {
+        if (location.state?.data) {
+            setSelectedHarmonium(location.state.data)
+        }
+    },[location.state, setSelectedHarmonium])
 
     return (
         <div style={{ margin: "0 auto", maxWidth: "80vw", paddingTop: "30px" }}>

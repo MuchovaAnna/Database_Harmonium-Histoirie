@@ -1,7 +1,9 @@
 import { useForm } from '@mantine/form';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Grid, GridCol, ScrollArea, Title, Button, Loader } from '@mantine/core'
+import { showNotification } from '@mantine/notifications';
+import '@mantine/notifications/styles.css';
 import classes from '../NewHarmonium/New.module.scss'
 import BasicInfo from './BasicInfo/BasicInfo';
 import DetailInfo from './DetailInfo/DetailInfo';
@@ -9,12 +11,15 @@ import InternalInfo from './InternalInfo/InternalInfo';
 import GalleryUpload from './GalleryUpload/GalleryUpload';
 import { supabase } from '../../supabase/supabase-client';
 import { useAuth } from '../../context/AuthContext';
+import { useHarmonium } from '../../context/DataContext';
 
 function NewHarmonium() {
+    const navigate = useNavigate()
     const location = useLocation()
     const harmoniumData = location.state?.harmoniumData;
 
     const { isAuth } = useAuth()
+    const { isEditing } = useHarmonium()
 
     const [isLoaded, setIsLoaded] = useState(false)
     const [pictureUrls, setPictureUrls] = useState([])
@@ -96,7 +101,7 @@ function NewHarmonium() {
             setPictureUrls(urls)
         }
         setIsLoaded(true)
-        
+
     }, [harmoniumData])
 
 
@@ -119,18 +124,51 @@ function NewHarmonium() {
         console.log(data);
 
         try {
-            const { error } = await supabase
-                .from('harmoniums')
-                .insert([value])
 
-            if (error !== null) {
-                console.error('Chyba při vkládání dat:', error.message)
+            if (isEditing && harmoniumData) {
+                const { data: updateData, error } = await supabase
+                    .from("harmoniums")
+                    .update(value)
+                    .eq('id', harmoniumData.id)
+                    .select()
+                if (error) {
+                    console.error('Chyba při aktualizaci dat:', error.message);
+                } else {
+                    console.log("Data byla úspěšně aktualizována");
+                    //informace pro uživatele
+                    showNotification({
+                        title: "Aktualizace dat",
+                        message: "Data byla úspěšně aktualizována.",
+                        color: "lightGreen",
+                        position: "top-center"
+                    })
+                    navigate("/detailHarmonium", { state: { data: updateData[0] } })
+                }
+
             } else {
-                console.log("Data byla úspěšně vložena")
 
-                form.reset()
+                const { data: insertData, error } = await supabase
+                    .from('harmoniums')
+                    .insert([value])
+                    .select()
 
+                if (error !== null) {
+                    console.error('Chyba při vkládání dat:', error.message)
+                } else {
+                    console.log("Data byla úspěšně vložena")
+
+                    showNotification({
+                        title: "Uložení dat",
+                        message: "Data byla úspěšně odeslána.",
+                        color: "lightGreen",
+                        position: "top-center"
+                    })
+                    setTimeout(() => {     
+                        navigate("/detailHarmonium", { state: { data: insertData[0] } })
+                    }, 1000)
+                }
             }
+            form.reset()
         } catch (error) {
             console.error('Neočekávaná chyba', error)
         }
@@ -139,14 +177,14 @@ function NewHarmonium() {
     return (
         <>
             {isAuth
-               ? <>
+                ? <>
                     <Title
                         pt={30}
                         pb={20}
                         size={25}
                         className={classes["title"]}
                     >
-                        Vložení nového nástroje <br /> ~ <br /> Úprava informací o nástrojích
+                        {isEditing ? "Úprava informací o nástrojí" : "Vložení nového nástroje"}
                     </Title>
 
                     <ScrollArea
@@ -187,7 +225,7 @@ function NewHarmonium() {
                                 <GridCol
                                     span={{ base: 12, sm: 6, lg: 3 }}
                                 >
-                                    <GalleryUpload form={form} pictureUrls={pictureUrls} />
+                                    <GalleryUpload form={form} pictureUrls={pictureUrls} id={harmoniumData.id} />
 
                                 </GridCol>
                             </Grid>
@@ -197,7 +235,7 @@ function NewHarmonium() {
                                 <Button
                                     type='submit'
                                     className={classes["btn"]}
-                                > uložit
+                                > {isEditing ? "Uložit změny" : "Odeslat data"}
                                 </Button>
                             </div>
                         </form>

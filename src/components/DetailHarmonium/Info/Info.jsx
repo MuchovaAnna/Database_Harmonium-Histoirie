@@ -31,16 +31,16 @@ function Info({ data }) {
             <div style={{ padding: 20 }}>
                 <h2>Rozměry</h2>
                 <ul>
-                    <li>Výška: {data.size.height}</li>
-                    <li>Šířka: {data.size.width}</li>
-                    <li>Hloubka: {data.size.depth}</li>
+                    <li>Výška: {data.size?.height || 'N/A'}</li>
+                    <li>Šířka: {data.size?.width || "N/A"}</li>
+                    <li>Hloubka: {data.size?.depth || "N/A"}</li>
                 </ul>
             </div>
 
             <div style={{ padding: 20 }}>
                 <h2>Materiály</h2>
                 <ul>
-                    <li>{data.materials.join(' , ')}</li>
+                    <li> {Array.isArray(data?.materials) ? data.materials.join(', ') : "N/A"}</li>
                 </ul>
             </div>
 

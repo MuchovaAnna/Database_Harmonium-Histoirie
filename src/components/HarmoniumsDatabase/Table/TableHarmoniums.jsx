@@ -26,21 +26,26 @@ function TableDatabase({data}) {
     }
 
     const rows = data.map((element) => (
-        <Table.Tr key={element.id} onClick={() => handleRowClick(element)}>
+        <Table.Tr
+            key={element.id}
+            onClick={() => handleRowClick(element)}
+            className={classes["tableRow"]}
+        >
             <Table.Td
                 onClick={(event) => imageDisplay(event, element)}
+                className={classes["tableCell"]}
             >
                 {<IconPhoto
                     className={classes['icon']}
                 />}
             </Table.Td>
-            <Table.Td >{element.builder}</Table.Td>
-            <Table.Td>{element.type}</Table.Td>
-            <Table.Td>{element.placeOfManufacture}</Table.Td>
-            <Table.Td>{element.dating}</Table.Td>
-            <Table.Td>{element.manuals} / {element.pedal}</Table.Td>
-            <Table.Td>{element.location}</Table.Td>
-            <Table.Td>{element.inventoryId}</Table.Td>
+            <Table.Td className={classes["tableCell"]}>{element.builder}</Table.Td>
+            <Table.Td className={classes["tableCell"]}>{element.type}</Table.Td>
+            <Table.Td className={classes["tableCell"]}>{element.placeOfManufacture}</Table.Td>
+            <Table.Td className={classes["tableCell"]}>{element.dating}</Table.Td>
+            <Table.Td className={classes["tableCell"]}>{element.manuals} / {element.pedal}</Table.Td>
+            <Table.Td className={classes["tableCell"]}>{element.location}</Table.Td>
+            <Table.Td className={classes["tableCell"]}>{element.inventoryId}</Table.Td>
         </Table.Tr>
     ));
 
@@ -55,7 +60,7 @@ function TableDatabase({data}) {
                 <Table
                     stickyHeader
                     horizontalSpacing="xl"
-                    verticalSpacing="sm"
+                    verticalSpacing="xs"
                     striped
                     highlightOnHover
                 >

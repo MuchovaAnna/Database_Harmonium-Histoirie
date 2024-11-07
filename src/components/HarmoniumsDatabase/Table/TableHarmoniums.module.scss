@@ -18,3 +18,13 @@
         object-fit: contain;
     }
 }
+
+.tableRow{
+    height: 80px;
+}
+
+.tableCell{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

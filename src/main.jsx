@@ -18,17 +18,17 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
       <HarmoniumProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<App />}>
-              <Route index element={<Home />} />
-              <Route path='/harmoniums' element={<DatabaseHarmoniums />} />
-              <Route path='/builders' element={<Builders />} />
-              <Route path='/newHarmonium' element={<NewHarmonium />} />
-              <Route path='detailharmonium' element={<DetailHarmonium />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<App />}>
+                <Route index element={<Home />} />
+                <Route path='/harmoniums' element={<DatabaseHarmoniums />} />
+                <Route path='/builders' element={<Builders />} />
+                <Route path='/newHarmonium' element={<NewHarmonium />} />
+                <Route path='detailharmonium' element={<DetailHarmonium />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
       </HarmoniumProvider>
     </AuthProvider>
   </StrictMode>,
