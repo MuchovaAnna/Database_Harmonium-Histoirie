@@ -20,8 +20,8 @@ function Info({ data, handleSeachBack, handleNavigation, handleUpdate }) {
         <>
             <div className={classes["titleSection"]}>
                 <div className={classes["sectionInformation"]}>
-                    <h2 className={classes["name"]}>{data.name}</h2>
-                    <h1 className={classes["name"]}>{data.builder}</h1>
+                    <h3 className={classes["name"]}>{data.name}</h3>
+                    <h1 className={classes["name", "title"]}>{data.builder}</h1>
                     <p>Datace: {data.dating} </p>
                     <p>Typ: {data.type} </p>
                     <p>Model: {data.model} </p>
@@ -60,17 +60,17 @@ function Info({ data, handleSeachBack, handleNavigation, handleUpdate }) {
             </div>
 
             <div className={classes["section"]} >
-                <h2 className={classes["name"]}>Popis</h2>
+                <h3 className={classes["name"]}>Popis</h3>
                 <p>{data.description} </p>
             </div>
 
             <div className={classes["section"]} >
-                <h2 className={classes["name"]}>Signatura</h2>
+                <h3 className={classes["name"]}>Signatura</h3>
                 <p>{data.signMakers}</p>
             </div>
 
             <div className={classes["section"]} >
-                <h2 className={classes["name"]}>Rozměry</h2>
+                <h3 className={classes["name"]}>Rozměry</h3>
                 <ul>
                     <li>výška: {data.size?.height || 'N/A'}</li>
                     <li>šířka: {data.size?.width || "N/A"}</li>
@@ -79,14 +79,14 @@ function Info({ data, handleSeachBack, handleNavigation, handleUpdate }) {
             </div>
 
             <div className={classes["section"]} >
-                <h2 className={classes["name"]}>Materiály</h2>
+                <h3 className={classes["name"]}>Materiály</h3>
                 <ul>
                     <li> {Array.isArray(data?.materials) ? data.materials.join(', ') : "N/A"}</li>
                 </ul>
             </div>
 
             <div className={classes["section"]} >
-                <h2 className={classes["name"]}>Dispozice</h2>
+                <h3 className={classes["name"]}>Dispozice</h3>
                 {data.disposition.bas.length > 0 && (
                     <ul>Bas: {data.disposition.bas.join(', ')}</ul>
                 )}

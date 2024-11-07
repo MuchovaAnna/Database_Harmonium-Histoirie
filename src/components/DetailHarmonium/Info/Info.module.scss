@@ -16,12 +16,21 @@
     text-transform: uppercase;
 }
 
+.title{
+    font-size: 1.5rem;
+
+    @include larger-than(650px){
+        font-size: 2rem;
+    }
+
+}
+
 .section{
     padding: 20px;
 }
 
 .buttonSection{
-    width: 21%;
+    width: 30%;
     height: 10%;
     display: flex;
     justify-content: center;
@@ -29,7 +38,10 @@
     flex-wrap: wrap;
     gap: 2px;
 
-    @include larger-than(529px){
+    @include larger-than(420px){
+        width: 25%;
+    }
+    @include larger-than(528px){
         width: 15%;
     }
     @include larger-than(690px){
