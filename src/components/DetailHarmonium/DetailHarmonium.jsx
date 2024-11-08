@@ -146,8 +146,8 @@ function DetailHarmonium() {
                                 className={classes["switchButton"]}
                                 disabled={currentIndex === data.length - 1}
                             >
-                               <span className={classes["iconMargin"]}> Následující </span>
-                                {<IconArrowNarrowRight  />}
+                               <span> Následující </span>
+                                {<IconArrowNarrowRight className={classes["iconMarginLeft"]}  />}
                             </Button>
                         </div>
 
