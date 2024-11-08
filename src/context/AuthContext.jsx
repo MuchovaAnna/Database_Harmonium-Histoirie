@@ -1,15 +1,39 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase/supabase-client";
+import { showNotification } from "@mantine/notifications";
 
 const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
 
 const login = async (email, password) => {
-    return await supabase.auth.signInWithPassword({ email, password })
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    
+    if (!error) {
+        showNotification({
+            title: "PŘIHLÁŠENÍ",
+            message: "Přihlášení proběhlo úspěšně.",
+            color: "lightGreen",
+            position: "top-center"
+        })
+    } else {
+        showNotification({
+            title: "CHYBA PŘIHLÁŠENÍ",
+            message: "Zadaný e-mail nebo heslo jsou chybné.",
+            color: "red",
+            position: "top-center"
+        })
+    }
 }
 const logout = async () => {
+    showNotification({
+        title: "ODHLÁŠENÍ PROBĚHLO ÚSPĚŠNĚ",
+        message: "Byli jste úspěšně odhlášení.",
+        color: "lightGreen",
+        position: "top-center"
+    })
     return await supabase.auth.signOut()
+    
 }
 
 export const AuthProvider = ({ children }) => {
