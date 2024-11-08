@@ -60,15 +60,14 @@ function DetailHarmonium() {
 
     //načtení hodnot z LocalStorage při načtení komponenty
     useEffect(() => {
-        const savedHarmonium = localStorage.getItem("selectedHarmoniumId")
+        if (!selectedHarmonium && data.length > 0) {
+            const savedHarmonium = localStorage.getItem("selectedHarmoniumId")
 
-        if (savedHarmonium && !selectedHarmonium) {
-            //nastaví harmonium z localStorage
-            const parsedHarmonium = JSON.parse(savedHarmonium);
+            console.log(savedHarmonium);
+            const parsedHarmonium = JSON.parse(savedHarmonium)
             setSelectedHarmonium(parsedHarmonium)
         }
-
-    }, [selectedHarmonium])
+    }, [selectedHarmonium, data])
 
     const handlePrevious = () => handleNavigation(-1);
     const handleNext = () => handleNavigation(1);
