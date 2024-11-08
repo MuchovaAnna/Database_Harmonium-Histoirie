@@ -6,51 +6,56 @@ const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
 
-const login = async (email, password) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
-    
-    if (!error) {
-        showNotification({
-            title: "PŘIHLÁŠENÍ",
-            message: "Přihlášení proběhlo úspěšně.",
-            color: "lightGreen",
-            position: "top-center"
-        })
-    } else {
-        showNotification({
-            title: "CHYBA PŘIHLÁŠENÍ",
-            message: "Zadaný e-mail nebo heslo jsou chybné.",
-            color: "red",
-            position: "top-center"
-        })
-    }
-}
-const logout = async () => {
-    const { error: errorLogout } = await supabase.auth.signOut()
-    
-    if (!errorLogout) {
-        showNotification({
-            title: "ODHLÁŠENÍ PROBĚHLO ÚSPĚŠNĚ",
-            message: "Byli jste úspěšně odhlášení.",
-            color: "lightGreen",
-            position: "top-center"
-        })
-    } else {
-        console.log(errorLogout.message);
-        
-        showNotification({
-            title: "CHYBA ODHLÁŠENÍ",
-            message: "Při odhlášení došlo k chybě.",
-            color: "red",
-            position: "top-center"
-        })
-    }
-    
-}
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [isAuth, setIsAuth] = useState(false)
+
+    const login = async (email, password) => {
+        const { error } = await supabase.auth.signInWithPassword({ email, password })
+        
+        if (!error) {
+            showNotification({
+                title: "PŘIHLÁŠENÍ",
+                message: "Přihlášení proběhlo úspěšně.",
+                color: "lightGreen",
+                position: "top-center"
+            })
+            setIsAuth(true);
+            setUser(supabase.auth.user());
+        } else {
+            showNotification({
+                title: "CHYBA PŘIHLÁŠENÍ",
+                message: "Zadaný e-mail nebo heslo jsou chybné.",
+                color: "red",
+                position: "top-center"
+            })
+        }
+    }
+    const logout = async () => {
+        const { error: errorLogout } = await supabase.auth.signOut()
+        
+        if (!errorLogout) {
+            showNotification({
+                title: "ODHLÁŠENÍ PROBĚHLO ÚSPĚŠNĚ",
+                message: "Byli jste úspěšně odhlášení.",
+                color: "lightGreen",
+                position: "top-center"
+            })
+            setIsAuth(false);
+            setUser(null);
+        } else {
+            console.log(errorLogout.message);
+            
+            showNotification({
+                title: "CHYBA ODHLÁŠENÍ",
+                message: "Při odhlášení došlo k chybě.",
+                color: "red",
+                position: "top-center"
+            })
+        }
+        
+    }
 
     useEffect(
         () => {
@@ -66,7 +71,7 @@ export const AuthProvider = ({ children }) => {
             })
 
             return () => {
-                authListener.subscription.unsubscribe()
+                authListener?.subscription.unsubscribe()
             }
         },
         []
