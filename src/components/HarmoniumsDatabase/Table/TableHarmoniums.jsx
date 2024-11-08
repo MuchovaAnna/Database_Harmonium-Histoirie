@@ -5,9 +5,9 @@ import { IconPhoto } from '@tabler/icons-react';
 import classes from '../Table/TableHarmoniums.module.scss'
 import { useHarmonium } from '../../../context/DataContext';
 
-function TableDatabase({data}) {
+function TableDatabase({ data }) {
 
-    const {setSelectedHarmonium} = useHarmonium()
+    const { setSelectedHarmonium } = useHarmonium()
     const navigate = useNavigate()
 
     const [opened, setOpened] = useState(false)
@@ -22,7 +22,7 @@ function TableDatabase({data}) {
     const handleRowClick = (element) => {
         setSelectedHarmonium(element)
         localStorage.setItem("selectedHarmoniumId", JSON.stringify(element))
-        navigate('/detailHarmonium', {state:{selectedHarmonium: element}})
+        navigate('/detailHarmonium', { state: { selectedHarmonium: element } })
 
     }
 
@@ -45,7 +45,9 @@ function TableDatabase({data}) {
             <Table.Td className={classes["tableCell"]}>{element.placeOfManufacture}</Table.Td>
             <Table.Td className={classes["tableCell"]}>{element.dating}</Table.Td>
             <Table.Td className={classes["tableCell"]}>{element.manuals} / {element.pedal}</Table.Td>
-            <Table.Td className={classes["tableCell"]}>{element.location}</Table.Td>
+            <Table.Td className={classes["tableCell"]}>
+                {element.location.length > 20 ? `${element.location.slice(0,20)} ...` : element.location}
+            </Table.Td>
             <Table.Td className={classes["tableCell"]}>{element.inventoryId}</Table.Td>
         </Table.Tr>
     ));
