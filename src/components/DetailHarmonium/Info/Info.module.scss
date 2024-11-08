@@ -8,8 +8,10 @@
     box-shadow: 0px 3px 5px 0 $black;
     width: 90%;
 
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    // justify-content: space-between;
 }
 
 .name{
@@ -30,44 +32,10 @@
 }
 
 .buttonSection{
-    width: 30%;
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    flex-wrap: wrap;
-    gap: 2px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 
-    @include larger-than(420px){
-        width: 25%;
-    }
-    @include larger-than(528px){
-        width: 15%;
-    }
-    @include larger-than(690px){
-        width: 12%;
-    }
-    @include larger-than(834px){
-        width: 10%;
-    }
-    @include larger-than(982px){
-        width: 8%;
-    }
-    @include larger-than(992px){
-     width: 15%;
-    }
-    @include larger-than(1025px){
-     width: 12%;
-    }
-    @include larger-than(1248px){
-     width: 9%;
-    }
-    @include larger-than(1701px){
-     width: 8%;
-    }
-    @include larger-than(1803px){
-     width: 6%;
-    }
 }
 
 .btn{
