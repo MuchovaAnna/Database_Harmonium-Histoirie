@@ -71,14 +71,14 @@ function TableDatabase({ data }) {
                         <Table.Tr
                             className={classes["tableHeader"]}
                         >
-                            <Table.Th></Table.Th>
-                            <Table.Th>Stavitel</Table.Th>
-                            <Table.Th>Typ</Table.Th>
-                            <Table.Th>Země původu</Table.Th>
-                            <Table.Th>Datace</Table.Th>
-                            <Table.Th>Počet manuálu / pedal</Table.Th>
-                            <Table.Th>Umístění</Table.Th>
-                            <Table.Th>ID</Table.Th>
+                            <Table.Th ></Table.Th>
+                            <Table.Th className={classes["tableCell"]}>Stavitel</Table.Th>
+                            <Table.Th className={classes["tableCell"]}>Typ</Table.Th>
+                            <Table.Th className={classes["tableCell"]}>Země původu</Table.Th>
+                            <Table.Th className={classes["tableCell"]}>Datace</Table.Th>
+                            <Table.Th className={classes["columnTitle"]}>~ Počet manuálu<hr/> ~ Pedal</Table.Th>
+                            <Table.Th className={classes["columnTitle"]}>Umístění</Table.Th>
+                            <Table.Th >ID</Table.Th>
                         </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>

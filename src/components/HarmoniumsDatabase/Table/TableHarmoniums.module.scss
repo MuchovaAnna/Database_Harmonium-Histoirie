@@ -33,13 +33,20 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    text-align: center;
 }
 
 .tableHeader{
     background: $secondary-color-4;
-    line-height: 0.8; 
+    line-height: 1.2; 
 
     &:hover{
         background-color: $secondary-color-4;
     }
+}
+
+.columnTitle {
+    padding: 8px 0;
+    text-align: center;
+    white-space: nowrap;
 }
