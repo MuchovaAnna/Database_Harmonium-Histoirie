@@ -26,13 +26,23 @@ const login = async (email, password) => {
     }
 }
 const logout = async () => {
-    showNotification({
-        title: "ODHLÁŠENÍ PROBĚHLO ÚSPĚŠNĚ",
-        message: "Byli jste úspěšně odhlášení.",
-        color: "lightGreen",
-        position: "top-center"
-    })
-    return await supabase.auth.signOut()
+    const { error: errorLogout } = await supabase.auth.signOut()
+    
+    if (!errorLogout) {
+        showNotification({
+            title: "ODHLÁŠENÍ PROBĚHLO ÚSPĚŠNĚ",
+            message: "Byli jste úspěšně odhlášení.",
+            color: "lightGreen",
+            position: "top-center"
+        })
+    } else {
+        showNotification({
+            title: "CHYBA ODHLÁŠENÍ",
+            message: "Při odhlášení došlo k chybě.",
+            color: "red",
+            position: "top-center"
+        })
+    }
     
 }
 
