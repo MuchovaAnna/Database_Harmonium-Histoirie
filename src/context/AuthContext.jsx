@@ -36,6 +36,8 @@ const logout = async () => {
             position: "top-center"
         })
     } else {
+        console.log(errorLogout.message);
+        
         showNotification({
             title: "CHYBA ODHLÁŠENÍ",
             message: "Při odhlášení došlo k chybě.",
