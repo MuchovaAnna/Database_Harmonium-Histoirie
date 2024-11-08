@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import { useHarmonium } from "../../context/DataContext"
-import { Grid, GridCol, Button, ScrollArea } from "@mantine/core"
+import { Grid, GridCol, Button, ScrollArea, Loader } from "@mantine/core"
 import { supabase } from "../../supabase/supabase-client"
 import { IconEdit, IconArrowNarrowLeft, IconArrowNarrowRight } from "@tabler/icons-react"
 import Gallery from "./Gallery/Gallery"
@@ -48,26 +48,23 @@ function DetailHarmonium() {
         if (newIndex >= 0 && newIndex < data.length) {
             const newHarmonium = data[newIndex]
 
-            console.log(newHarmonium);
-
-            localStorage.setItem("selectedHarmoniumId", JSON.stringify(newHarmonium))
-
+            // localStorage.setItem("selectedHarmoniumId", JSON.stringify(newHarmonium))
             setSelectedHarmonium(newHarmonium);
 
             setTimeout(scrollToTop, 100);
         }
     };
 
-    //načtení hodnot z LocalStorage při načtení komponenty
-    useEffect(() => {
-        if (!selectedHarmonium && data.length > 0) {
-            const savedHarmonium = localStorage.getItem("selectedHarmoniumId")
+    // //načtení hodnot z LocalStorage při načtení komponenty
+    // useEffect(() => {
+    //     if (!selectedHarmonium && data.length > 0) {
+    //         const savedHarmonium = localStorage.getItem("selectedHarmoniumId")
 
-            console.log(savedHarmonium);
-            const parsedHarmonium = JSON.parse(savedHarmonium)
-            setSelectedHarmonium(parsedHarmonium)
-        }
-    }, [selectedHarmonium, data])
+    //         console.log(savedHarmonium);
+    //         const parsedHarmonium = JSON.parse(savedHarmonium)
+    //         setSelectedHarmonium(parsedHarmonium)
+    //     }
+    // }, [selectedHarmonium, data])
 
     const handlePrevious = () => handleNavigation(-1);
     const handleNext = () => handleNavigation(1);
@@ -112,7 +109,11 @@ function DetailHarmonium() {
     }, [location.state, setSelectedHarmonium])
 
     if (!dataHarmonium || !data.length) {
-        return <h1>Načítám data</h1>
+        return(
+        <Loader
+            color="lightGreen"
+            />
+        )
     }
 
     return (

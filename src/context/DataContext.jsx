@@ -18,6 +18,7 @@ export const HarmoniumProvider = ({ children }) => {
 
     const [loading, setLoading] = useState(true)
 
+    //načtení dat z databaze
     const fetchData = async () => {
         setLoading(true)
         const { data: dataHarmonium, error } = await supabase
@@ -36,11 +37,29 @@ export const HarmoniumProvider = ({ children }) => {
         fetchData()
     }, [])
 
+    //načtení hodnot z LocalStorage při načtení komponenty
     useEffect(() => {
-        if (data.length > 0) {
-            setSelectedHarmonium(selectedHarmonium)
+        if (!selectedHarmonium && data.length > 0) {
+            const savedHarmonium = localStorage.getItem("selectedHarmoniumId")
+
+            console.log(savedHarmonium);
+            const parsedHarmonium = JSON.parse(savedHarmonium)
+            setSelectedHarmonium(parsedHarmonium)
         }
-    }, [data])
+    }, [selectedHarmonium, data])
+
+    useEffect(() => {
+        if (selectedHarmonium) {
+            localStorage.setItem("selectedHarmoniumId", JSON.stringify(selectedHarmonium))
+
+        }
+    }, [selectedHarmonium])
+
+    // useEffect(() => {
+    //     if (data.length > 0) {
+    //         setSelectedHarmonium(selectedHarmonium)
+    //     }
+    // }, [data])
 
     //FUNKCE PRO UPLOAD SOUBORU
     const uploadFile = async (selectedFiles) => {
@@ -168,7 +187,7 @@ export const HarmoniumProvider = ({ children }) => {
             .storage
             .from("harmonia")
             .remove([relativePath])
-        
+
         if (deleteError) {
             console.log("Chyba při mazání souboru:", deleteError.message);
         }
@@ -210,7 +229,8 @@ export const HarmoniumProvider = ({ children }) => {
                         left: "50%",
                         transform: "translate(-50%, -50%)",
                         width: "100vw",
-                        height: "100vh", }}
+                        height: "100vh",
+                    }}
                 />
                 : children}
         </HarmoniumContext.Provider>
