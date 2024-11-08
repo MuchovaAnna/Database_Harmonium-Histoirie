@@ -2,6 +2,7 @@ import { Button } from "@mantine/core";
 import { IconColumns, IconArrowLeft, IconArrowRight, IconEdit } from "@tabler/icons-react";
 import { useHarmonium } from "../../../context/DataContext";
 import classes from "../Info/Info.module.scss"
+import { root } from "postcss";
 
 function Info({ data, handleSeachBack, handleNavigation, handleUpdate }) {
 

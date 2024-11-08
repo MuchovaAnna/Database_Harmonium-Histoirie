@@ -39,20 +39,20 @@
 }
 
 .btn{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background: $primary-color-10;
     margin: 2px;
     padding: 2px;
 
-    &:hover{
+    &:active{
         background: $secondary-color-6;
     }
 
     &:nth-child(4){
         background: $secondary-color-6;
 
-        &:hover{
+        &:active{
             background: $primary-color-3;
         }
     }
@@ -61,14 +61,33 @@
         color: gray;
         background: lightgrey;
     }
+
+    @include larger-than(400px){
+        &:hover{
+            background: $secondary-color-6;
+        }
+
+        :nth-child(4){
+            background: $secondary-color-6;
+
+            &:hover{
+                background:$primary-color-3;
+            }
+        }
+    }
 }
 
 .icon{
+    color: white;
 
-    &:hover{
+    &:active{
         color: $secondary-color-10;
     }
     &:nth-child(4){
         color: $primary-color-10;
+    }
+
+    & :actiive{
+        color: $white;
     }
 }
