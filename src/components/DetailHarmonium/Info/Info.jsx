@@ -2,15 +2,14 @@ import { Button } from "@mantine/core";
 import { IconColumns, IconArrowLeft, IconArrowRight, IconEdit } from "@tabler/icons-react";
 import { useHarmonium } from "../../../context/DataContext";
 import classes from "../Info/Info.module.scss"
-import { root } from "postcss";
 
 function Info({ data, handleSeachBack, handleNavigation, handleUpdate }) {
 
-    if (!data) {
-        return <p>Nujsou k dispozici žádná data.</p>;
-    }
-
     const { data: harmoniumData, selectedHarmonium } = useHarmonium()
+    
+    if (!data || !selectedHarmonium) {
+        return <p>Nejsou k dispozici žádná data.</p>;
+    }
     
     const currentIndex = harmoniumData.findIndex(item => item.id === selectedHarmonium.id)
 

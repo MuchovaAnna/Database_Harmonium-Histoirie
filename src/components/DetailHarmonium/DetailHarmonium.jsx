@@ -11,12 +11,18 @@ import classes from "../DetailHarmonium/DetailHarmonium.module.scss"
 
 function DetailHarmonium() {
     const { isAuth } = useAuth()
-    const { selectedHarmonium, data, setSelectedHarmonium, setIsEditing, fetchData} = useHarmonium()
+    const { selectedHarmonium, data, setSelectedHarmonium, setIsEditing, fetchData } = useHarmonium()
 
     const dataHarmonium = selectedHarmonium || {}
 
+    console.log(dataHarmonium);
+
+
     const navigate = useNavigate()
     const location = useLocation()
+
+    // console.log(location.state);
+    // console.log(dataHarmonium);
 
     //návrat na vyhledávání - tabulka / miniatury
     const handleSeachBack = async () => {
@@ -40,10 +46,29 @@ function DetailHarmonium() {
     const handleNavigation = (direction) => {
         const newIndex = currentIndex + direction;
         if (newIndex >= 0 && newIndex < data.length) {
-            setSelectedHarmonium(data[newIndex]);
+            const newHarmonium = data[newIndex]
+
+            console.log(newHarmonium);
+
+            localStorage.setItem("selectedHarmoniumId", JSON.stringify(newHarmonium))
+
+            setSelectedHarmonium(newHarmonium);
+
             setTimeout(scrollToTop, 100);
         }
     };
+
+    //načtení hodnot z LocalStorage při načtení komponenty
+    useEffect(() => {
+        const savedHarmonium = localStorage.getItem("selectedHarmoniumId")
+
+        if (savedHarmonium && !selectedHarmonium) {
+            //nastaví harmonium z localStorage
+            const parsedHarmonium = JSON.parse(savedHarmonium);
+            setSelectedHarmonium(parsedHarmonium)
+        }
+
+    }, [selectedHarmonium])
 
     const handlePrevious = () => handleNavigation(-1);
     const handleNext = () => handleNavigation(1);
@@ -87,6 +112,10 @@ function DetailHarmonium() {
         }
     }, [location.state, setSelectedHarmonium])
 
+    if (!dataHarmonium || !data.length) {
+        return <h1>Načítám data</h1>
+    }
+
     return (
         <div className={classes["detailContainer"]}>
             {isAuth
@@ -122,7 +151,7 @@ function DetailHarmonium() {
                             <Button
                                 onClick={(event) => handleUpdate(event, dataHarmonium.id)}
                                 className={classes["editedButton"]}
-                            >{<IconEdit  className={classes["iconMargin"]}/>}
+                            >{<IconEdit className={classes["iconMargin"]} />}
                                 Upravit
                             </Button>
                         </div>
@@ -133,21 +162,21 @@ function DetailHarmonium() {
                                 className={classes["switchButton"]}
                                 disabled={currentIndex === 0}
                             >
-                                {<IconArrowNarrowLeft  className={classes["iconMargin"]}/>}
-                                Předchozí
+                                <span> {<IconArrowNarrowLeft className={classes["iconMargin"]} />}</span>
+                                <span>Předchozí</span>
                             </Button>
                             <Button
                                 onClick={handleSeachBack}
                                 className={classes["switchButton"]}
-                            > Zpět <br/>na přehled
+                            > Zpět na přehled
                             </Button>
                             <Button
                                 onClick={handleNext}
                                 className={classes["switchButton"]}
                                 disabled={currentIndex === data.length - 1}
                             >
-                               <span> Následující </span>
-                                {<IconArrowNarrowRight className={classes["iconMarginLeft"]}  />}
+                                <span> Následující </span>
+                                <span>{<IconArrowNarrowRight className={classes["iconMarginLeft"]} />}</span>
                             </Button>
                         </div>
 

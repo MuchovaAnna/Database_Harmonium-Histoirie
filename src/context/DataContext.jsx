@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase/supabase-client";
 import { showNotification } from "@mantine/notifications";
-import { IconSquareRoundedChevronsUpFilled } from "@tabler/icons-react";
+import { Loader } from "@mantine/core";
 
 const HarmoniumContext = createContext({})
 
@@ -10,27 +10,37 @@ export const useHarmonium = () => useContext(HarmoniumContext)
 export const HarmoniumProvider = ({ children }) => {
     const [data, setData] = useState([])
 
-    const [selectedHarmonium, setSelectedHarmonium] = useState(data)
+    const [selectedHarmonium, setSelectedHarmonium] = useState(null)
     const [lastTab, setLastTab] = useState('columns')
 
     const [isEditing, setIsEditing] = useState(false)
     const [initialData, setInitialData] = useState(null)
 
+    const [loading, setLoading] = useState(true)
+
     const fetchData = async () => {
+        setLoading(true)
         const { data: dataHarmonium, error } = await supabase
             .from("harmoniums")
             .select()
 
         if (error !== null) {
             console.log(error.message);
-            return
+        } else {
+            setData(dataHarmonium)
         }
-
-        setData(dataHarmonium)
+        setLoading(false)
     }
+
     useEffect(() => {
         fetchData()
     }, [])
+
+    useEffect(() => {
+        if (data.length > 0) {
+            setSelectedHarmonium(selectedHarmonium)
+        }
+    }, [data])
 
     //FUNKCE PRO UPLOAD SOUBORU
     const uploadFile = async (selectedFiles) => {
@@ -187,7 +197,22 @@ export const HarmoniumProvider = ({ children }) => {
             removeFile,
             fetchData
         }}>
-            {data ? children : <p>Loading...</p>}
+            {loading
+                ? <Loader
+                    color="lightGreen"
+                    type="dots"
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        position: "fixed",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        width: "100vw",
+                        height: "100vh", }}
+                />
+                : children}
         </HarmoniumContext.Provider>
     )
 }

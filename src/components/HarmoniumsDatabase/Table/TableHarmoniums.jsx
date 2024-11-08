@@ -21,7 +21,8 @@ function TableDatabase({data}) {
 
     const handleRowClick = (element) => {
         setSelectedHarmonium(element)
-        navigate('/detailHarmonium')
+        localStorage.setItem("selectedHarmoniumId", JSON.stringify(element))
+        navigate('/detailHarmonium', {state:{selectedHarmonium: element}})
 
     }
 
