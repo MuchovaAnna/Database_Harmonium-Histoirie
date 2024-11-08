@@ -53,6 +53,7 @@ function LoggedIn() {
             </Group>
 
             <Burger
+                color='brown'
                 className={classes['burger']}
                 opened={opened ? true : undefined}
                 onClick={() => setOpened(!opened)}

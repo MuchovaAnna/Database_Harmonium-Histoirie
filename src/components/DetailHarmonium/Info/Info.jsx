@@ -88,16 +88,16 @@ function Info({ data, handleSeachBack, handleNavigation, handleUpdate }) {
 
             <div className={classes["section"]} >
                 <h3 className={classes["name"]}>Dispozice</h3>
-                {data.disposition.bas.length > 0 && (
+                {data?.disposition?.bas?.length > 0 && (
                     <ul>Bas: {data.disposition.bas.join(', ')}</ul>
                 )}
-                {data.disposition.treble.length > 0 && (
+                {data?.disposition?.treble?.length > 0 && (
                     <ul>Diskant: {data.disposition.treble.join(', ')}</ul>
                 )}
-                {data.disposition.pedal.length > 0 && (
+                {data?.disposition?.pedal?.length > 0 && (
                     <ul>Pedal: {data.disposition.pedal.join(', ')}</ul>
                 )}
-                {data.disposition.couplings.length > 0 && (
+                {data?.disposition?.couplings?.length > 0 && (
                     <ul>Spojky: {data.disposition.couplings.join(', ')}</ul>
                 )}
             </div>

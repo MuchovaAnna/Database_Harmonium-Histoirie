@@ -45,15 +45,22 @@
     margin: 2px;
     padding: 2px;
 
-    &:active{
-        background: $secondary-color-6;
+    &:hover{
+        background: $primary-color-5;
+        border: 1px solid $primary-color-10;
     }
 
     &:nth-child(4){
         background: $secondary-color-6;
 
-        &:active{
-            background: $primary-color-3;
+        &:hover{
+            background: $secondary-color-10;
+        }
+    }
+
+    @media(pointer: coarse){
+        &:hover{
+            background: $primary-color-10;
         }
     }
 
@@ -62,22 +69,9 @@
         background: lightgrey;
     }
 
-    @include larger-than(400px){
-        &:hover{
-            background: $secondary-color-6;
-        }
-
-        :nth-child(4){
-            background: $secondary-color-6;
-
-            &:hover{
-                background:$primary-color-3;
-            }
-        }
-    }
 }
 
-.icon{
+.icon {
     color: white;
 
     &:active{
@@ -85,9 +79,5 @@
     }
     &:nth-child(4){
         color: $primary-color-10;
-    }
-
-    & :actiive{
-        color: $white;
     }
 }
