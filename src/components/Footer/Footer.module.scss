@@ -1,0 +1,42 @@
+@use "../../variables" as *;
+
+
+.footerContainer{
+    height: 5vh;
+    background: linear-gradient(321deg, $secondary-color-3 0%, $secondary-color-6 53%, $secondary-color-8 100%);
+    box-shadow: 0 -3px 10px 1px black ;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footerCopy {
+    font-size: 0.8rem;
+    color: $white;
+    font-weight: 400;
+   margin-left: 5%;
+}
+
+.contactContainer {
+    margin-right: 10%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.titleContact {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.infoText {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.iconFooter {
+    width: 15px;
+}

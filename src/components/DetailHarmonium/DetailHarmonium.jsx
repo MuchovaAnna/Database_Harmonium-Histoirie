@@ -92,7 +92,7 @@ function DetailHarmonium() {
             {isAuth
                 ? <>
                     <ScrollArea
-                        h={"85vh"}
+                        h={"80vh"}
                         scrollbars="y"
                         viewportRef={viewport}
                     >

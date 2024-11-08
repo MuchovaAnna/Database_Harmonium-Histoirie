@@ -199,7 +199,7 @@ function NewHarmonium() {
                     </Title>
 
                     <ScrollArea
-                        h={"76vh"}
+                        h={"73vh"}
                         scrollbars="y"
                         scrollbarSize={5}
                     >

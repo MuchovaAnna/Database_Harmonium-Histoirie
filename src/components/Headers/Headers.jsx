@@ -8,7 +8,7 @@ import { useAuth } from '../../context/AuthContext'
 
 export function Header() {
 
-    const {isAuth } = useAuth()
+    const { isAuth } = useAuth()
     const navigate = useNavigate()
 
     return (

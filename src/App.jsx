@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom'
 import './App.scss'
 
 import { Header } from './components/Headers/Headers';
+import Footer from './components/Footer/Footer';
 import { Notifications } from '@mantine/notifications';
 
 const theme = createTheme({
@@ -22,7 +23,7 @@ const theme = createTheme({
       "#9d766a",
       "#896459",
       "#7b594e",
-       "#6d4b4" 
+      "#6d4b4"
     ],
     // or replace default theme color
     lightGreen: [
@@ -50,12 +51,14 @@ function App() {
   return (
     <MantineProvider
       theme={theme}
-    >
-      <Notifications/>
-      <Header />
-      <main className={"container"}>
-        <Outlet />
-      </main>
+    ><div className={"bodyContainer"}>
+        <Notifications />
+        <Header />
+        <main className={"container"}>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </MantineProvider>
   )
 }
