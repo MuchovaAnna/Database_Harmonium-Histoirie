@@ -34,16 +34,12 @@ function DatabaseHarmoniums() {
         currentPage * recordsPerPage
     )
 
+    //FILTERS
     //funkce pro otevření modalního okna
     const [opened, setOpened] = useState(false)
 
     const openModal = () => {
         setOpened(true)
-    }
-
-    const handleTabClick = (event) => {
-        event.preventDefault()
-        openModal()
     }
 
     //funkce pro zavření modálního okna
@@ -94,7 +90,7 @@ function DatabaseHarmoniums() {
                                             className={classes["iconStyle"]}
                                         />
                                     }
-                                    onClick={handleTabClick}
+                                    onClick={openModal}
                                 >
                                     Filtr
                                 </Tabs.Tab>
