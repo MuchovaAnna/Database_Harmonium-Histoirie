@@ -68,7 +68,7 @@ function DatabaseHarmoniums() {
                             align={'center'}
                             justify={'space-between'}
                             mt={20}
-                            mb={20}
+                            mb={5}
                         >
                             <div className={classes["selectSection"]}>
                                 <Select

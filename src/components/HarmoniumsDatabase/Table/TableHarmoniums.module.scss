@@ -50,3 +50,14 @@
     text-align: center;
     white-space: nowrap;
 }
+
+.iconContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sortIcon{
+    margin-left: 10px;
+    width: 20px;
+}

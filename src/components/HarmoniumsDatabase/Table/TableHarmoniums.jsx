@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Table, ScrollArea, Modal } from '@mantine/core'
-import { IconPhoto } from '@tabler/icons-react';
+import { IconPhoto, IconSortAscendingLetters, IconSortDescendingLetters, IconSortAscendingNumbers, IconSortDescendingNumbers } from '@tabler/icons-react';
 import classes from '../Table/TableHarmoniums.module.scss'
 import { useHarmonium } from '../../../context/DataContext';
 
 function TableDatabase({ data }) {
 
-    const { setSelectedHarmonium } = useHarmonium()
+    const {data: dataSort, setData, setSelectedHarmonium, sortOrder, sortData } = useHarmonium()
     const navigate = useNavigate()
+
+    console.log(dataSort);
+
 
     const [opened, setOpened] = useState(false)
     const [currentImage, setCurrentImage] = useState('')
@@ -25,6 +28,11 @@ function TableDatabase({ data }) {
         navigate('/detailHarmonium', { state: { selectedHarmonium: element } })
 
     }
+
+    useEffect(() => {
+        const randomData = dataSort.sort(() => 0.5 - Math.random())
+        setData(randomData)
+    }, [])
 
     const rows = data.map((element) => (
         <Table.Tr
@@ -46,7 +54,7 @@ function TableDatabase({ data }) {
             <Table.Td className={classes["tableCell"]}>{element.dating}</Table.Td>
             <Table.Td className={classes["tableCell"]}>{element.manuals} / {element.pedal}</Table.Td>
             <Table.Td className={classes["tableCell"]}>
-                {element.location.length > 20 ? `${element.location.slice(0,20)} ...` : element.location}
+                {element.location.length > 20 ? `${element.location.slice(0, 20)} ...` : element.location}
             </Table.Td>
             <Table.Td className={classes["tableCell"]}>{element.inventoryId}</Table.Td>
         </Table.Tr>
@@ -72,13 +80,70 @@ function TableDatabase({ data }) {
                             className={classes["tableHeader"]}
                         >
                             <Table.Th ></Table.Th>
-                            <Table.Th className={classes["tableCell"]}>Stavitel</Table.Th>
-                            <Table.Th className={classes["tableCell"]}>Typ</Table.Th>
-                            <Table.Th className={classes["tableCell"]}>Země původu</Table.Th>
-                            <Table.Th className={classes["tableCell"]}>Datace</Table.Th>
-                            <Table.Th className={classes["columnTitle"]}>~ Počet manuálu<hr/> ~ Pedal</Table.Th>
-                            <Table.Th className={classes["columnTitle"]}>Umístění</Table.Th>
-                            <Table.Th >ID</Table.Th>
+                            <Table.Th
+                                className={classes["tableCell"]}
+                                onClick={() => sortData("builder")}
+                            ><div className={classes["iconContainer"]}>
+                                    <span> Stavitel </span>
+                                    <div>{sortOrder === "asc" ? (
+                                        <IconSortAscendingLetters
+                                            className={classes['sortIcon']}
+                                        />
+                                    ) : (
+                                        <IconSortDescendingLetters
+                                            className={classes['sortIcon']}
+                                        />
+                                    )}
+                                    </div>
+                                </div>
+                            </Table.Th>
+                            <Table.Th className={classes["tableCell"]}>
+                                Typ
+                            </Table.Th>
+                            <Table.Th className={classes["tableCell"]}>
+                                Země původu
+                            </Table.Th>
+                            <Table.Th
+                                className={classes["tableCell"]}
+                                onClick={() => sortData("dating")}
+                            >
+                                <div className={classes["iconContainer"]}>
+                                    <span> Datace </span>
+                                    <div>{sortOrder === "asc" ? (
+                                        <IconSortAscendingNumbers
+                                            className={classes['sortIcon']}
+                                        />
+                                    ) : (
+                                        <IconSortDescendingNumbers
+                                            className={classes['sortIcon']}
+                                        />
+                                    )}
+                                    </div>
+                                </div>
+                            </Table.Th>
+                            <Table.Th className={classes["columnTitle"]}>
+                                ~ Počet manuálu<hr /> ~ Pedal
+                            </Table.Th>
+                            <Table.Th className={classes["columnTitle"]}>
+                                Umístění
+                            </Table.Th>
+                            <Table.Th
+                                onClick={() => sortData("id")}
+                            >
+                                <div className={classes["iconContainer"]}>
+                                    <span> ID </span>
+                                    <div>{sortOrder === "asc" ? (
+                                        <IconSortAscendingNumbers
+                                            className={classes['sortIcon']}
+                                        />
+                                    ) : (
+                                        <IconSortDescendingNumbers
+                                            className={classes['sortIcon']}
+                                        />
+                                    )}
+                                    </div>
+                                </div>
+                            </Table.Th>
                         </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>

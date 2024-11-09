@@ -200,6 +200,35 @@ export const HarmoniumProvider = ({ children }) => {
         });
     }
 
+    //FUNKCE PRO SORT DAT
+    const [sortOrder, setSortOrder] = useState("asc")
+
+    const sortData = (key) => {
+        if (!data.every((item) => item.hasOwnProperty(key))) {
+            console.error(`Key '${key}' not found in data`);
+            return;
+        }
+
+        const order = sortOrder === "asc" ? "desc" : "asc"
+        setSortOrder(order)
+
+        const sortedData = [...data].sort((a, b) => {
+            const valueA = a[key]
+            const valueB = b[key]
+
+            if (typeof valueA === "string") {
+                return order === "asc"
+                    ? valueA.localeCompare(valueB)
+                    : valueB.localeCompare(valueA)
+            } else {
+                return order === "asc"
+                    ? valueA - valueB
+                    : valueB - valueA
+            }
+        })
+        setData(sortedData)
+    }
+
     return (
         <HarmoniumContext.Provider value={{
             data,
@@ -214,7 +243,9 @@ export const HarmoniumProvider = ({ children }) => {
             setInitialData,
             uploadFile,
             removeFile,
-            fetchData
+            fetchData,
+            sortOrder,
+            sortData
         }}>
             {loading
                 ? <Loader

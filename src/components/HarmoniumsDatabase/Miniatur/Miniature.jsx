@@ -1,20 +1,79 @@
 import { useNavigate } from 'react-router-dom';
 import { Card, Image, Text, Button, Group, Grid, ScrollArea } from '@mantine/core';
+import { IconSortAscendingLetters, IconSortAscendingNumbers, IconSortDescendingLetters, IconSortDescendingNumbers } from '@tabler/icons-react';
 import { useHarmonium } from '../../../context/DataContext';
 import classes from '../Miniatur/Miniatur.module.scss'
 
 function MiniaturCard({ data }) {
 
-    const { setSelectedHarmonium } = useHarmonium()
+    const { data: dataSort, setData, setSelectedHarmonium, sortOrder, sortData } = useHarmonium()
     const navigate = useNavigate()
 
     const handleDetailClick = (element) => {
         setSelectedHarmonium(element)
-        navigate('/detailharmonium')
+        localStorage.setItem("selectedHarmoniumId", JSON.stringify(element))
+        navigate('/detailHarmonium', { state: { selectedHarmonium: element } })
     }
 
     return (
         <>
+            <div>
+                <button
+                    className={classes["sortButton"]}
+                    onClick={() => sortData("builder")}
+                >
+                    <div className={classes["iconContainer"]}>
+                        <span> Stavitel </span>
+                        <div>{sortOrder === "asc" ? (
+                            <IconSortAscendingLetters
+                                className={classes['sortIcon']}
+                            />
+                        ) : (
+                            <IconSortDescendingLetters
+                                className={classes['sortIcon']}
+                            />
+                        )}
+                        </div>
+                    </div>
+                </button>
+                <button
+                    className={classes["sortButton"]}
+                    onClick={() => sortData("dating")}
+                >
+                    <div className={classes["iconContainer"]}>
+                        <span> Datace </span>
+                        <div>{sortOrder === "asc" ? (
+                            <IconSortAscendingNumbers
+                                className={classes['sortIcon']}
+                            />
+                        ) : (
+                            <IconSortDescendingNumbers
+                                className={classes['sortIcon']}
+                            />
+                        )}
+                        </div>
+                    </div>
+                </button>
+                <button
+                    className={classes["sortButton"]}
+                    onClick={() => sortData("id")}
+                >
+                    <div className={classes["iconContainer"]}>
+                        <span> ID </span>
+                        <div>{sortOrder === "asc" ? (
+                            <IconSortAscendingNumbers
+                                className={classes['sortIcon']}
+                            />
+                        ) : (
+                            <IconSortDescendingNumbers
+                                className={classes['sortIcon']}
+                            />
+                        )}
+                        </div>
+                    </div>
+                </button>
+            </div>
+
             <ScrollArea
                 scrollbarSize={6}
                 scrollHideDelay={500}
