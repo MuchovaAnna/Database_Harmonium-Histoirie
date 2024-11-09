@@ -20,6 +20,20 @@
     }
 }
 
+.tabsContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftSection{
+    display: flex;
+}
+
+.tabsBackground{
+    background-color: $secondary-color-7;
+    color: $white;
+}
+
 .selectSection{
     display: flex;
     gap: 10px;

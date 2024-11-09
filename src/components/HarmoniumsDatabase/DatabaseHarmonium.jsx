@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
-import { Flex, Pagination, Select, Tabs, Text } from '@mantine/core'
-import { IconColumns, IconLayoutGrid } from '@tabler/icons-react';
+import { Flex, Modal, Pagination, Select, Tabs, TabsList, Text } from '@mantine/core'
+import { IconColumns, IconLayoutGrid, IconFilter } from '@tabler/icons-react';
 import classes from '../HarmoniumsDatabase/DatabaseHarmonium.module.scss'
 import TableDatabase from './Table/TableHarmoniums';
 import MiniaturCard from './Miniatur/Miniature';
@@ -34,6 +34,23 @@ function DatabaseHarmoniums() {
         currentPage * recordsPerPage
     )
 
+    //funkce pro otevření modalního okna
+    const [opened, setOpened] = useState(false)
+
+    const openModal = () => {
+        setOpened(true)
+    }
+
+    const handleTabClick = (event) => {
+        event.preventDefault()
+        openModal()
+    }
+
+    //funkce pro zavření modálního okna
+    const closeModal = () => {
+        setOpened(false)
+    }
+
     return (
         <>
             {isAuth
@@ -47,21 +64,55 @@ function DatabaseHarmoniums() {
                         }}
                         className={classes["tabs"]}
                     >
-                        <Tabs.List >
-                            <Tabs.Tab
-                                value="columns"
-                                leftSection={<IconColumns className={classes["iconStyle"]} />}
-                            >
-                                Tabulka
-                            </Tabs.Tab>
-                            <Tabs.Tab
-                                value="miniatur"
-                                leftSection={<IconLayoutGrid className={classes["iconStyle"]} />}
-                            >
-                                Miniatury
-                            </Tabs.Tab>
+                        <Tabs.List
+                        className={classes["tabsContainer"]}
+                        >
+                            <div className={classes["leftSection"]}>
+                                <Tabs.Tab
+                                    value="columns"
+                                    leftSection={
+                                        <IconColumns
+                                            className={classes["iconStyle"]} />}
+                                >
+                                    Tabulka
+                                </Tabs.Tab>
+                                <Tabs.Tab
+                                    value="miniatur"
+                                    leftSection={
+                                        <IconLayoutGrid
+                                            className={classes["iconStyle"]} />}
+                                >
+                                    Miniatury
+                                </Tabs.Tab>
+                            </div>
+                            <div>
+                                <Tabs.Tab
+                                    value={selectedTab}
+                                    className={classes["tabsBackground"]}
+                                    leftSection={
+                                        <IconFilter
+                                            className={classes["iconStyle"]}
+                                        />
+                                    }
+                                    onClick={handleTabClick}
+                                >
+                                    Filtr
+                                </Tabs.Tab>
+                            </div>
 
                         </Tabs.List>
+
+                        <Modal
+                            opened={opened}
+                            onClose={closeModal}
+                            title="Možnosti filtorvání"
+                            size="lg"
+                            radius="md"
+                            overlayProps={{ backgroundOpacity: 0.5, blur: 3 }}
+                        >
+
+                        </Modal>
+
 
                         {/* pole se stránkováním a selektem pro výběr počtu záznamu na stránku */}
                         <Flex
@@ -98,7 +149,7 @@ function DatabaseHarmoniums() {
                                 page={currentPage}
                                 onChange={setCurrentPage}
                                 total={totalPages}
-                                siblings = {0}
+                                siblings={0}
                                 defaultValue={1}
                             />
                         </Flex>
