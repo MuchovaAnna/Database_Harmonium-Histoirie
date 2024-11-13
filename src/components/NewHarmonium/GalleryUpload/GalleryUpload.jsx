@@ -5,13 +5,13 @@ import { IconPhotoUp } from '@tabler/icons-react'
 import classes from '../../NewHarmonium/New.module.scss'
 import { useHarmonium } from '../../../context/DataContext'
 
-function GalleryUpload({ form, pictureUrls}) {
+function GalleryUpload({ form, pictureUrls }) {
 
     const icon = <IconPhotoUp />
 
     const [avatars, setAvatars] = useState([])
 
-    const {selectedHarmonium, uploadFile, removeFile} = useHarmonium()
+    const { selectedHarmonium, uploadFile, removeFile } = useHarmonium()
 
     //Funkce pro zobrazení avarats při načtení dat stávájícího záznamu
     useEffect(() => {
@@ -24,13 +24,13 @@ function GalleryUpload({ form, pictureUrls}) {
     const handleFileUpload = async (selectFiles) => {
 
         const uploadResults = await uploadFile(selectFiles)
-    
+
         // kontrola výsledku nahrávání
         console.log("Výsledek nahrávání:", uploadResults);
 
         if (!Array.isArray(uploadResults)) {
             console.error("Očekávalo se pole, ale obdrželo se:", uploadResults);
-            return; 
+            return;
         }
 
         // Zpracování URL adres
@@ -49,7 +49,13 @@ function GalleryUpload({ form, pictureUrls}) {
     //odstranění obrázku
     const handleRemove = async (src) => {
         await removeFile(src, selectedHarmonium.id)
-        setAvatars((prevAvatars) => prevAvatars.filter((avatar) => avatar !== src));
+        setAvatars((prevAvatars) => {
+            const updateAvatars = prevAvatars.filter((avatar) => avatar !== src)
+
+            form.setFieldValue('pictures', updateAvatars)
+
+            return updateAvatars
+        });
 
     };
 

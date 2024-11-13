@@ -88,7 +88,7 @@ export const HarmoniumProvider = ({ children }) => {
                         showNotification({
                             title: "Chyba",
                             message: 'Chyba při nahrávání dat',
-                            color: "lightGreen",
+                            color: "red",
                             position: "top-center"
                         })
                     )
@@ -198,6 +198,8 @@ export const HarmoniumProvider = ({ children }) => {
             color: "lightGreen",
             position: "top-center"
         });
+
+        return updatedData
     }
 
     //FUNKCE PRO SORT DAT
@@ -209,14 +211,17 @@ export const HarmoniumProvider = ({ children }) => {
             return;
         }
 
-        const order = sortOrder === "asc" ? "desc" : "asc"
+        const order = sortOrder === "desc" ? "asc" : "desc"
         setSortOrder(order)
 
         const sortedData = [...data].sort((a, b) => {
-            const valueA = a[key]
-            const valueB = b[key]
+            let valueA = a[key]
+            let valueB = b[key]
 
-            if (typeof valueA === "string") {
+            if (typeof valueA === "string" && !isNaN(valueA)) valueA = Number(valueA)
+            if(typeof valueB === "string" && !isNaN(valueB)) valueB = Number(valueB)
+
+            if (typeof valueA === "string" && typeof valueB === "string") {
                 return order === "asc"
                     ? valueA.localeCompare(valueB)
                     : valueB.localeCompare(valueA)

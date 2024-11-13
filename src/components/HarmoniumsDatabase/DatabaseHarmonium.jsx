@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
-import { Flex, Modal, Pagination, Select, Tabs, TabsList, Text } from '@mantine/core'
+import { Button, Flex, Modal, MultiSelect, Pagination, Select, Tabs, TabsList, Text } from '@mantine/core'
 import { IconColumns, IconLayoutGrid, IconFilter } from '@tabler/icons-react';
 import classes from '../HarmoniumsDatabase/DatabaseHarmonium.module.scss'
 import TableDatabase from './Table/TableHarmoniums';
@@ -12,7 +12,7 @@ function DatabaseHarmoniums() {
 
     // const navigate = useNavigate()
     const { isAuth } = useAuth()
-    const { data, lastTab, setLastTab } = useHarmonium()
+    const { data, setData,  lastTab, setLastTab } = useHarmonium()
 
     const [currentPage, setCurrentPage] = useState(1)
     const [recordsPerPage, setRecordsPerPage] = useState(8)  // výchozí počet záznamu na stránce
@@ -23,7 +23,8 @@ function DatabaseHarmoniums() {
     // Nastavení stavu selectedTab při načtení komponenty
     useEffect(() => {
         setSelectedTab(lastTab);
-    }, [lastTab]);
+        setOriginalData(data)
+    }, [lastTab, data]);
 
     //výpočet celkového počtu stránek
     const totalPages = Math.ceil(data.length / recordsPerPage)
@@ -37,8 +38,16 @@ function DatabaseHarmoniums() {
     //FILTERS
     //funkce pro otevření modalního okna
     const [opened, setOpened] = useState(false)
+    const [initialData] = useState([...data])
+    const [originalData, setOriginalData] = useState(data)
+    const [selectedBuilders, setSelectedBuilders] = useState([])
+    const [selectedLocation, setSelectedLocation] = useState("")
 
     const openModal = () => {
+        setOriginalData([...initialData])
+        setData([...initialData])
+        setSelectedBuilders([])
+        setSelectedLocation("")
         setOpened(true)
     }
 
@@ -46,6 +55,39 @@ function DatabaseHarmoniums() {
     const closeModal = () => {
         setOpened(false)
     }
+    
+    //funkce resetu filtru
+    // const resetFilters = () => {
+    //     setOriginalData([...initialData])
+    //     setData([...initialData])
+    //     setSelectedBuilders([])
+    //     setSelectedLocation("")
+    // }
+
+    //Funkce pro aplikování výběru
+    const applyFilter = () => {
+        console.log("před filtrováním", data);
+
+        //aplikace fultru na data
+        const filteredData = originalData.filter((item) => {
+            const selectBuilder = selectedBuilders.length > 0
+                ? selectedBuilders.includes(item.builder)
+                : true
+
+            const selectLocation = selectedLocation
+                ? item.location === selectedLocation
+                : true;
+
+            return selectBuilder && selectLocation
+        })
+
+        console.log("filtrovaná data", filteredData);
+
+        setData(filteredData)
+        console.log(selectedBuilders, selectedLocation);
+        closeModal()
+    }
+
 
     return (
         <>
@@ -61,7 +103,7 @@ function DatabaseHarmoniums() {
                         className={classes["tabs"]}
                     >
                         <Tabs.List
-                        className={classes["tabsContainer"]}
+                            className={classes["tabsContainer"]}
                         >
                             <div className={classes["leftSection"]}>
                                 <Tabs.Tab
@@ -103,9 +145,56 @@ function DatabaseHarmoniums() {
                             onClose={closeModal}
                             title="Možnosti filtorvání"
                             size="lg"
-                            radius="md"
+                            radius="sm"
                             overlayProps={{ backgroundOpacity: 0.5, blur: 3 }}
+                            className={classes["modalTitle"]}
                         >
+                            <MultiSelect
+                                label="Stavitele:"
+                                placeholder='Vyber  stavitele'
+                                data={["Alois Hugo Lhota", "Tuček", "Pajkr & spol.", "Alexandre Francois Debain", "Petrof"]}
+                                classNames={{
+                                    input: classes.input,
+                                    pill: classes.pill,
+                                }}
+                                onChange={setSelectedBuilders}
+                            />
+
+                            <Select
+                                label="Umístění:"
+                                placeholder='Vyber umistění'
+                                data={["expozice půda", "depositář"]}
+                                classNames={{
+                                    input: classes.input,
+                                }}
+                                onChange={setSelectedLocation}
+                            />
+
+                            <div
+                                className={classes["sectionButton"]}
+                            >
+                                <Button
+                                    color='lightGreen'
+                                    className={classes["modalButton"]}
+                                    onClick={() => applyFilter()}
+                                >
+                                    Filtrovat
+                                </Button>
+                                {/* <Button
+                                    color='lightGreen'
+                                    className={classes["modalButton"]}
+                                    onClick={() => resetFilters()}
+                                >
+                                    Reset filtru
+                                </Button> */}
+                                <Button
+                                    color='lightGreen'
+                                    className={classes["modalButton"]}
+                                    onClick={closeModal}
+                                >
+                                    Zavřít
+                                </Button>
+                            </div>
 
                         </Modal>
 

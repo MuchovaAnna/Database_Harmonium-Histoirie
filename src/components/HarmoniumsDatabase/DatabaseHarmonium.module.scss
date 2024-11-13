@@ -68,3 +68,33 @@
         display: inline;
     }
 }
+
+//MODAL
+.sectionButton{
+    display: flex;
+    justify-content: space-around;
+}
+
+.modalButton{
+    text-transform: uppercase;
+}
+
+.modalTitle{
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $primary-color-10;
+}
+
+.input{
+    margin: 5px 0 10px 0;
+    border: 1px solid $primary-color-10;
+
+    &:hover{
+        border: 2px solid $secondary-color-7;
+    }
+}
+
+.pill{
+    background: $secondary-color-7;
+    color: $white;
+}

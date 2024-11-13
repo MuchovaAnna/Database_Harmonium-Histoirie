@@ -127,7 +127,7 @@ function NewHarmonium() {
             if (isEditing && harmoniumData) {
                 const { data: updateData, error } = await supabase
                     .from("harmoniums")
-                    .update(value)
+                    .update({...value})
                     .eq('id', harmoniumData.id)
                     .select()
                 if (error) {
@@ -210,7 +210,7 @@ function NewHarmonium() {
                             <Grid>
                                 {/* BASIC INFORMATION */}
                                 <GridCol
-                                    span={{ base: 12, sm: 6, lg: 3 }}
+                                    span={{ base: 12, sm: 6 }}
                                 >
                                     <BasicInfo form={form} />
 
@@ -218,7 +218,7 @@ function NewHarmonium() {
 
                                 {/* DETAIL INFORMATION */}
                                 <GridCol
-                                    span={{ base: 12, sm: 6, lg: 3 }}
+                                    span={{ base: 12, sm: 6 }}
                                 >
                                     <DetailInfo form={form} />
 
@@ -226,7 +226,7 @@ function NewHarmonium() {
 
                                 {/* INTERNAL INFO */}
                                 <GridCol
-                                    span={{ base: 12, sm: 6, lg: 3 }}
+                                    span={{ base: 12, sm: 6 }}
                                 >
                                     <InternalInfo form={form} />
 
@@ -234,7 +234,7 @@ function NewHarmonium() {
 
                                 {/* GALLERY UPLOAD */}
                                 <GridCol
-                                    span={{ base: 12, sm: 6, lg: 3 }}
+                                    span={{ base: 12, sm: 6 }}
                                 >
                                     <GalleryUpload form={form} pictureUrls={pictureUrls} id={harmoniumData?.id} />
 

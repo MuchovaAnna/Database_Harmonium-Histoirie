@@ -7,7 +7,7 @@ import { useHarmonium } from '../../../context/DataContext';
 
 function TableDatabase({ data }) {
 
-    const {data: dataSort, setData, setSelectedHarmonium, sortOrder, sortData } = useHarmonium()
+    const { data: dataSort, setData, setSelectedHarmonium, sortOrder, sortData } = useHarmonium()
     const navigate = useNavigate()
 
     console.log(dataSort);
@@ -128,7 +128,7 @@ function TableDatabase({ data }) {
                                 Umístění
                             </Table.Th>
                             <Table.Th
-                                onClick={() => sortData("id")}
+                                onClick={() => sortData("inventoryId")}
                             >
                                 <div className={classes["iconContainer"]}>
                                     <span> ID </span>
